@@ -92,7 +92,11 @@
 <aside>
   <div class="shape-buttons">
     {#each shapes as shape}
-      <ShapeButton on:click={() => changeDefaultShape(shape)} {shape} />
+      <ShapeButton
+        on:click={() => changeDefaultShape(shape)}
+        {shape}
+        tooltip={`<${shape} />`}
+      />
       <span style="width: 8px;" />
     {/each}
   </div>
@@ -118,11 +122,14 @@
   <input type="number" bind:value={strokeDashArray} min="0" max="200" />
 </aside>
 
-<!-- <circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3"fill="none"></circle> -->
 <style>
   .shape-buttons {
     display: flex;
     flex-wrap: wrap;
+  }
+  label {
+    font-weight: bold;
+    color: #6e1e49;
   }
   textarea {
     min-height: 120px;

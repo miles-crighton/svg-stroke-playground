@@ -1,9 +1,10 @@
 <script lang="ts">
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   export let shape: Shape;
+  export let tooltip: boolean | string = false;
 </script>
 
-<button on:click>{shape}</button>
+<button on:click data-tooltip={tooltip}>{shape}</button>
 
 <style>
   button {
