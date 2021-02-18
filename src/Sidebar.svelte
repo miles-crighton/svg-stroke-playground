@@ -100,6 +100,7 @@
       <span style="width: 8px;" />
     {/each}
   </div>
+  <label for="svg-code">Svg Code</label>
   <textarea bind:value={svgCode} />
   <label for="dash-offset">Dash Offset</label>
   <input

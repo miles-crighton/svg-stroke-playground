@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="29px" viewBox="0 0 30 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF8995" offset="0%"></stop>
+            <stop stop-color="#FD80AF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FF889A" offset="0%"></stop>
+            <stop stop-color="#FD82AB" offset="99.9211238%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-6" transform="translate(2.751631, 0.000000)">
+            <line x1="0" y1="26.1162422" x2="7.24836874" y2="19" id="Path-4" stroke="url(#linearGradient-1)" stroke-width="2" stroke-linecap="round"></line>
+            <circle id="Oval" stroke="url(#linearGradient-1)" stroke-width="3" cx="14.7483687" cy="11.5" r="10"></circle>
+            <path d="M10.0997209,10.1428571 L8.92089734,10.1428571 C8.38795616,10.1428571 8.16560322,10.6425714 8.27589734,11 L10.4111915,14.8014286 C10.6688385,15.1262857 11.1073679,15.1254286 11.4347209,14.6737143 L13.570015,11 C13.6803091,10.5542857 13.4588385,10.1428571 12.925015,10.1428571 L11.8820738,10.1428571 C12.2694268,8.05485714 14.0658973,6.71428571 16.2170738,6.71428571 C18.6497209,6.71428571 20.6288385,8.63685714 20.6288385,11 C20.6288385,13.3631429 18.8641327,15.2857143 16.2170738,15.2857143 L16.2170738,17 C19.7464856,17 22.3935444,14.3085714 22.3935444,11 C22.3935444,7.69142857 19.6220738,5 16.2170738,5 C13.1023679,5 10.5179562,7.15142857 10.0997209,10.1428571" id="Path" fill="url(#linearGradient-2)" fill-rule="nonzero" transform="translate(15.320957, 11.000000) scale(-1, 1) translate(-15.320957, -11.000000) "></path>
+        </g>
+    </g>
+</svg>

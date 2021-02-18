@@ -1,6 +1,7 @@
 <script lang="ts">
   import ZoomInSvg from "./svgs/zoom-in.svg";
   import ZoomOutSvg from "./svgs/zoom-out.svg";
+  import ZoomResetSvg from "./svgs/zoom-reset.svg";
   export let zoomLevel = 1;
 
   const increaseZoom = () => {
@@ -10,14 +11,21 @@
   const decreaseZoom = () => {
     zoomLevel = Math.floor((zoomLevel * 100) / 1.2) / 100;
   };
+
+  const resetZoom = () => (zoomLevel = 1);
 </script>
 
 <div class="zoom-controls">
   <button class="zoom-controls__button" on:click={increaseZoom}
-    ><ZoomInSvg />
+    ><div class="zoom-controls__button--content"><ZoomInSvg /></div>
   </button>
   <button class="zoom-controls__button" on:click={decreaseZoom}
-    ><ZoomOutSvg /></button
+    ><div class="zoom-controls__button--content"><ZoomOutSvg /></div></button
+  >
+  <button class="zoom-controls__button" on:click={resetZoom}
+    ><div class="zoom-controls__button--content">
+      <ZoomResetSvg />
+    </div></button
   >
   <span>{Math.round(zoomLevel * 100)}%</span>
 </div>
@@ -30,7 +38,7 @@
     bottom: 10%;
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid #d5d5d5;
@@ -47,5 +55,14 @@
     border-radius: 4px;
     margin: 0;
     margin-right: 0.5rem;
+  }
+
+  .zoom-controls__button:active {
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.18);
+    background-color: #e9e9e9;
+  }
+
+  .zoom-controls__button:active > .zoom-controls__button--content {
+    transform: translateY(2px);
   }
 </style>
