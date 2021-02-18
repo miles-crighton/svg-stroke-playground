@@ -19,27 +19,29 @@
     -moz-text-fill-color: transparent;
   }
   .name {
-    font-size: 24px;
+    font-size: 32px;
   }
   .subtext {
     font-style: italic;
     color: #df5093;
     margin-right: 0.4rem;
+    font-size: 24px;
     font-weight: bold;
   }
   h2 {
-    font-size: 44px;
+    font-size: 52px;
     margin: 0 auto;
     text-align: center;
   }
   footer {
     font-family: "Funkydori", sans-serif;
     position: absolute;
-    bottom: 1rem;
-    left: 1rem;
+    bottom: 2rem;
+    left: 2rem;
     border-radius: 8px;
-    padding: 0.5rem 1rem;
-    border: 2px solid #d74398;
-    box-shadow: -4px 4px 0 0 #d74398;
+    padding: 1.5rem 3rem;
+    border: 1px solid #d5d5d5;
+    box-shadow: 0 0 22px 1px rgba(0, 0, 0, 0.1),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.08);
   }
 </style>

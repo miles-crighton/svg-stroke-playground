@@ -1,6 +1,8 @@
 <script lang="ts">
   import Footer from "./Footer.svelte";
   import Aside from "./Sidebar.svelte";
+  import ZoomControls from "./ZoomControls.svelte";
+  let zoomLevel = 1;
   let svg;
   export let svgElement: Element;
   export let name: string;
@@ -18,14 +20,15 @@
 <main>
   <div class="contents">
     <svg
-      height="200px"
-      width="200px"
-      viewBox="0 0 200 200"
+      height="100%"
+      width="100%"
+      viewBox={`0 0 ${200 / zoomLevel} ${200 / zoomLevel}`}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       bind:this={svg}
     />
+    <ZoomControls bind:zoomLevel />
     <Footer />
   </div>
   <Aside bind:svgElement />
@@ -124,6 +127,7 @@
     align-items: center;
     justify-content: center;
     flex: 1;
+    position: relative;
   }
 
   h1 {
