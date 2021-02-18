@@ -1,5 +1,6 @@
 <script lang="ts">
   import NumericInput from "./NumericInput.svelte";
+  import RangeNumericInput from "./RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
@@ -103,26 +104,9 @@
   </div>
   <label for="svg-code">Svg Code</label>
   <textarea bind:value={svgCode} />
-  <label for="dash-offset">Dash Offset</label>
-  <input
-    type="range"
-    id="dash-offset"
-    name="dash-offset"
-    min="0"
-    max="200"
-    bind:value={strokeDashOffset}
-  />
-  <label for="dash-array">dash-array</label>
-  <input
-    type="range"
-    id="dash-array"
-    name="dash-array"
-    min="0"
-    max="200"
-    bind:value={strokeDashArray}
-  />
-  <input type="number" bind:value={strokeDashArray} min="0" max="200" />
-  <NumericInput />
+
+  <RangeNumericInput bind:value={strokeDashOffset} label="stroke-dashoffset" />
+  <RangeNumericInput bind:value={strokeDashArray} label="stroke-dasharray" />
 </aside>
 
 <style>
