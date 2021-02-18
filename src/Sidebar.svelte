@@ -90,19 +90,12 @@
 </script>
 
 <aside>
-  <svg
-    height="200px"
-    width="200px"
-    viewBox="0 0 200 200"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    bind:this={svg}
-  />
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
+  <div class="shape-buttons">
+    {#each shapes as shape}
+      <ShapeButton on:click={() => changeDefaultShape(shape)} {shape} />
+      <span style="width: 8px;" />
+    {/each}
+  </div>
   <textarea bind:value={svgCode} />
   <label for="dash-offset">Dash Offset</label>
   <input
@@ -123,13 +116,14 @@
     bind:value={strokeDashArray}
   />
   <input type="number" bind:value={strokeDashArray} min="0" max="200" />
-  {#each shapes as shape}
-    <ShapeButton on:click={() => changeDefaultShape(shape)} {shape} />
-  {/each}
 </aside>
 
 <!-- <circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3"fill="none"></circle> -->
 <style>
+  .shape-buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
   textarea {
     min-height: 120px;
     width: 100%;
@@ -142,6 +136,7 @@
     border-left: 1px solid #d5d5d5;
     padding: 1rem;
     box-sizing: border-box;
+    box-shadow: -2px 0 20px 0 rgba(0, 0, 0, 0.1);
   }
 
   .header {
