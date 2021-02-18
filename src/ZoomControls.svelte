@@ -1,4 +1,6 @@
 <script lang="ts">
+  import ZoomInSvg from "./svgs/zoom-in.svg";
+  import ZoomOutSvg from "./svgs/zoom-out.svg";
   export let zoomLevel = 1;
 
   const increaseZoom = () => {
@@ -12,10 +14,12 @@
 
 <div class="zoom-controls">
   <button class="zoom-controls__button" on:click={increaseZoom}
-    >ZOOM IN
+    ><ZoomInSvg />
   </button>
-  <button class="zoom-controls__button" on:click={decreaseZoom}>UNZOOM</button>
-  <span>{zoomLevel * 100}%</span>
+  <button class="zoom-controls__button" on:click={decreaseZoom}
+    ><ZoomOutSvg /></button
+  >
+  <span>{Math.round(zoomLevel * 100)}%</span>
 </div>
 
 <style>
@@ -25,7 +29,10 @@
     transform: translateX(-50%);
     bottom: 10%;
     display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
     background-color: #fff;
+    border-radius: 8px;
     border: 1px solid #d5d5d5;
     box-shadow: 0 0 22px 1px rgba(0, 0, 0, 0.1),
       inset 0 -2px 3px rgba(0, 0, 0, 0.08);
@@ -38,5 +45,7 @@
     border: 1px solid #c8c8c8;
     box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
+    margin: 0;
+    margin-right: 0.5rem;
   }
 </style>
