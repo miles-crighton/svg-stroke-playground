@@ -1,4 +1,5 @@
 <script lang="ts">
+  import NumericInput from "./NumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
@@ -121,6 +122,7 @@
     bind:value={strokeDashArray}
   />
   <input type="number" bind:value={strokeDashArray} min="0" max="200" />
+  <NumericInput />
 </aside>
 
 <style>
