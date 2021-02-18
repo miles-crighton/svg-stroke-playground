@@ -92,6 +92,7 @@
 </script>
 
 <aside>
+  <h2 class="gradient">Svg</h2>
   <div class="shape-buttons">
     {#each shapes as shape}
       <ShapeButton
@@ -113,6 +114,22 @@
   .shape-buttons {
     display: flex;
     flex-wrap: wrap;
+  }
+  h2 {
+    font-family: "Funkydori";
+    font-size: 32px;
+    text-align: center;
+    margin: 0.5rem;
+  }
+  .gradient {
+    background-color: #c937b9;
+    background-image: linear-gradient(45deg, #f15858, #c937b9);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
   }
   label {
     font-weight: bold;
