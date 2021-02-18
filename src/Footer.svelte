@@ -19,7 +19,6 @@
     -moz-text-fill-color: transparent;
   }
   .name {
-    font-family: "Funkydori", sans-serif;
     font-size: 24px;
   }
   .subtext {
@@ -29,12 +28,12 @@
     font-weight: bold;
   }
   h2 {
-    font-family: "Funkydori", sans-serif;
     font-size: 44px;
     margin: 0 auto;
     text-align: center;
   }
   footer {
+    font-family: "Funkydori", sans-serif;
     position: absolute;
     bottom: 1rem;
     left: 1rem;

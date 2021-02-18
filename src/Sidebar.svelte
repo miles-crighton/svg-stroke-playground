@@ -1,4 +1,25 @@
 <script lang="ts">
+  import ShapeButton from "./ShapeButton.svelte";
+  type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
+  const shapes: Array<Shape> = [
+    "circle",
+    "line",
+    "polyline",
+    "rect",
+    "ellipse",
+    "polygon",
+  ];
+
+  const shapePresets = {
+    circle: `<circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3" fill="none" />`,
+    rect: `<rect width="100" height="100" x="50" y="50" stroke="#787878" stroke-width="3" fill="none" />`,
+    ellipse: `<ellipse cx="100" cy="100" rx="80" ry="50" stroke="#787878" stroke-width="3" fill="none" />`,
+    polygon: `<polygon points="100,10 40,198 190,78 10,78 160,198" stroke="#787878" stroke-width="3" fill="none" />`,
+    polyline: `<polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160" stroke="#787878" stroke-width="3" fill="none"/>`,
+    line: `<line x1="0" y1="0" x2="200" y2="200" stroke="#787878" stroke-width="3" fill="none" />`,
+    path: `<path d="M150 0 L75 200 L225 200 Z" stroke="#787878" stroke-width="3" fill="none"/>`,
+  };
+
   export let svgCode = `<circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3" fill="none"></circle>`;
   export let strokeDashOffset = 0;
   export let strokeDashArray = "1";
@@ -12,6 +33,8 @@
 
     doc = parser.parseFromString(tempSvg, "image/svg+xml");
 
+    var failed = doc.documentElement.nodeName.indexOf("parsererror") > -1;
+
     let svgNode = doc.firstChild.firstChild as Element; // Document => <Svg /> => <circle />
 
     svgNode.setAttribute("stroke-dashoffset", strokeDashOffset.toString());
@@ -23,6 +46,10 @@
       }
       svg.append(svgNode);
     }
+  }
+
+  function changeDefaultShape(shape: Shape) {
+    svgCode = shapePresets[shape];
   }
 
   let styleEl = document.createElement("style");
@@ -93,6 +120,9 @@
     bind:value={strokeDashArray}
   />
   <input type="number" bind:value={strokeDashArray} min="0" max="200" />
+  {#each shapes as shape}
+    <ShapeButton on:click={() => changeDefaultShape(shape)} {shape} />
+  {/each}
 </aside>
 
 <!-- <circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3"fill="none"></circle> -->
@@ -100,7 +130,7 @@
   textarea {
     min-height: 120px;
     width: 100%;
-    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
   }
   aside {
