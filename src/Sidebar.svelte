@@ -23,6 +23,7 @@
   export let svgCode = `<circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3" fill="none"></circle>`;
   export let strokeDashOffset = 0;
   export let strokeDashArray = "1";
+  export let svgElement: Element;
   let svg;
   $: {
     console.log(strokeDashOffset, svgCode);
@@ -39,6 +40,8 @@
 
     svgNode.setAttribute("stroke-dashoffset", strokeDashOffset.toString());
     svgNode.setAttribute("stroke-dasharray", strokeDashArray.toString());
+
+    svgElement = svgNode;
 
     if (svg) {
       if (svg.firstChild) {

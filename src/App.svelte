@@ -1,8 +1,18 @@
 <script lang="ts">
   import Footer from "./Footer.svelte";
   import Aside from "./Sidebar.svelte";
-  export let svgCode: string;
+  let svg;
+  export let svgElement: Element;
   export let name: string;
+
+  $: {
+    if (svg) {
+      if (svg.firstChild) {
+        svg.removeChild(svg.firstChild);
+      }
+      svg.append(svgElement);
+    }
+  }
 </script>
 
 <main>
@@ -13,11 +23,12 @@
       viewBox="0 0 200 200"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink">{@html svgCode}</svg
-    >
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      bind:this={svg}
+    />
     <Footer />
   </div>
-  <Aside bind:svgCode />
+  <Aside bind:svgElement />
 </main>
 
 <style>
