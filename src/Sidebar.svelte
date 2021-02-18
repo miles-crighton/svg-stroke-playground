@@ -140,11 +140,13 @@
   }
   aside {
     background-color: #f3f3f3;
-    width: 310px;
-    border-left: 1px solid #d5d5d5;
+    margin: 1.5rem;
+    border-radius: 12px;
+    width: 350px;
+    border: 1px solid #d5d5d5;
     padding: 1rem;
     box-sizing: border-box;
-    box-shadow: -2px 0 20px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
   }
 
   .header {

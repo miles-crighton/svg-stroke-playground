@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="134px" height="19px" viewBox="0 0 134 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="239" height="111" rx="4"></rect>
+        <filter x="-14.4%" y="-31.1%" width="128.9%" height="162.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="11" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.089095109 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="-11.1%" y="-23.9%" width="122.2%" height="147.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="2" operator="erode" in="SourceAlpha" result="shadowSpreadInner1"></feMorphology>
+            <feGaussianBlur stdDeviation="1.5" in="shadowSpreadInner1" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="-2" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.079055466 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="81.297873%" y1="51.2465248%" x2="16.63929%" y2="49.4540061%" id="linearGradient-4">
+            <stop stop-color="#CD3AAD" offset="0%"></stop>
+            <stop stop-color="#EB596E" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-9.17535771%" y1="40.5482042%" x2="107.662567%" y2="56.8614499%" id="linearGradient-5">
+            <stop stop-color="#F15858" offset="0%"></stop>
+            <stop stop-color="#C937B9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Chrome-(Second-Monitor)-Copy-3" transform="translate(-75.000000, -673.000000)">
+            <g id="Rectangle" transform="translate(24.000000, 635.000000)">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                <rect stroke="#D5D5D5" stroke-width="1" stroke-linejoin="square" x="0.5" y="0.5" width="238" height="110" rx="4"></rect>
+            </g>
+            <path d="M190.046609,680.467059 C201.718573,673.336776 207.554555,672.659196 207.554555,678.43432 C207.554555,683.878875 202.67117,686.601137 192.904399,686.601104 L80,686.601104 C77.821262,686.378259 76.731893,687.06671 76.731893,688.666457 C76.731893,690.266204 77.821262,690.922341 80,690.634869 L198.314613,690.634869 C200.774648,690.146595 202.004665,688.491731 202.004665,685.670277" id="Path" stroke="url(#linearGradient-4)" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

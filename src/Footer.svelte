@@ -1,5 +1,5 @@
 <footer>
-  <h2 class="gradient">Stroke it</h2>
+  <h2 class="gradient title">Stroke it</h2>
   <div>
     <span class="subtext">A lil' something by</span><span class="gradient name"
       >Miles</span
@@ -20,6 +20,14 @@
   }
   .name {
     font-size: 32px;
+  }
+
+  .title::after {
+    content: " ";
+    width: 200px;
+    height: 50px;
+    background: url("/stroke-it-stroke.svg");
+    background-size: cover;
   }
   .subtext {
     font-style: italic;
