@@ -213,7 +213,7 @@
     outline: none;
   }
 
-  .slider__wrapper:focus > .slider__track {
+  .slider__wrapper:focus-visible > .slider__track {
     box-shadow: 0 0 0 1px rgba(147, 81, 255, 0.5),
       0 0 0 3px rgba(147, 81, 255, 0.4);
   }
