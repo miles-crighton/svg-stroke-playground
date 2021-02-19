@@ -2,6 +2,7 @@
   import Footer from "./Footer.svelte";
   import Aside from "./Sidebar.svelte";
   import ZoomControls from "./ZoomControls.svelte";
+  import GithubCorner from "./svgs/githubCorner.svg";
   let zoomLevel = 1;
   let svg;
   export let svgElement: Element;
@@ -31,6 +32,9 @@
     />
     <ZoomControls bind:zoomLevel />
     <Footer />
+    <a href="https://www.github.com">
+      <GithubCorner />
+    </a>
   </div>
   <Aside bind:svgElement />
 </main>
@@ -111,6 +115,35 @@
     .svgElement {
       animation: my-animation var(--animation-duration) var(--animation-delay)
         var(--animation-state) infinite;
+    }
+
+    .github-corner {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .github-corner:hover #octocat-arm {
+      animation: octocat-wave 0.9s;
+      transform-origin: center;
+    }
+
+    @keyframes octocat-wave {
+      0% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(-10deg);
+      }
+      60% {
+        transform: rotate(5deg);
+      }
+      80% {
+        transform: rotate(-6deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
     }
   </style>
 </svelte:head>
