@@ -8,7 +8,7 @@
   export let initialValue = 0;
   export let value = initialValue;
 
-  let elm_x = null;
+  let elementX = null;
   let element: Element = null;
   let pointer = null;
   let containerWidth = null;
@@ -18,7 +18,7 @@
 
   function elmPosition(node) {
     const rect = node.getBoundingClientRect();
-    elm_x = rect.left;
+    elementX = rect.left;
     element = node;
   }
 
@@ -42,9 +42,13 @@
     currentPointer = null;
   }
 
+  function touchCancel() {
+    currentPointer = null;
+  }
+
   function resizeWindow() {
     containerWidth = container.clientWidth;
-    elm_x = element.getBoundingClientRect().left;
+    elementX = element.getBoundingClientRect().left;
   }
 
   function setValue(val) {
@@ -70,14 +74,22 @@
     e.stopPropagation();
   });
 
-  function movePointer(e) {
+  function onTouchStart() {
+    currentPointer = pointer;
+  }
+
+  function onDrag(e: MouseEvent | TouchEvent) {
     if (!currentPointer) return false;
 
     if (e.stopPropagation) e.stopPropagation();
     if (e.preventDefault) e.preventDefault();
-    // console.log("CONTAINER WIDTH", containerWidth);
-    // console.log("CURRENT POINTER", currentPointer);
-    let diff = e.clientX - elm_x; // calculate percentage
+
+    const clientX =
+      e.type === "touchmove"
+        ? (e as TouchEvent).touches[0].clientX
+        : (e as MouseEvent).clientX;
+
+    let diff = clientX - elementX; // calculate percentage
     let per = (diff * 100) / containerWidth;
     per = per < 0 ? 0 : per > 100 ? 100 : per;
     setValue(parseInt((per * (max - min)) / 100) + min);
@@ -93,7 +105,10 @@
 </script>
 
 <svelte:window
-  on:mousemove={movePointer}
+  on:touchmove|nonpassive={onDrag}
+  on:touchcancel={touchCancel}
+  on:touchend={touchCancel}
+  on:mousemove={onDrag}
   on:mouseup={mouseUp}
   on:resize={resizeWindow}
 />
@@ -107,6 +122,7 @@
         unselectable={true}
         onselectstart={() => false}
         use:setPointer
+        on:touchstart={onTouchStart}
         on:mousedown={onMouseDown}
       >
         <SliderThumbScrubSvg />
@@ -123,7 +139,7 @@
       left: 0px;
       height: 100%;
       width: 100%;
-      background-color: rgba(255, 0, 0, 0.15); /* just for demo. make it 0.0 */
+      background-color: rgba(255, 0, 0, 0); /* just for demo. make it 0.0 */
       z-index: 10000;
     }
   </style>
