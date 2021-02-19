@@ -7,12 +7,25 @@
 </script>
 
 {#if label}<label for="dash-offset">{label}</label>{/if}
-<input
-  type="range"
-  id="dash-offset"
-  name="dash-offset"
-  min="0"
-  max="200"
-  bind:value
-/>
-<NumericInput bind:value />
+<div class="wrapper">
+  <input
+    type="range"
+    id="dash-offset"
+    name="dash-offset"
+    min="0"
+    max="200"
+    bind:value
+  />
+  <NumericInput bind:value />
+</div>
+
+<style>
+  .wrapper {
+    display: flex;
+    width: 100%;
+  }
+  label {
+    font-weight: bold;
+    color: #6e1e49;
+  }
+</style>

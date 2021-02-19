@@ -12,6 +12,7 @@
       if (svg.firstChild) {
         svg.removeChild(svg.firstChild);
       }
+      svgElement.setAttribute("class", "svgElement");
       svg.append(svgElement);
     }
   }
@@ -100,6 +101,10 @@
     [data-tooltip="false"]:hover:after {
       visibility: hidden;
       opacity: 0;
+    }
+
+    .svgElement {
+      animation: my-animation 2s infinite;
     }
   </style>
 </svelte:head>

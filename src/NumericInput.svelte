@@ -66,6 +66,10 @@
     background-color: #f4f4f4;
   }
 
+  button:focus {
+    box-shadow: 0 0 0 2px blue;
+  }
+
   button:active {
     background-color: #e8e8e8;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);

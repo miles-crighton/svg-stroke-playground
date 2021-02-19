@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AnimationControls from "./AnimationControls.svelte";
   import NumericInput from "./NumericInput.svelte";
   import RangeNumericInput from "./RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
@@ -56,39 +57,6 @@
   function changeDefaultShape(shape: Shape) {
     svgCode = shapePresets[shape];
   }
-
-  let styleEl = document.createElement("style");
-
-  document.head.appendChild(styleEl);
-
-  function addStylesheetRules(rules: Array<[string, Array<string>]>) {
-    // Grab style element's sheet
-    var styleSheet = styleEl.sheet;
-
-    for (var i = 0; i < rules.length; i++) {
-      var j = 1,
-        rule = rules[i],
-        selector = rule[0],
-        propStr = "";
-      // If the second argument of a rule is an array of arrays, correct our variables.
-      if (Array.isArray(rule[1][0])) {
-        rule = rule[1];
-        j = 0;
-      }
-
-      for (var pl = rule.length; j < pl; j++) {
-        var prop = rule[j];
-        propStr +=
-          prop[0] + ": " + prop[1] + (prop[2] ? " !important" : "") + ";\n";
-      }
-
-      // Insert CSS Rule
-      styleSheet.insertRule(
-        selector + "{" + propStr + "}",
-        styleSheet.cssRules.length
-      );
-    }
-  }
 </script>
 
 <aside>
@@ -108,6 +76,9 @@
 
   <RangeNumericInput bind:value={strokeDashOffset} label="stroke-dashoffset" />
   <RangeNumericInput bind:value={strokeDashArray} label="stroke-dasharray" />
+
+  <h2 class="gradient">Animation</h2>
+  <AnimationControls />
 </aside>
 
 <style>
