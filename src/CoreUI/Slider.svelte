@@ -206,6 +206,12 @@
     position: relative;
     padding: 0.5rem;
     box-sizing: border-box;
+    outline: none;
+  }
+
+  .slider__wrapper:focus > .slider__track {
+    box-shadow: 0 0 0 1px rgba(147, 81, 255, 0.5),
+      0 0 0 3px rgba(147, 81, 255, 0.4);
   }
 
   .slider__track {
