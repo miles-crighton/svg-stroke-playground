@@ -5,8 +5,9 @@
   const dispatch = createEventDispatcher();
   export let min = 0;
   export let max = 100;
-  export let initialValue = 0;
-  export let value = initialValue;
+  export let initialValue: number | string = 0;
+  export let value: number =
+    typeof initialValue === "string" ? parseInt(initialValue) : initialValue;
 
   let elementX = null;
   let element: Element = null;
@@ -79,20 +80,29 @@
   }
 
   function onKeyPress(e: KeyboardEvent) {
-    // Max out at +/- 5 to value per event
-    // 50 below is to increase the amount of events required to reach max velocity
-    if (keydownAcceleration < 50) keydownAcceleration++;
-    let throttled = Math.ceil(keydownAcceleration / 10);
+    // Max out at +/- 20 to value per event (100 events / 5)
+    // 100 below is to increase the amount of events required to reach max velocity
+    if (keydownAcceleration < 100) keydownAcceleration++;
+    let throttled = Math.ceil(keydownAcceleration / 5);
+
+    console.log(value, keydownAcceleration, throttled);
 
     if (e.key === "ArrowUp" || e.key === "ArrowRight") {
-      if (value + throttled > max) setValue(max);
-      setValue(value + throttled);
+      if (value + throttled > max || value >= max) {
+        setValue(max);
+      } else {
+        setValue(value + throttled);
+      }
     }
     if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
-      if (value - throttled < min) setValue(min);
-      setValue(value - throttled);
+      if (value - throttled < min || value <= min) {
+        setValue(min);
+      } else {
+        setValue(value - throttled);
+      }
     }
 
+    // Reset acceleration after 100ms of no events
     clearTimeout(accelerationTimer);
     accelerationTimer = setTimeout(() => (keydownAcceleration = 1), 100);
   }
