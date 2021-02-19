@@ -37,6 +37,10 @@
 
 <svelte:head>
   <style>
+    :root {
+      --animation-duration: 1s;
+      --animation-delay: 0s;
+    }
     /*This would all go into the global.css file*/
     [data-tooltip] {
       position: relative;
@@ -104,7 +108,8 @@
     }
 
     .svgElement {
-      animation: my-animation 2s infinite;
+      animation: my-animation var(--animation-duration) var(--animation-delay)
+        infinite;
     }
   </style>
 </svelte:head>

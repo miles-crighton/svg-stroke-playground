@@ -107,7 +107,7 @@
     -moz-text-fill-color: transparent;
   }
   label {
-    font-weight: bold;
+    font-weight: 500;
     color: #6e1e49;
   }
   textarea {
@@ -122,7 +122,7 @@
     border-radius: 12px;
     width: 350px;
     border: 1px solid #d5d5d5;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     box-sizing: border-box;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
   }

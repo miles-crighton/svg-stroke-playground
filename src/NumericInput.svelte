@@ -3,14 +3,27 @@
   import ArrowDownSvg from "./svgs/numericArrowDown.svg";
   export let initialValue = 0;
   export let value = initialValue;
+  export let stepValue = 0;
+  export let min = 0;
+  export let max = 10000;
   let input;
 
   const incrementValue = () => {
-    value += 1;
+    if (value + stepValue > max) {
+      value = max;
+    } else {
+      value += stepValue;
+      value = parseFloat(value.toFixed(1));
+    }
   };
 
   const decrementValue = () => {
-    value -= 1;
+    if (value - stepValue < min) {
+      value = min;
+    } else {
+      value -= stepValue;
+      value = parseFloat(value.toFixed(1));
+    }
   };
 </script>
 
