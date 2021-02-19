@@ -1,0 +1,141 @@
+<script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  import SliderThumbScrubSvg from "../svgs/sliderThumbScrub.svg";
+
+  const dispatch = createEventDispatcher();
+  export let min = 0;
+  export let max = 100;
+  export let initialValue = 0;
+  export let value = initialValue;
+
+  let elm_x = null;
+  let element: Element = null;
+  let pointer = null;
+  let containerWidth = null;
+  let progressBarNode = null;
+  let currentPointer = null;
+  let holding = false;
+
+  function elmPosition(node) {
+    const rect = node.getBoundingClientRect();
+    elm_x = rect.left;
+    element = node;
+  }
+
+  let container;
+  function setContainer(node) {
+    container = node;
+    containerWidth = node.clientWidth;
+  }
+
+  function setPointer(node) {
+    console.log(node);
+    pointer = node;
+  }
+
+  function progressBar(node) {
+    progressBarNode = node;
+  }
+
+  function mouseUp() {
+    currentPointer = null;
+  }
+
+  function resizeWindow() {
+    containerWidth = container.clientWidth;
+    elm_x = element.getBoundingClientRect().left;
+  }
+
+  function setValue(val) {
+    value = val;
+    dispatch("change", value);
+  }
+
+  function onMouseDown() {
+    currentPointer = pointer;
+  }
+
+  $: holding = Boolean(currentPointer);
+
+  function movePointer(e) {
+    if (!currentPointer) return false;
+    // console.log("CONTAINER WIDTH", containerWidth);
+    // console.log("CURRENT POINTER", currentPointer);
+    let diff = e.clientX - elm_x; // calculate percentage
+    let per = (diff * 100) / containerWidth;
+    per = per < 0 ? 0 : per > 100 ? 100 : per;
+    setValue(parseInt((per * (max - min)) / 100) + min);
+  }
+
+  $: if (progressBar && pointer) {
+    value = value > min ? value : min;
+    value = value < max ? value : max;
+    let per = ((value - min) * 100) / (max - min);
+    pointer.style.left = `${per}%`;
+    progressBarNode.style.width = `${per}%`;
+  }
+</script>
+
+<svelte:window
+  on:mousemove={movePointer}
+  on:mouseup={mouseUp}
+  on:resize={resizeWindow}
+/>
+<div class="slider">
+  <div class="py-1 relative min-w-full" use:elmPosition>
+    <div class="slider__track" use:setContainer>
+      <div class="slider__track--highlighted" use:progressBar />
+      <div
+        class="slider__thumb"
+        class:slider__thumb--holding={holding}
+        use:setPointer
+        on:mousedown={onMouseDown}
+      >
+        <SliderThumbScrubSvg />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .slider {
+    min-width: 100%;
+    position: relative;
+    padding: 0.5rem;
+  }
+
+  .slider__track {
+    height: 0.5rem;
+    background-color: #d0d0d0;
+    border-radius: 999px;
+  }
+  .slider__track--highlighted {
+    background: linear-gradient(45deg, #ff8c8c, #fa6eeb);
+    width: 0;
+    height: 0.5rem;
+    position: absolute;
+    border-radius: 999px;
+  }
+
+  .slider__thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #d3d3d3;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.07),
+      inset 0 -1px 3px rgba(0, 0, 0, 0.12);
+    border-radius: 999px;
+    margin: -0.5rem;
+
+    transition: box-shadow 100ms;
+  }
+
+  .slider__thumb--holding {
+    box-shadow: 0 0 0 5px rgba(254, 134, 205, 0.3);
+  }
+</style>

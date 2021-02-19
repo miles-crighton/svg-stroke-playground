@@ -1,5 +1,6 @@
 <script lang="ts">
   import AnimationControls from "./AnimationControls.svelte";
+  import Slider from "./CoreUI/Slider.svelte";
   import NumericInput from "./NumericInput.svelte";
   import RangeNumericInput from "./RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
@@ -79,6 +80,7 @@
 
   <h2 class="gradient">Animation</h2>
   <AnimationControls />
+  <Slider />
 </aside>
 
 <style>
