@@ -162,6 +162,10 @@
     tabindex="0"
     use:elmPosition
     on:keydown={onKeyPress}
+    role="slider"
+    aria-valuemin={min}
+    aria-valuemax={max}
+    aria-valuenow={value}
   >
     <div class="slider__track" use:setContainer>
       <div class="slider__track--highlighted" use:progressBar />
@@ -188,7 +192,7 @@
       left: 0px;
       height: 100%;
       width: 100%;
-      background-color: rgba(255, 0, 0, 0); /* just for demo. make it 0.0 */
+      background-color: rgba(255, 0, 0, 0);
       z-index: 10000;
     }
   </style>
