@@ -63,12 +63,8 @@
     document.body.append(mouseEventShield);
   }
 
-  $: holding = Boolean(currentPointer);
-
-  function checkSelect() {
-    return false;
-  }
-
+  // Mouse shield used onMouseDown to prevent any mouse events penetrating other elements,
+  // ie. hover events on other elements while dragging
   const mouseEventShield = document.createElement("div");
   mouseEventShield.setAttribute("class", "mouseOverShield");
   mouseEventShield.addEventListener("mouseover", (e) => {
@@ -86,30 +82,38 @@
     if (e.stopPropagation) e.stopPropagation();
     if (e.preventDefault) e.preventDefault();
 
-    // console.log("WIDTH", containerWidth);
-
     const clientX =
       e.type === "touchmove"
         ? (e as TouchEvent).touches[0].clientX
         : (e as MouseEvent).clientX;
 
-    let delta = clientX - (elementX + 10); // Center of thumb: 20px / 2 = 10px
+    // Center of thumb: 20px / 2 = 10px
+    let delta = clientX - (elementX + 10);
 
+    // Use width of the container minus center of thumb for percent calc
     let percent = (delta * 100) / (container.clientWidth - 10);
-    // console.log(delta, percent, containerWidth, container.clientWidth);
+
+    // Limit percent 0 -> 100
     percent = percent < 0 ? 0 : percent > 100 ? 100 : percent;
+
+    // Limit value min -> max
     setValue(parseInt((percent * (max - min)) / 100) + min);
   }
 
+  // Set a class based on if dragging
+  $: holding = Boolean(currentPointer);
+
+  // Update styles to represent value
   $: if (progressBar && pointer) {
+    // Limit value to min/max
     value = value > min ? value : min;
     value = value < max ? value : max;
-    let per = ((value - min) * 100) / (max - min);
-    let left = (container.clientWidth - 10) * (per / 100);
 
-    left = `${left}px`;
-    pointer.style.left = left;
-    progressBarNode.style.width = left;
+    let percent = ((value - min) * 100) / (max - min);
+    let offsetLeft = (container.clientWidth - 10) * (percent / 100);
+
+    pointer.style.left = `${offsetLeft}px`;
+    progressBarNode.style.width = `${offsetLeft}px`;
   }
 </script>
 
