@@ -38,6 +38,7 @@
   }
 
   function mouseUp() {
+    document.body.removeChild(mouseEventShield);
     currentPointer = null;
   }
 
@@ -53,12 +54,27 @@
 
   function onMouseDown() {
     currentPointer = pointer;
+    document.body.append(mouseEventShield);
   }
 
   $: holding = Boolean(currentPointer);
 
+  function checkSelect() {
+    return false;
+  }
+
+  const mouseEventShield = document.createElement("div");
+  mouseEventShield.setAttribute("class", "mouseOverShield");
+  mouseEventShield.addEventListener("mouseover", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
   function movePointer(e) {
     if (!currentPointer) return false;
+
+    if (e.stopPropagation) e.stopPropagation();
+    if (e.preventDefault) e.preventDefault();
     // console.log("CONTAINER WIDTH", containerWidth);
     // console.log("CURRENT POINTER", currentPointer);
     let diff = e.clientX - elm_x; // calculate percentage
@@ -88,6 +104,8 @@
       <div
         class="slider__thumb"
         class:slider__thumb--holding={holding}
+        unselectable={true}
+        onselectstart={() => false}
         use:setPointer
         on:mousedown={onMouseDown}
       >
@@ -96,6 +114,20 @@
     </div>
   </div>
 </div>
+
+<svelte:head>
+  <style>
+    .mouseOverShield {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 0, 0, 0.15); /* just for demo. make it 0.0 */
+      z-index: 10000;
+    }
+  </style>
+</svelte:head>
 
 <style>
   .slider {
@@ -131,8 +163,8 @@
       inset 0 -1px 3px rgba(0, 0, 0, 0.12);
     border-radius: 999px;
     margin: -0.5rem;
-
     transition: box-shadow 100ms;
+    user-select: none;
   }
 
   .slider__thumb--holding {
