@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="21px" viewBox="0 0 14 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="47.1655329%" y1="7.42714781%" x2="52.8344671%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF8995" offset="0%"></stop>
+            <stop stop-color="#FD80AF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="5" height="21" rx="1"></rect>
+        <rect id="Rectangle" fill="url(#linearGradient-1)" x="9" y="0" width="5" height="21" rx="1"></rect>
+    </g>
+</svg>
