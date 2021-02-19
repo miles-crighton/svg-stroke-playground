@@ -15,6 +15,8 @@
   let progressBarNode = null;
   let currentPointer = null;
   let holding = false;
+  let keydownAcceleration = 0;
+  let accelerationTimer = null;
 
   function elmPosition(node) {
     const rect = node.getBoundingClientRect();
@@ -76,6 +78,25 @@
     currentPointer = pointer;
   }
 
+  function onKeyPress(e: KeyboardEvent) {
+    // Max out at +/- 5 to value per event
+    // 50 below is to increase the amount of events required to reach max velocity
+    if (keydownAcceleration < 50) keydownAcceleration++;
+    let throttled = Math.ceil(keydownAcceleration / 10);
+
+    if (e.key === "ArrowUp" || e.key === "ArrowRight") {
+      if (value + throttled > max) setValue(max);
+      setValue(value + throttled);
+    }
+    if (e.key === "ArrowDown" || e.key === "ArrowLeft") {
+      if (value - throttled < min) setValue(min);
+      setValue(value - throttled);
+    }
+
+    clearTimeout(accelerationTimer);
+    accelerationTimer = setTimeout(() => (keydownAcceleration = 1), 100);
+  }
+
   function onDrag(e: MouseEvent | TouchEvent) {
     if (!currentPointer) return false;
 
@@ -126,7 +147,12 @@
   on:resize={resizeWindow}
 />
 <div class="slider">
-  <div class="slider__wrapper" use:elmPosition>
+  <div
+    class="slider__wrapper"
+    tabindex="0"
+    use:elmPosition
+    on:keydown={onKeyPress}
+  >
     <div class="slider__track" use:setContainer>
       <div class="slider__track--highlighted" use:progressBar />
       <div
@@ -178,6 +204,7 @@
     border-radius: 999px;
   }
   .slider__track--highlighted {
+    background-color: #ff8c8c;
     background: linear-gradient(45deg, #ff8c8c, #fa6eeb);
     width: 0;
     height: 0.5rem;
