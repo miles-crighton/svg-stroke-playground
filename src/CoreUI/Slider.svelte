@@ -34,21 +34,11 @@
   }
 
   function setPointer(node) {
-    console.log(node);
     pointer = node;
   }
 
   function progressBar(node) {
     progressBarNode = node;
-  }
-
-  function mouseUp() {
-    document.body.removeChild(mouseEventShield);
-    currentPointer = null;
-  }
-
-  function touchCancel() {
-    currentPointer = null;
   }
 
   function resizeWindow() {
@@ -61,9 +51,15 @@
     dispatch("change", value);
   }
 
-  function onMouseDown() {
+  function onDragStart(e: MouseEvent | TouchEvent) {
+    // If mouse event add a pointer events shield
+    if (e.type === "mousedown") document.body.append(mouseEventShield);
     currentPointer = pointer;
-    document.body.append(mouseEventShield);
+  }
+
+  function onDragEnd(e: MouseEvent | TouchEvent) {
+    if (e.type === "mouseup") document.body.removeChild(mouseEventShield);
+    currentPointer = null;
   }
 
   // Mouse shield used onMouseDown to prevent any mouse events penetrating other elements,
@@ -75,17 +71,11 @@
     e.stopPropagation();
   });
 
-  function onTouchStart() {
-    currentPointer = pointer;
-  }
-
   function onKeyPress(e: KeyboardEvent) {
     // Max out at +/- 20 to value per event (100 events / 5)
     // 100 below is to increase the amount of events required to reach max velocity
     if (keydownAcceleration < 100) keydownAcceleration++;
     let throttled = Math.ceil(keydownAcceleration / 5);
-
-    console.log(value, keydownAcceleration, throttled);
 
     if (e.key === "ArrowUp" || e.key === "ArrowRight") {
       if (value + throttled > max || value >= max) {
@@ -107,17 +97,7 @@
     accelerationTimer = setTimeout(() => (keydownAcceleration = 1), 100);
   }
 
-  function onDrag(e: MouseEvent | TouchEvent) {
-    if (!currentPointer) return false;
-
-    if (e.stopPropagation) e.stopPropagation();
-    if (e.preventDefault) e.preventDefault();
-
-    const clientX =
-      e.type === "touchmove"
-        ? (e as TouchEvent).touches[0].clientX
-        : (e as MouseEvent).clientX;
-
+  function calculateNewValue(clientX: number) {
     // Center of thumb: 20px / 2 = 10px
     let delta = clientX - (elementX + 10);
 
@@ -129,6 +109,23 @@
 
     // Limit value min -> max
     setValue(parseInt((percent * (max - min)) / 100) + min);
+  }
+
+  // Handles both dragging of touch/mouse as well as simple one-off click/touches
+  function updateValueOnEvent(e: MouseEvent | TouchEvent) {
+    // touchstart && mousedown are one-off updates, otherwise expect a currentPointer node
+    if (!currentPointer && e.type !== "touchstart" && e.type !== "mousedown")
+      return false;
+
+    if (e.stopPropagation) e.stopPropagation();
+    if (e.preventDefault) e.preventDefault();
+
+    const clientX =
+      e.type === "touchmove" || e.type === "touchstart"
+        ? (e as TouchEvent).touches[0].clientX
+        : (e as MouseEvent).clientX;
+
+    calculateNewValue(clientX);
   }
 
   // Set a class based on if dragging
@@ -143,17 +140,18 @@
     let percent = ((value - min) * 100) / (max - min);
     let offsetLeft = (container.clientWidth - 10) * (percent / 100);
 
+    // Update thumb position + active slider track width
     pointer.style.left = `${offsetLeft}px`;
     progressBarNode.style.width = `${offsetLeft}px`;
   }
 </script>
 
 <svelte:window
-  on:touchmove|nonpassive={onDrag}
-  on:touchcancel={touchCancel}
-  on:touchend={touchCancel}
-  on:mousemove={onDrag}
-  on:mouseup={mouseUp}
+  on:touchmove|nonpassive={updateValueOnEvent}
+  on:touchcancel={onDragEnd}
+  on:touchend={onDragEnd}
+  on:mousemove={updateValueOnEvent}
+  on:mouseup={onDragEnd}
   on:resize={resizeWindow}
 />
 <div class="slider">
@@ -166,6 +164,8 @@
     aria-valuemin={min}
     aria-valuemax={max}
     aria-valuenow={value}
+    on:mousedown={updateValueOnEvent}
+    on:touchstart={updateValueOnEvent}
   >
     <div class="slider__track" use:setContainer>
       <div class="slider__track--highlighted" use:progressBar />
@@ -175,8 +175,8 @@
         unselectable={true}
         onselectstart={() => false}
         use:setPointer
-        on:touchstart={onTouchStart}
-        on:mousedown={onMouseDown}
+        on:touchstart={onDragStart}
+        on:mousedown={onDragStart}
       >
         <SliderThumbScrubSvg />
       </div>
