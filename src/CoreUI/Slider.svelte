@@ -24,6 +24,8 @@
 
   let container;
   function setContainer(node) {
+    const rect = node.getBoundingClientRect();
+    // console.log(rect, node.clientWidth);
     container = node;
     containerWidth = node.clientWidth;
   }
@@ -84,23 +86,30 @@
     if (e.stopPropagation) e.stopPropagation();
     if (e.preventDefault) e.preventDefault();
 
+    // console.log("WIDTH", containerWidth);
+
     const clientX =
       e.type === "touchmove"
         ? (e as TouchEvent).touches[0].clientX
         : (e as MouseEvent).clientX;
 
-    let diff = clientX - elementX; // calculate percentage
-    let per = (diff * 100) / containerWidth;
-    per = per < 0 ? 0 : per > 100 ? 100 : per;
-    setValue(parseInt((per * (max - min)) / 100) + min);
+    let delta = clientX - (elementX + 10); // Center of thumb: 20px / 2 = 10px
+
+    let percent = (delta * 100) / (container.clientWidth - 10);
+    // console.log(delta, percent, containerWidth, container.clientWidth);
+    percent = percent < 0 ? 0 : percent > 100 ? 100 : percent;
+    setValue(parseInt((percent * (max - min)) / 100) + min);
   }
 
   $: if (progressBar && pointer) {
     value = value > min ? value : min;
     value = value < max ? value : max;
     let per = ((value - min) * 100) / (max - min);
-    pointer.style.left = `${per}%`;
-    progressBarNode.style.width = `${per}%`;
+    let left = (container.clientWidth - 10) * (per / 100);
+
+    left = `${left}px`;
+    pointer.style.left = left;
+    progressBarNode.style.width = left;
   }
 </script>
 
@@ -113,7 +122,7 @@
   on:resize={resizeWindow}
 />
 <div class="slider">
-  <div class="py-1 relative min-w-full" use:elmPosition>
+  <div class="slider__wrapper" use:elmPosition>
     <div class="slider__track" use:setContainer>
       <div class="slider__track--highlighted" use:progressBar />
       <div
@@ -147,9 +156,16 @@
 
 <style>
   .slider {
+    position: relative;
+    flex: 1;
+    /* width: 100px; */
+  }
+
+  .slider__wrapper {
     min-width: 100%;
     position: relative;
     padding: 0.5rem;
+    box-sizing: border-box;
   }
 
   .slider__track {
@@ -178,7 +194,7 @@
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.07),
       inset 0 -1px 3px rgba(0, 0, 0, 0.12);
     border-radius: 999px;
-    margin: -0.5rem;
+    margin-top: -0.5rem;
     transition: box-shadow 100ms;
     user-select: none;
   }
