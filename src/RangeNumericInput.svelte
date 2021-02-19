@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Slider from "./CoreUI/Slider.svelte";
+
   import NumericInput from "./NumericInput.svelte";
 
   export let label: string;
@@ -8,14 +10,7 @@
 
 {#if label}<label for="dash-offset">{label}</label>{/if}
 <div class="wrapper">
-  <input
-    type="range"
-    id="dash-offset"
-    name="dash-offset"
-    min="0"
-    max="200"
-    bind:value
-  />
+  <Slider bind:value />
   <NumericInput bind:value />
 </div>
 
@@ -23,6 +18,7 @@
   .wrapper {
     display: flex;
     width: 100%;
+    align-items: center;
   }
   label {
     font-weight: bold;

@@ -4,6 +4,7 @@
   import NumericInput from "./NumericInput.svelte";
   import RangeNumericInput from "./RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
+  import StrokeDashArray from "./StrokeDashArray.svelte";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -30,7 +31,6 @@
   export let svgElement: Element;
   let svg;
   $: {
-    console.log(strokeDashOffset, svgCode);
     var parser = new DOMParser();
     let doc: Document;
 
@@ -76,7 +76,9 @@
   <textarea bind:value={svgCode} />
 
   <RangeNumericInput bind:value={strokeDashOffset} label="stroke-dashoffset" />
-  <RangeNumericInput bind:value={strokeDashArray} label="stroke-dasharray" />
+  <!-- <RangeNumericInput bind:value={strokeDashArray} label="stroke-dasharray" /> -->
+
+  <StrokeDashArray bind:stringValue={strokeDashArray} />
 
   <h2 class="gradient">Animation</h2>
   <AnimationControls />

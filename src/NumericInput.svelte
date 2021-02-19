@@ -50,6 +50,7 @@
     box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     color: #464646;
+    margin: 0 !important;
   }
 
   .numeric-input {
@@ -64,6 +65,7 @@
     height: 5px;
     box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.08);
     background-color: #f4f4f4;
+    margin-bottom: 0px;
   }
 
   button:focus {
