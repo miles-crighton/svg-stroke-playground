@@ -3,16 +3,45 @@
 </script>
 
 <div class="color-picker">
-  <label>Stroke Color</label>
-  <input type="color" bind:value={color} />
+  <span>Stroke Color</span>
+
+  <div class="label-wrapper">
+    <label style={`background-color: ${color};`}>
+      <input type="color" bind:value={color} />
+    </label>
+  </div>
 </div>
 
 <style>
   .color-picker {
     display: flex;
+    align-items: center;
   }
 
   label {
+    background-color: black;
+    height: 24px;
+    width: 40px;
+    border-radius: 4px;
+  }
+
+  .label-wrapper {
+    padding: 0.3rem;
+    border: 1px solid var(--controls-border);
+    border-radius: 8px;
+  }
+
+  .label-wrapper:focus-within {
+    border: 1px solid blue;
+  }
+
+  input {
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  span {
     font-weight: 600;
     color: #6e1e49;
     flex: 1;
