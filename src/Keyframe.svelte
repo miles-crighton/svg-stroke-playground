@@ -1,10 +1,12 @@
 <script>
+  import ColorPicker from "./ColorPicker.svelte";
   import RangeNumericInput from "./RangeNumericInput.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
 
   // Very messy at the moment with initialization etc.
   export let animationDuration = 1;
   let animationDurationScaled;
+  export let activeProperties = null;
   export let strokeDashArray = null;
   export let strokeDashOffset = null;
   export let initialKeyframe = [`${0}%`, ["strokeDashArray", strokeDashArray]];
@@ -29,15 +31,22 @@
     <div class="duration-seconds">{animationDurationScaled}s</div>
   </div>
 
-  <StrokeDashArray bind:stringValue={strokeDashArray} />
-  <RangeNumericInput bind:value={strokeDashOffset} />
+  {#if activeProperties.strokeDashArray}
+    <StrokeDashArray bind:stringValue={strokeDashArray} />
+  {/if}
+  {#if activeProperties.strokeDashOffset}
+    <label>stroke-dashoffset</label>
+    <RangeNumericInput bind:value={strokeDashOffset} />
+  {/if}
+  {#if activeProperties.color}
+    <ColorPicker />
+  {/if}
 </div>
 
 <style>
   .keyframe {
-    border: 1px solid #dadada;
-    padding: 0.5rem;
-    border-radius: 8px;
+    border-top: 1px solid #dadada;
+    padding: 0.5rem 0.3rem;
   }
 
   .duration-row {

@@ -11,6 +11,11 @@
     ["0%", ["stroke-dashoffset", "200"]],
     ["100%", ["stroke-dashoffset", "0"]],
   ];
+  let activeProperties = {
+    strokeDashOffset: true,
+    strokeDashArray: false,
+    color: false,
+  };
   export let delay = 0;
   export let duration = 1;
   export let infinite = true;
@@ -95,6 +100,7 @@
       {#each animation as keyframe, i (keyframe[0])}
         <Keyframe
           bind:keyframeArray={animation[i]}
+          {activeProperties}
           initialKeyframe={animation[i]}
           animationDuration={duration}
         />
@@ -156,7 +162,7 @@
   }
 
   label {
-    font-weight: 500;
+    font-weight: 600;
     color: #6e1e49;
   }
 
