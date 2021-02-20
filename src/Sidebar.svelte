@@ -72,14 +72,14 @@
       <span style="width: 8px;" />
     {/each}
   </div>
+  <div class="vertical-spacer-1" />
   <label for="svg-code">Svg Code</label>
   <textarea bind:value={svgCode} />
-
+  <div class="vertical-spacer-1" />
   <RangeNumericInput bind:value={strokeDashOffset} label="stroke-dashoffset" />
-  <!-- <RangeNumericInput bind:value={strokeDashArray} label="stroke-dasharray" /> -->
-
+  <div class="vertical-spacer-1" />
   <StrokeDashArray bind:stringValue={strokeDashArray} />
-
+  <div class="vertical-spacer-1" />
   <h2 class="gradient">Animation</h2>
   <AnimationControls />
 </aside>
@@ -95,6 +95,11 @@
     text-align: center;
     margin: 0.5rem;
   }
+
+  .vertical-spacer-1 {
+    height: 1rem;
+  }
+
   .gradient {
     background-color: #c937b9;
     background-image: linear-gradient(45deg, #f15858, #c937b9);

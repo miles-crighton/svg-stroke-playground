@@ -32,6 +32,9 @@
       >{i + 1}</button
     ><RangeNumericInput bind:value={arrayValue[i]} initialValue={val} />
   </div>
+  {#if i < arrayValue.length - 1}
+    <div class="vertical-spacer-1" />
+  {/if}
 {/each}
 
 <style>
@@ -48,6 +51,10 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+  }
+
+  .vertical-spacer-1 {
+    height: 0.3rem;
   }
 
   .add-button {

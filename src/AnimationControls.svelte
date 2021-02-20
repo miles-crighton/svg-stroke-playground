@@ -49,6 +49,7 @@
 <div class="animation-controls">
   <div class="animation-name">{animationName}</div>
   <div class="control-row"><label>Infinite</label></div>
+  <div class="vertical-spacer-1" />
   <div class="control-row">
     <label>Duration</label><NumericInput
       initialValue={duration}
@@ -56,6 +57,7 @@
       bind:value={duration}
     />
   </div>
+  <div class="vertical-spacer-1" />
   <div class="control-row">
     <label>Delay</label><NumericInput
       initialValue={delay}
@@ -87,6 +89,9 @@
     padding: 0.8rem;
     border: 1px solid #d6d6d6;
     border-radius: 12px;
+  }
+  .vertical-spacer-1 {
+    height: 0.5rem;
   }
   .animation-name {
     background-color: #e3527c;
