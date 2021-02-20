@@ -103,7 +103,8 @@
   }
 
   .vertical-spacer-1 {
-    height: 1rem;
+    margin: 0.7rem 0;
+    border-top: 1px solid #dedede;
   }
 
   .gradient {
@@ -135,7 +136,7 @@
     border: 1px solid #d5d5d5;
     padding: 1rem 1.5rem;
     box-sizing: border-box;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
     overflow-y: auto;
   }
 

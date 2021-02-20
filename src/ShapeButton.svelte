@@ -30,7 +30,7 @@
     width: 35px;
     height: 35px;
     border: 1px solid #c8c8c8;
-    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     display: flex;
     align-items: center;

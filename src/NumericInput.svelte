@@ -60,7 +60,7 @@
     height: 100%;
     background-color: #ffffff;
     border: 1px solid #c8c8c8;
-    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.13);
     border-radius: 4px;
     color: #464646;
     margin: 0 !important;

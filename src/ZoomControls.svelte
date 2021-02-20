@@ -63,8 +63,7 @@
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid #d5d5d5;
-    box-shadow: 0 0 22px 1px rgba(0, 0, 0, 0.1),
-      inset 0 -2px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.08);
   }
 
   .border-div {
@@ -79,7 +78,7 @@
     width: 45px;
     height: 45px;
     border: 1px solid #c8c8c8;
-    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.13);
     border-radius: 4px;
     margin: 0;
     margin-right: 0.5rem;
