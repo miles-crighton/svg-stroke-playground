@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-8">
+            <path d="M7,0 L12,0 C13.1045695,-1.18396092e-15 14,0.8954305 14,2 L14,13 C14,14.1045695 13.1045695,15 12,15 L7,15 C3.13400675,15 4.91433972e-15,11.8659932 0,8 L0,7 C-4.73447626e-16,3.13400675 3.13400675,7.10171439e-16 7,0 Z" id="Rectangle" fill="#F96892"></path>
+            <rect id="Rectangle" fill="#FFFFFF" x="5" y="5.5" width="10" height="4" rx="2"></rect>
+        </g>
+    </g>
+</svg>

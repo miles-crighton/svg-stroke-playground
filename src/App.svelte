@@ -134,6 +134,22 @@
       opacity: 0;
     }
 
+    button {
+      margin: 0;
+      background-color: var(--button-bg);
+      border: 1px solid var(--button-border);
+      box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.13);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button:active {
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.13);
+      background-color: var(--button-bg-active);
+    }
+
     .svgElement {
       animation: my-animation var(--animation-duration) var(--animation-delay)
         var(--animation-state) var(--animation-easing) infinite;
@@ -195,6 +211,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
 
   .primary-svg {
@@ -206,6 +223,7 @@
     flex-direction: column;
     flex: 1;
     position: relative;
+    height: 100vh;
   }
 
   h1 {

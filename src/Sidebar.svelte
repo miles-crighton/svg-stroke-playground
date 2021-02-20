@@ -7,6 +7,7 @@
   import RangeNumericInput from "./RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
+  import Linecap from "./Linecap.svelte";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -34,6 +35,7 @@
   export let svgElement: Element;
   export let width = 500;
   export let height = 400;
+  export let linecap = "butt";
   let svg;
   $: {
     var parser = new DOMParser();
@@ -50,6 +52,7 @@
     svgNode.setAttribute("stroke-dashoffset", strokeDashOffset.toString());
     svgNode.setAttribute("stroke-dasharray", strokeDashArray.toString());
     svgNode.setAttribute("stroke", strokeColor);
+    svgNode.setAttribute("stroke-linecap", linecap);
 
     svgElement = svgNode;
 
@@ -95,6 +98,8 @@
     <textarea bind:value={svgCode} />
     <div class="vertical-spacer-1" />
     <ColorPicker bind:color={strokeColor} />
+    <div class="vertical-spacer-1" />
+    <Linecap bind:linecap />
     <div class="vertical-spacer-1" />
     <RangeNumericInput
       bind:value={strokeDashOffset}
