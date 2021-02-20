@@ -7,6 +7,9 @@
   let svg;
   export let svgElement: Element;
   export let name: string;
+  let width = 500;
+  let zoomWidth = width / zoomLevel;
+  let zoomValue = width / 2 - zoomWidth / 2;
 
   $: {
     if (svg) {
@@ -17,21 +20,27 @@
       svg.append(svgElement);
     }
   }
+
+  $: {
+    zoomWidth = width / zoomLevel;
+    zoomValue = width / 2 - zoomWidth / 2;
+  }
 </script>
 
 <main>
   <div class="contents">
     <svg
-      height="100%"
-      width="100%"
-      viewBox={`0 0 ${200 / zoomLevel} ${200 / zoomLevel}`}
+      height="500"
+      width="500"
+      viewBox={`${zoomValue} ${zoomValue} ${zoomWidth} ${zoomWidth}`}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       bind:this={svg}
+      class="primary-svg"
     />
     <ZoomControls bind:zoomLevel />
-    <Footer />
+    <!-- <Footer /> -->
     <a href="https://www.github.com">
       <GithubCorner />
     </a>
@@ -45,6 +54,16 @@
       --animation-duration: 1s;
       --animation-delay: 0s;
       --animation-state: running;
+
+      --label-color: #3e3e3e;
+      --controls-bg: #f3f3f3;
+      --controls-border: #d1d1d1;
+
+      --button-bg: #ffffff;
+      --button-border: #d1d1d1;
+      --button-bg-active: #f2f2f2;
+
+      --primary: #fb6c96;
     }
     /*This would all go into the global.css file*/
     [data-tooltip] {
@@ -155,15 +174,19 @@
   }
 
   :global(body) {
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap");
 
     padding: 0;
-    font-family: "Inter", sans-serif;
+    font-family: "Cabin", sans-serif;
   }
 
   main {
     display: flex;
     height: 100vh;
+  }
+
+  .primary-svg {
+    border: 1px dashed var(--controls-border);
   }
 
   .contents {

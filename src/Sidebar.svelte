@@ -64,30 +64,35 @@
 </script>
 
 <aside>
-  <h2 class="gradient">Svg</h2>
-  <label>Shape Presets</label>
-  <div class="shape-buttons">
-    {#each shapes as shape}
-      <ShapeButton
-        on:click={() => changeDefaultShape(shape)}
-        {shape}
-        tooltip={`<${shape} />`}
-      />
-      <span style="width: 8px;" />
-    {/each}
+  <div class="header"><h2>Svg</h2></div>
+  <div class="contents">
+    <label>Shape Presets</label>
+    <div class="shape-buttons">
+      {#each shapes as shape}
+        <ShapeButton
+          on:click={() => changeDefaultShape(shape)}
+          {shape}
+          tooltip={`<${shape} />`}
+        />
+        <span style="width: 8px;" />
+      {/each}
+    </div>
+    <div class="vertical-spacer-1" />
+    <label for="svg-code">Svg Code</label>
+    <textarea bind:value={svgCode} />
+    <div class="vertical-spacer-1" />
+    <ColorPicker bind:color={strokeColor} />
+    <div class="vertical-spacer-1" />
+    <RangeNumericInput
+      bind:value={strokeDashOffset}
+      label="stroke-dashoffset"
+    />
+    <div class="vertical-spacer-1" />
+    <StrokeDashArray bind:stringValue={strokeDashArray} />
+    <div class="vertical-spacer-1" />
+    <h2 class="gradient">Animation</h2>
+    <AnimationControls />
   </div>
-  <div class="vertical-spacer-1" />
-  <label for="svg-code">Svg Code</label>
-  <textarea bind:value={svgCode} />
-  <div class="vertical-spacer-1" />
-  <ColorPicker bind:color={strokeColor} />
-  <div class="vertical-spacer-1" />
-  <RangeNumericInput bind:value={strokeDashOffset} label="stroke-dashoffset" />
-  <div class="vertical-spacer-1" />
-  <StrokeDashArray bind:stringValue={strokeDashArray} />
-  <div class="vertical-spacer-1" />
-  <h2 class="gradient">Animation</h2>
-  <AnimationControls />
 </aside>
 
 <style>
@@ -97,14 +102,15 @@
   }
   h2 {
     font-family: "Funkydori";
-    font-size: 32px;
+    font-size: 34px;
     text-align: center;
-    margin: 0.5rem;
+    color: white;
+    margin: 0;
   }
 
   .vertical-spacer-1 {
     margin: 0.7rem 0;
-    border-top: 1px solid #dedede;
+    border-top: 1px dashed #dedede;
   }
 
   .gradient {
@@ -119,29 +125,35 @@
   }
   label {
     font-weight: 600;
-    color: #6e1e49;
+    color: var(--label-color);
     margin-bottom: 0.5rem;
   }
   textarea {
     min-height: 100px;
     width: 100%;
-    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.13);
     border-radius: 4px;
   }
   aside {
-    background-color: #f3f3f3;
-    margin: 1.5rem;
-    border-radius: 12px;
-    width: 350px;
-    border: 1px solid #d5d5d5;
-    padding: 1rem 1.5rem;
-    box-sizing: border-box;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
     overflow-y: auto;
   }
 
+  .contents {
+    background-color: #f3f3f3;
+    width: 350px;
+    border: 1px solid #d5d5d5;
+    border-top: 0;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+    position: relative;
+  }
+
   .header {
+    padding: 1rem;
     font-family: "Funkydori";
+    background: linear-gradient(#ff749d, #f25c88);
+    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.15);
   }
 
   h1 {

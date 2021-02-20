@@ -54,16 +54,17 @@
 <style>
   .zoom-controls {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 10%;
+
+    width: 100%;
+    bottom: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     padding: 0.5rem 0.5rem;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid #d5d5d5;
-    box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.08);
+    height: 80px;
+    background-color: var(--controls-bg);
+    border-top: 1px solid var(--controls-border);
   }
 
   .border-div {
@@ -74,10 +75,10 @@
   }
 
   .zoom-controls__button {
-    background-color: #f7f7f7;
-    width: 45px;
-    height: 45px;
-    border: 1px solid #c8c8c8;
+    background-color: var(--button-bg);
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--button-border);
     box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.13);
     border-radius: 4px;
     margin: 0;
@@ -86,7 +87,7 @@
 
   .zoom-controls__button:active {
     box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.18);
-    background-color: #e9e9e9;
+    background-color: var(--button-bg-active);
   }
 
   .zoom-controls__button:active > .zoom-controls__button--content {
