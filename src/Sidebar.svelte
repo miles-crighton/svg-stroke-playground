@@ -69,8 +69,16 @@
 <aside>
   <div class="header"><SvgTitle /></div>
   <div class="contents">
-    <label>Width</label><NumericInput bind:value={width} stepValue={25} />
-    <label>Height</label><NumericInput bind:value={height} stepValue={25} />
+    <div class="control-row">
+      <div>
+        <label>Width</label><NumericInput bind:value={width} stepValue={25} />
+      </div>
+      <div class="horizontal-spacer-1" />
+      <div>
+        <label>Height</label><NumericInput bind:value={height} stepValue={25} />
+      </div>
+    </div>
+    <div class="vertical-spacer-1" />
     <label>Shape Presets</label>
     <div class="shape-buttons">
       {#each shapes as shape}
@@ -113,9 +121,18 @@
     margin: 0;
   }
 
+  .control-row {
+    display: flex;
+  }
+
   .vertical-spacer-1 {
     margin: 0.7rem 0;
     border-top: 1px dashed #dedede;
+  }
+
+  .horizontal-spacer-1 {
+    width: 1rem;
+    height: 100%;
   }
 
   .gradient {

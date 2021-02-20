@@ -58,7 +58,7 @@
       --animation-delay: 0s;
       --animation-state: running;
 
-      --label-color: #3e3e3e;
+      --label-color: #6e1e49;
       --controls-bg: #f3f3f3;
       --controls-border: #d1d1d1;
 

@@ -68,7 +68,7 @@
   }
 
   .border-div {
-    border-left: 1px solid grey;
+    border-left: 1px dashed var(--controls-border);
     width: 1px;
     height: 100%;
     margin-right: 0.5rem;
@@ -83,6 +83,12 @@
     border-radius: 4px;
     margin: 0;
     margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .zoom-controls__button--content {
+    height: 17px;
   }
 
   .zoom-controls__button:active {
