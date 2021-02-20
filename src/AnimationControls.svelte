@@ -15,6 +15,7 @@
   export let duration = 1;
   export let infinite = true;
   export let animationName = "Animation 1";
+  export let easing = "linear";
 
   let styleEl = document.createElement("style");
 
@@ -34,6 +35,10 @@
     document.documentElement.style.setProperty(
       "--animation-infinite",
       `${infinite ? "infinite" : 1}`
+    );
+    document.documentElement.style.setProperty(
+      "--animation-easing",
+      `${easing}`
     );
   }
 
@@ -72,10 +77,18 @@
     </div>
     <label>Easing</label>
     <div class="easing-buttons">
-      <button class="ease-button"><LinearSvg /></button>
-      <button class="ease-button"><EaseInSvg /></button>
-      <button class="ease-button"><EaseOutSvg /></button>
-      <button class="ease-button"><EaseInOutSvg /></button>
+      <button class="ease-button" on:click={() => (easing = "linear")}
+        ><LinearSvg /></button
+      >
+      <button class="ease-button" on:click={() => (easing = "ease-in")}
+        ><EaseInSvg /></button
+      >
+      <button class="ease-button" on:click={() => (easing = "ease-out")}
+        ><EaseOutSvg /></button
+      >
+      <button class="ease-button" on:click={() => (easing = "ease-in-out")}
+        ><EaseInOutSvg /></button
+      >
     </div>
     <div>
       <h3>@Keyframes</h3>

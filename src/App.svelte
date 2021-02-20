@@ -114,7 +114,7 @@
 
     .svgElement {
       animation: my-animation var(--animation-duration) var(--animation-delay)
-        var(--animation-state) infinite;
+        var(--animation-state) var(--animation-easing) infinite;
     }
 
     .github-corner {
