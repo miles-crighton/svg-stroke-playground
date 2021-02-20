@@ -48,32 +48,34 @@
 
 <div class="animation-controls">
   <div class="animation-name">{animationName}</div>
-  <div class="control-row"><label>Infinite</label></div>
-  <div class="vertical-spacer-1" />
-  <div class="control-row">
-    <label>Duration</label><NumericInput
-      initialValue={duration}
-      stepValue={0.1}
-      bind:value={duration}
-    />
-  </div>
-  <div class="vertical-spacer-1" />
-  <div class="control-row">
-    <label>Delay</label><NumericInput
-      initialValue={delay}
-      stepValue={0.1}
-      bind:value={delay}
-    />
-  </div>
-  <div>
-    <h3>@Keyframes</h3>
-    {#each animation as keyframe, i (keyframe[0])}
-      <Keyframe
-        bind:keyframeArray={animation[i]}
-        initialKeyframe={animation[i]}
-        animationDuration={duration}
+  <div class="animation-controls__content">
+    <div class="control-row"><label>Infinite</label></div>
+    <div class="vertical-spacer-1" />
+    <div class="control-row">
+      <label>Duration</label><NumericInput
+        initialValue={duration}
+        stepValue={0.1}
+        bind:value={duration}
       />
-    {/each}
+    </div>
+    <div class="vertical-spacer-1" />
+    <div class="control-row">
+      <label>Delay</label><NumericInput
+        initialValue={delay}
+        stepValue={0.1}
+        bind:value={delay}
+      />
+    </div>
+    <div>
+      <h3>@Keyframes</h3>
+      {#each animation as keyframe, i (keyframe[0])}
+        <Keyframe
+          bind:keyframeArray={animation[i]}
+          initialKeyframe={animation[i]}
+          animationDuration={duration}
+        />
+      {/each}
+    </div>
   </div>
 </div>
 
@@ -86,24 +88,29 @@
     margin-top: 1rem;
   }
   .animation-controls {
-    padding: 0.8rem;
-    border: 1px solid #d6d6d6;
-    border-radius: 12px;
   }
   .vertical-spacer-1 {
     height: 0.5rem;
   }
+  .animation-controls__content {
+    border: 1px solid #d6d6d6;
+    border-top: 0;
+    padding: 0.8rem;
+    border-radius: 0 0 12px 12px;
+  }
   .animation-name {
     background-color: #e3527c;
-    border-radius: 5px;
+    border-radius: 12px 12px 0 0;
     color: white;
     text-align: center;
-    height: 30px;
+    height: 40px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+    padding: 0 0.8rem;
+    box-sizing: border-box;
     font-weight: 500;
-    margin-bottom: 0.8rem;
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
   }
 
