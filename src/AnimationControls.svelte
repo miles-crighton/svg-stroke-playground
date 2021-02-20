@@ -1,6 +1,10 @@
 <script lang="ts">
   import Keyframe from "./Keyframe.svelte";
   import NumericInput from "./NumericInput.svelte";
+  import EaseInSvg from "./svgs/buttons/easeIn.svg";
+  import EaseOutSvg from "./svgs/buttons/easeOut.svg";
+  import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
+  import LinearSvg from "./svgs/buttons/linear.svg";
   import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
 
   let animation = [
@@ -66,6 +70,13 @@
         bind:value={delay}
       />
     </div>
+    <label>Easing</label>
+    <div class="easing-buttons">
+      <button class="ease-button"><LinearSvg /></button>
+      <button class="ease-button"><EaseInSvg /></button>
+      <button class="ease-button"><EaseOutSvg /></button>
+      <button class="ease-button"><EaseInOutSvg /></button>
+    </div>
     <div>
       <h3>@Keyframes</h3>
       {#each animation as keyframe, i (keyframe[0])}
@@ -80,6 +91,23 @@
 </div>
 
 <style>
+  .ease-button {
+    background-color: #ffffff;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #c8c8c8;
+    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.3rem;
+  }
+  .easing-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.4rem;
+  }
   h3 {
     font-size: 14px;
     color: #b37094;
