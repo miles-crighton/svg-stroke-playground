@@ -6,6 +6,7 @@
   import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
   import LinearSvg from "./svgs/buttons/linear.svg";
   import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
+  import Toggle from "./CoreUI/Toggle.svelte";
 
   let animation = [
     ["0%", ["stroke-dashoffset", "200"]],
@@ -63,7 +64,13 @@
 <div class="animation-controls">
   <div class="animation-name">{animationName}</div>
   <div class="animation-controls__content">
-    <div class="control-row"><label>Infinite</label></div>
+    <div class="control-row">
+      <Toggle
+        label="Infinite"
+        bind:toggled={infinite}
+        initialValue={infinite}
+      />
+    </div>
     <div class="vertical-spacer-1" />
     <div class="control-row">
       <label>Duration</label><NumericInput
