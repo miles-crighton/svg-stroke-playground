@@ -1,5 +1,6 @@
 <script lang="ts">
   import AnimationControls from "./AnimationControls.svelte";
+  import ColorPicker from "./ColorPicker.svelte";
   import Slider from "./CoreUI/Slider.svelte";
   import NumericInput from "./NumericInput.svelte";
   import RangeNumericInput from "./RangeNumericInput.svelte";
@@ -28,6 +29,7 @@
   export let svgCode = `<circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3" fill="none"></circle>`;
   export let strokeDashOffset = 0;
   export let strokeDashArray = "1";
+  export let strokeColor = "#ff0000";
   export let svgElement: Element;
   let svg;
   $: {
@@ -44,6 +46,7 @@
 
     svgNode.setAttribute("stroke-dashoffset", strokeDashOffset.toString());
     svgNode.setAttribute("stroke-dasharray", strokeDashArray.toString());
+    svgNode.setAttribute("stroke", strokeColor);
 
     svgElement = svgNode;
 
@@ -76,6 +79,8 @@
   <div class="vertical-spacer-1" />
   <label for="svg-code">Svg Code</label>
   <textarea bind:value={svgCode} />
+  <div class="vertical-spacer-1" />
+  <ColorPicker bind:color={strokeColor} />
   <div class="vertical-spacer-1" />
   <RangeNumericInput bind:value={strokeDashOffset} label="stroke-dashoffset" />
   <div class="vertical-spacer-1" />
