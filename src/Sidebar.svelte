@@ -3,6 +3,7 @@
   import ColorPicker from "./ColorPicker.svelte";
   import Slider from "./CoreUI/Slider.svelte";
   import NumericInput from "./NumericInput.svelte";
+  import SvgTitle from "./svgs/svgTitle.svg";
   import RangeNumericInput from "./RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
@@ -31,6 +32,8 @@
   export let strokeDashArray = "1";
   export let strokeColor = "#ff0000";
   export let svgElement: Element;
+  export let width = 500;
+  export let height = 400;
   let svg;
   $: {
     var parser = new DOMParser();
@@ -64,8 +67,10 @@
 </script>
 
 <aside>
-  <div class="header"><h2>Svg</h2></div>
+  <div class="header"><SvgTitle /></div>
   <div class="contents">
+    <label>Width</label><NumericInput bind:value={width} stepValue={25} />
+    <label>Height</label><NumericInput bind:value={height} stepValue={25} />
     <label>Shape Presets</label>
     <div class="shape-buttons">
       {#each shapes as shape}
@@ -135,7 +140,6 @@
     border-radius: 4px;
   }
   aside {
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
     overflow-y: auto;
   }
 
@@ -151,6 +155,9 @@
 
   .header {
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Funkydori";
     background: linear-gradient(#ff749d, #f25c88);
     box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.15);

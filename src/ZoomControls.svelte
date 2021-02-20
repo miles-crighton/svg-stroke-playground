@@ -53,7 +53,7 @@
 
 <style>
   .zoom-controls {
-    position: absolute;
+    position: relative;
 
     width: 100%;
     bottom: 0;

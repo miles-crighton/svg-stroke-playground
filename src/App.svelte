@@ -8,6 +8,7 @@
   export let svgElement: Element;
   export let name: string;
   let width = 500;
+  let height = 500;
   let zoomWidth = width / zoomLevel;
   let zoomValue = width / 2 - zoomWidth / 2;
 
@@ -29,23 +30,25 @@
 
 <main>
   <div class="contents">
-    <svg
-      height="500"
-      width="500"
-      viewBox={`${zoomValue} ${zoomValue} ${zoomWidth} ${zoomWidth}`}
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      bind:this={svg}
-      class="primary-svg"
-    />
+    <div class="svg-wrapper">
+      <svg
+        height={height * zoomLevel}
+        width={width * zoomLevel}
+        viewBox={`${0} ${0} ${width} ${height}`}
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        bind:this={svg}
+        class="primary-svg"
+      />
+    </div>
     <ZoomControls bind:zoomLevel />
     <!-- <Footer /> -->
     <a href="https://www.github.com">
       <GithubCorner />
     </a>
   </div>
-  <Aside bind:svgElement />
+  <Aside bind:svgElement bind:width bind:height />
 </main>
 
 <svelte:head>
@@ -185,14 +188,22 @@
     height: 100vh;
   }
 
+  .svg-wrapper {
+    border-top: 10px solid var(--primary);
+    border-left: 10px solid var(--primary);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .primary-svg {
     border: 1px dashed var(--controls-border);
   }
 
   .contents {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     flex: 1;
     position: relative;
   }
