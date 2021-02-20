@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Keyframe from "./Keyframe.svelte";
   import NumericInput from "./NumericInput.svelte";
   import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
 
@@ -31,6 +32,18 @@
       `${infinite ? "infinite" : 1}`
     );
   }
+
+  // Add a reactive reorder
+  $: {
+    animation = animation.sort((a, b) => {
+      const aFloat = parseFloat(a[0]) / 100.0;
+      const bFloat = parseFloat(b[0]) / 100.0;
+      console.log(aFloat, bFloat);
+      return aFloat - bFloat;
+    });
+    animation = animation;
+    console.log(animation);
+  }
 </script>
 
 <div class="animation-controls">
@@ -50,9 +63,26 @@
       bind:value={delay}
     />
   </div>
+  <div>
+    <h3>@Keyframes</h3>
+    {#each animation as keyframe, i (keyframe[0])}
+      <Keyframe
+        bind:keyframeArray={animation[i]}
+        initialKeyframe={animation[i]}
+        animationDuration={duration}
+      />
+    {/each}
+  </div>
 </div>
 
 <style>
+  h3 {
+    font-size: 14px;
+    color: #b37094;
+    margin: 0;
+    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+  }
   .animation-controls {
     padding: 0.8rem;
     border: 1px solid #d6d6d6;

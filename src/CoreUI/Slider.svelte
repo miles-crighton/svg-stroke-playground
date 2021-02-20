@@ -58,7 +58,10 @@
   }
 
   function onDragEnd(e: MouseEvent | TouchEvent) {
-    if (e.type === "mouseup") document.body.removeChild(mouseEventShield);
+    if (e.type === "mouseup") {
+      if (document.body.contains(mouseEventShield))
+        document.body.removeChild(mouseEventShield);
+    }
     currentPointer = null;
   }
 

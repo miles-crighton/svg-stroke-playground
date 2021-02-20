@@ -82,7 +82,6 @@
 
   <h2 class="gradient">Animation</h2>
   <AnimationControls />
-  <Slider />
 </aside>
 
 <style>
@@ -125,6 +124,7 @@
     padding: 1rem 1.5rem;
     box-sizing: border-box;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
   }
 
   .header {

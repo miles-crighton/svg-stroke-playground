@@ -55,7 +55,7 @@
 
   input {
     text-align: center;
-    padding-right: 20%;
+    padding-right: 1.5rem;
     width: 100%;
     height: 100%;
     background-color: #ffffff;
@@ -67,7 +67,8 @@
   }
 
   .numeric-input {
-    width: 120px;
+    min-width: 80px;
+    flex: 0;
     /* height: 45px; */
     position: relative;
   }
