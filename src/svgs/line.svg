@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="25px" height="4px" viewBox="0 0 25 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="21px" height="4px" viewBox="0 0 21 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <linearGradient x1="0%" y1="49.5464853%" x2="100%" y2="50.4535147%" id="linearGradient-1">
-            <stop stop-color="#FF8995" offset="0%"></stop>
-            <stop stop-color="#FD80AF" offset="100%"></stop>
+        <linearGradient x1="5.09279499%" y1="48.875%" x2="81.1269528%" y2="51.2822312%" id="linearGradient-1">
+            <stop stop-color="#FF8898" offset="0%"></stop>
+            <stop stop-color="#FD81AB" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
-        <line x1="2" y1="2" x2="23" y2="2" id="Path-3" stroke="url(#linearGradient-1)" stroke-width="2"></line>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M1.6379662,3.13217006 L18.6692416,3.13217006 C19.6126434,3.13217006 20.0843443,2.63217006 20.0843443,1.63217006 C20.0843443,0.632170061 19.6126434,0.132170061 18.6692416,0.132170061 L1.6379662,0.132170061 C0.602218265,0.132170061 0.0843442988,0.632170061 0.0843442988,1.63217006 C0.0843442988,2.63217006 0.602218265,3.13217006 1.6379662,3.13217006 Z" id="Path-5" fill="url(#linearGradient-1)"></path>
     </g>
 </svg>

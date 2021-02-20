@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="24px" viewBox="0 0 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF8995" offset="0%"></stop>
+            <stop stop-color="#FD80AF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Star" stroke="url(#linearGradient-1)" stroke-width="3" points="12.5 18.25 6.9160401 21.1856614 7.98248155 14.9678307 3.4649631 10.5643386 9.70802005 9.65716928 12.5 4 15.2919799 9.65716928 21.5350369 10.5643386 17.0175185 14.9678307 18.0839599 21.1856614"></polygon>
+    </g>
+</svg>

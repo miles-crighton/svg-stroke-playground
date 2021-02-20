@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="26px" viewBox="0 0 20 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="23px" height="16px" viewBox="0 0 23 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <linearGradient x1="0%" y1="23.553719%" x2="100%" y2="76.446281%" id="linearGradient-1">
+        <linearGradient x1="0%" y1="28.875%" x2="100%" y2="71.125%" id="linearGradient-1">
             <stop stop-color="#FF8995" offset="0%"></stop>
             <stop stop-color="#FD80AF" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <ellipse id="Oval" stroke="url(#linearGradient-1)" stroke-width="3" transform="translate(10.000000, 13.000000) rotate(90.000000) translate(-10.000000, -13.000000) " cx="10" cy="13" rx="11" ry="8"></ellipse>
+        <ellipse id="Oval" stroke="url(#linearGradient-1)" stroke-width="3" cx="11.5" cy="8" rx="10" ry="6.5"></ellipse>
     </g>
 </svg>

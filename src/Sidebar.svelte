@@ -62,6 +62,7 @@
 
 <aside>
   <h2 class="gradient">Svg</h2>
+  <label>Shape Presets</label>
   <div class="shape-buttons">
     {#each shapes as shape}
       <ShapeButton
@@ -111,8 +112,9 @@
     -moz-text-fill-color: transparent;
   }
   label {
-    font-weight: 500;
+    font-weight: 600;
     color: #6e1e49;
+    margin-bottom: 0.5rem;
   }
   textarea {
     min-height: 120px;
