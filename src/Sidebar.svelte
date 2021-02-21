@@ -7,7 +7,15 @@
   import ShapeButton from "./ShapeButton.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
   import Linecap from "./Linecap.svelte";
-  import { svgHeight, svgWidth } from "./state/svgStore";
+  import {
+    svgHeight,
+    svgLinecap,
+    svgStrokeColor,
+    svgStrokeDashArray,
+    svgStrokeOffset,
+    svgWidth,
+  } from "./state/svgStore";
+  import shapePresets from "./data/shapePresets";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -18,24 +26,9 @@
     "polygon",
   ];
 
-  const shapePresets = {
-    circle: `<circle id="Oval" cx="250" cy="200" r="150" stroke="#787878" stroke-width="5" fill="none" />`,
-    rect: `<rect width="200" height="200" x="150" y="100" stroke="#787878" stroke-width="5" fill="none" />`,
-    ellipse: `<ellipse cx="250" cy="200" rx="160" ry="90" stroke="#787878" stroke-width="5" fill="none" />`,
-    polygon: `<polygon points="100,10 40,198 190,78 10,78 160,198" stroke="#787878" stroke-width="5" fill="none" />`,
-    polyline: `<polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160" stroke="#787878" stroke-width="5" fill="none"/>`,
-    line: `<line x1="100" y1="200" x2="400" y2="200" stroke="#787878" stroke-width="5" fill="none" />`,
-    path: `<path d="M150 0 L75 200 L225 200 Z" stroke="#787878" stroke-width="5" fill="none"/>`,
-  };
-
   export let svgCode = shapePresets.circle;
-  export let strokeDashOffset = 0;
-  export let strokeDashArray = "1";
-  export let strokeColor = "#A04DC7";
   export let svgElement: Element;
-  export let width = 500;
-  export let height = 400;
-  export let linecap = "butt";
+
   let svg;
   $: {
     var parser = new DOMParser();
@@ -49,10 +42,10 @@
 
     let svgNode = doc.firstChild.firstChild as Element; // Document => <Svg /> => <circle />
 
-    svgNode.setAttribute("stroke-dashoffset", strokeDashOffset.toString());
-    svgNode.setAttribute("stroke-dasharray", strokeDashArray.toString());
-    svgNode.setAttribute("stroke", strokeColor);
-    svgNode.setAttribute("stroke-linecap", linecap);
+    svgNode.setAttribute("stroke-dashoffset", $svgStrokeOffset.toString());
+    svgNode.setAttribute("stroke-dasharray", $svgStrokeDashArray.toString());
+    svgNode.setAttribute("stroke", $svgStrokeColor);
+    svgNode.setAttribute("stroke-linecap", $svgLinecap);
 
     svgElement = svgNode;
 
@@ -103,16 +96,16 @@
     <label for="svg-code">Svg Code</label>
     <textarea bind:value={svgCode} />
     <div class="vertical-spacer-1" />
-    <ColorPicker bind:color={strokeColor} />
+    <ColorPicker bind:color={$svgStrokeColor} />
     <div class="vertical-spacer-1" />
-    <Linecap bind:linecap />
+    <Linecap bind:linecap={$svgLinecap} />
     <div class="vertical-spacer-1" />
     <RangeNumericInput
-      bind:value={strokeDashOffset}
+      bind:value={$svgStrokeOffset}
       label="stroke-dashoffset"
     />
     <div class="vertical-spacer-1" />
-    <StrokeDashArray bind:stringValue={strokeDashArray} />
+    <StrokeDashArray bind:stringValue={$svgStrokeDashArray} />
     <div class="vertical-spacer-1" />
     <AnimationControls />
   </div>
