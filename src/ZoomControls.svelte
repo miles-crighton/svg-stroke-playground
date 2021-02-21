@@ -5,6 +5,7 @@
   import PlaySvg from "./svgs/buttons/play.svg";
   import PauseSvg from "./svgs/buttons/pause.svg";
   import RestartSvg from "./svgs/buttons/restart.svg";
+  import ExportSvg from "./svgs/buttons/export.svg";
   import PercentInput from "./CoreUI/PercentInput.svelte";
   import Footer from "./Footer.svelte";
 
@@ -75,9 +76,20 @@
       />
     </div>
   </div>
+  <button class="export-button"><ExportSvg /><span>Export Code</span></button>
 </div>
 
 <style>
+  .export-button {
+    position: absolute;
+    right: 1rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .export-button > span {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
   .buttons-label {
     color: #979797;
     font-size: 14px;
