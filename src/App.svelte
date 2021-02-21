@@ -8,7 +8,7 @@
   export let svgElement: Element;
   export let name: string;
   let width = 500;
-  let height = 500;
+  let height = 400;
   let zoomWidth = width / zoomLevel;
   let zoomValue = width / 2 - zoomWidth / 2;
 
