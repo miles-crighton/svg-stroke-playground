@@ -6,6 +6,7 @@
   import GlobalStyles from "./GlobalStyles.svelte";
   import Modal from "svelte-simple-modal";
   import { svgHeight, svgWidth } from "./state/svgStore";
+  import { generateSvgString } from "./utils/addStylesheetRules";
   let zoomLevel = 1;
   let svg;
   export let svgElement: Element;
@@ -36,6 +37,7 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           bind:this={svg}
           class="primary-svg"
+          id="primary-svg"
         />
       </div>
       <ZoomControls bind:zoomLevel />

@@ -83,3 +83,12 @@ export function replaceStylesheetAnimation(
 
   styleSheet.insertRule(keyframeString, ruleIdx);
 }
+
+export function generateSvgString() {
+  const documentElement = document.getElementById("primary-svg");
+  console.log(documentElement);
+  var s = new XMLSerializer();
+  var str = s.serializeToString(documentElement);
+  console.log(str);
+  return str;
+}

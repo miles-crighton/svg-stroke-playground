@@ -1,7 +1,10 @@
 <script lang="ts">
   import PrismJs from "./PrismJS.svelte";
   import { animations } from "./state/animationStore";
-  import { generateKeyframeString } from "./utils/addStylesheetRules";
+  import {
+    generateKeyframeString,
+    generateSvgString,
+  } from "./utils/addStylesheetRules";
 
   export let showCopied = null;
   function updateClipboard(newClip) {
@@ -31,6 +34,7 @@
     code={generateKeyframeString(animation.name, animation.keyframes)}
   />
 {/each}
+<PrismJs language="html" code={generateSvgString()} />
 <button on:click={() => updateClipboard("djasiodsajdiojas")}
   >djasiodsajdiojas</button
 >
