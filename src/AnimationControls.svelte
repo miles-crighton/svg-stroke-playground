@@ -8,42 +8,43 @@
   import DownArrowSvg from "./svgs/numericArrowDown.svg";
   import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
   import Toggle from "./CoreUI/Toggle.svelte";
+  import type { Animation } from "./state/animationStore";
 
-  let animation = [
-    ["0%", ["stroke-dashoffset", "200"]],
-    ["100%", ["stroke-dashoffset", "0"]],
-  ];
+  export let animation: Animation;
   let activeProperties = {
     strokeDashOffset: true,
     strokeDashArray: false,
     strokeColor: false,
   };
-  export let delay = 0;
-  export let duration = 1;
-  export let infinite = true;
-  export let animationName = "Animation 1";
-  export let easing = "linear";
   let propertiesOpen = false;
 
   let styleEl = document.createElement("style");
 
   document.head.appendChild(styleEl);
 
-  $: replaceStylesheetAnimation(animation, styleEl);
+  $: ({ keyframes, delay, duration, infinite, easing } = animation);
+
+  $: replaceStylesheetAnimation(keyframes, styleEl);
 
   $: {
     document.documentElement.style.setProperty(
       "--animation-delay",
       `${delay}s`
     );
+  }
+  $: {
     document.documentElement.style.setProperty(
       "--animation-duration",
       `${duration}s`
     );
+  }
+  $: {
     document.documentElement.style.setProperty(
       "--animation-infinite",
       `${infinite ? "infinite" : 1}`
     );
+  }
+  $: {
     document.documentElement.style.setProperty(
       "--animation-easing",
       `${easing}`
@@ -51,25 +52,25 @@
   }
 
   // Add a reactive reorder
-  $: {
-    animation = animation.sort((a, b) => {
-      const aFloat = parseFloat(a[0]) / 100.0;
-      const bFloat = parseFloat(b[0]) / 100.0;
-      console.log(aFloat, bFloat);
-      return aFloat - bFloat;
-    });
-    animation = animation;
-    console.log(animation);
-  }
+  // $: {
+  //   animation = animation.sort((a, b) => {
+  //     const aFloat = parseFloat(a[0]) / 100.0;
+  //     const bFloat = parseFloat(b[0]) / 100.0;
+  //     console.log(aFloat, bFloat);
+  //     return aFloat - bFloat;
+  //   });
+  //   animation = animation;
+  //   console.log(animation);
+  // }
 </script>
 
 <div class="animation-controls">
-  <div class="animation-name">{animationName}</div>
+  <div class="animation-name">{animation.name}</div>
   <div class="animation-controls__content">
     <div class="control-row">
       <Toggle
         label="Infinite"
-        bind:toggled={infinite}
+        bind:toggled={animation.infinite}
         initialValue={infinite}
       />
     </div>
@@ -78,7 +79,7 @@
       <label>Duration</label><NumericInput
         initialValue={duration}
         stepValue={0.1}
-        bind:value={duration}
+        bind:value={animation.duration}
       />
     </div>
     <div class="vertical-spacer-1" />
@@ -86,21 +87,25 @@
       <label>Delay</label><NumericInput
         initialValue={delay}
         stepValue={0.1}
-        bind:value={delay}
+        bind:value={animation.delay}
       />
     </div>
     <label>Easing</label>
     <div class="easing-buttons">
-      <button class="ease-button" on:click={() => (easing = "linear")}
+      <button class="ease-button" on:click={() => (animation.easing = "linear")}
         ><LinearSvg /></button
       >
-      <button class="ease-button" on:click={() => (easing = "ease-in")}
-        ><EaseInSvg /></button
+      <button
+        class="ease-button"
+        on:click={() => (animation.easing = "ease-in")}><EaseInSvg /></button
       >
-      <button class="ease-button" on:click={() => (easing = "ease-out")}
-        ><EaseOutSvg /></button
+      <button
+        class="ease-button"
+        on:click={() => (animation.easing = "ease-out")}><EaseOutSvg /></button
       >
-      <button class="ease-button" on:click={() => (easing = "ease-in-out")}
+      <button
+        class="ease-button"
+        on:click={() => (animation.easing = "ease-in-out")}
         ><EaseInOutSvg /></button
       >
     </div>
@@ -147,11 +152,11 @@
           {/if}
         </div>
       </div>
-      {#each animation as keyframe, i (keyframe[0])}
+      {#each animation.keyframes as keyframe, i (keyframe[0])}
         <Keyframe
-          bind:keyframeArray={animation[i]}
+          bind:keyframeArray={animation.keyframes[i]}
           {activeProperties}
-          initialKeyframe={animation[i]}
+          initialKeyframe={animation.keyframes[i]}
           animationDuration={duration}
         />
       {/each}
@@ -159,6 +164,7 @@
   </div>
 </div>
 
+<!-- </div> -->
 <style>
   .keyframes-row {
     display: flex;

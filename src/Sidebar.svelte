@@ -16,6 +16,8 @@
     svgWidth,
   } from "./state/svgStore";
   import shapePresets from "./data/shapePresets";
+  import { animations } from "./state/animationStore";
+  import AnimationHandler from "./AnimationHandler.svelte";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -107,7 +109,7 @@
     <div class="vertical-spacer-1" />
     <StrokeDashArray bind:stringValue={$svgStrokeDashArray} />
     <div class="vertical-spacer-1" />
-    <AnimationControls />
+    <AnimationHandler />
   </div>
 </aside>
 
