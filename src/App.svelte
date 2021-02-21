@@ -4,6 +4,7 @@
   import ZoomControls from "./ZoomControls.svelte";
   import GithubCorner from "./svgs/githubCorner.svg";
   import GlobalStyles from "./GlobalStyles.svelte";
+  import Modal from "svelte-simple-modal";
   import { svgHeight, svgWidth } from "./state/svgStore";
   let zoomLevel = 1;
   let svg;
@@ -22,28 +23,30 @@
 </script>
 
 <GlobalStyles />
-<main>
-  <div class="contents">
-    <div class="svg-wrapper">
-      <svg
-        height={$svgHeight * zoomLevel}
-        width={$svgWidth * zoomLevel}
-        viewBox={`${0} ${0} ${$svgWidth} ${$svgHeight}`}
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        bind:this={svg}
-        class="primary-svg"
-      />
+<Modal>
+  <main>
+    <div class="contents">
+      <div class="svg-wrapper">
+        <svg
+          height={$svgHeight * zoomLevel}
+          width={$svgWidth * zoomLevel}
+          viewBox={`${0} ${0} ${$svgWidth} ${$svgHeight}`}
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          bind:this={svg}
+          class="primary-svg"
+        />
+      </div>
+      <ZoomControls bind:zoomLevel />
+      <!-- <Footer /> -->
+      <a href="https://www.github.com">
+        <GithubCorner />
+      </a>
     </div>
-    <ZoomControls bind:zoomLevel />
-    <!-- <Footer /> -->
-    <a href="https://www.github.com">
-      <GithubCorner />
-    </a>
-  </div>
-  <Aside bind:svgElement />
-</main>
+    <Aside bind:svgElement />
+  </main>
+</Modal>
 
 <style>
   @font-face {

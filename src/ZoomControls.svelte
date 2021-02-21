@@ -7,7 +7,10 @@
   import RestartSvg from "./svgs/buttons/restart.svg";
   import ExportSvg from "./svgs/buttons/export.svg";
   import PercentInput from "./CoreUI/PercentInput.svelte";
+  import ExportModal from "./ExportModal.svelte";
   import Footer from "./Footer.svelte";
+  import { getContext } from "svelte";
+  const { open } = getContext("simple-modal");
 
   export let zoomLevel = 1;
   export let zoomLevelPercent = Math.round(zoomLevel * 100);
@@ -36,6 +39,10 @@
   $: {
     zoomLevel = zoomLevelPercent / 100;
   }
+
+  const showExportModal = () => {
+    open(ExportModal, { message: "It's a popup!" });
+  };
 </script>
 
 <div class="zoom-controls">
@@ -76,7 +83,9 @@
       />
     </div>
   </div>
-  <button class="export-button"><ExportSvg /><span>Export Code</span></button>
+  <button class="export-button" on:click={showExportModal}
+    ><ExportSvg /><span>Export Code</span></button
+  >
 </div>
 
 <style>
