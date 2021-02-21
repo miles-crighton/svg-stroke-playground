@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/14.13.0/bin/node /usr/local/Cellar/yarn/1.22.5/libexec/bin/yarn.js add -D @types/rollup-plugin-svelte-svg
+  /usr/local/Cellar/node/14.13.0/bin/node /usr/local/Cellar/yarn/1.22.5/libexec/bin/yarn.js add -D @rollup/typescript
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/miles/Library/Python/3.8/bin:/Users/Miles/.gem/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2frollup-plugin-svelte-svg: Not found
+  Error: https://registry.yarnpkg.com/@rollup%2ftypescript: Not found
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.5/libexec/lib/cli.js:66988:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.22.5/libexec/lib/cli.js:140749:22)
       at Request.emit (events.js:314:20)
@@ -39,7 +39,6 @@ npm manifest:
     "devDependencies": {
       "@rollup/plugin-commonjs": "^17.0.0",
       "@rollup/plugin-node-resolve": "^11.0.0",
-      "@rollup/plugin-typescript": "^6.0.0",
       "@tsconfig/svelte": "^1.0.10",
       "rollup": "^2.3.4",
       "rollup-plugin-css-only": "^3.1.0",
