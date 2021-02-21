@@ -1,14 +1,12 @@
 <script lang="ts">
   import AnimationControls from "./AnimationControls.svelte";
-  import ColorPicker from "./ColorPicker.svelte";
-  import Slider from "./CoreUI/Slider.svelte";
-  import NumericInput from "./NumericInput.svelte";
+  import ColorPicker from "./CoreUI/ColorPicker.svelte";
+  import NumericInput from "./CoreUI/NumericInput.svelte";
   import SvgTitle from "./svgs/svgTitle.svg";
-  import RangeNumericInput from "./RangeNumericInput.svelte";
+  import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
   import Linecap from "./Linecap.svelte";
-  import PercentInput from "./PercentInput.svelte";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -109,7 +107,6 @@
     <div class="vertical-spacer-1" />
     <StrokeDashArray bind:stringValue={strokeDashArray} />
     <div class="vertical-spacer-1" />
-    <PercentInput />
     <AnimationControls />
   </div>
 </aside>

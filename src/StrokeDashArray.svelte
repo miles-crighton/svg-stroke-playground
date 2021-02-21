@@ -1,5 +1,5 @@
 <script lang="ts">
-  import RangeNumericInput from "./RangeNumericInput.svelte";
+  import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
   import SmallCrossSvg from "./svgs/buttons/smallCross.svg";
   import SmallPlusSvg from "./svgs/buttons/smallPlus.svg";
 

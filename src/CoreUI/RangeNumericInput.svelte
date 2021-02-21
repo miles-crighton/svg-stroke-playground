@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Slider from "./CoreUI/Slider.svelte";
+  import Slider from "./Slider.svelte";
 
   import NumericInput from "./NumericInput.svelte";
 

@@ -1,7 +1,7 @@
 <script>
-  import ColorPicker from "./ColorPicker.svelte";
-  import PercentInput from "./PercentInput.svelte";
-  import RangeNumericInput from "./RangeNumericInput.svelte";
+  import ColorPicker from "./CoreUI/ColorPicker.svelte";
+  import PercentInput from "./CoreUI/PercentInput.svelte";
+  import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
 
   // Very messy at the moment with initialization etc.

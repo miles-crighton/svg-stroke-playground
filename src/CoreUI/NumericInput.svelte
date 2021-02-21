@@ -1,6 +1,6 @@
 <script lang="ts">
-  import ArrowUpSvg from "./svgs/numericArrowUp.svg";
-  import ArrowDownSvg from "./svgs/numericArrowDown.svg";
+  import ArrowUpSvg from "../svgs/numericArrowUp.svg";
+  import ArrowDownSvg from "../svgs/numericArrowDown.svg";
   export let initialValue = 0;
   export let value = initialValue;
   export let stepValue = 0;

@@ -5,7 +5,7 @@
   import PlaySvg from "./svgs/buttons/play.svg";
   import PauseSvg from "./svgs/buttons/pause.svg";
   import RestartSvg from "./svgs/buttons/restart.svg";
-  import PercentInput from "./PercentInput.svelte";
+  import PercentInput from "./CoreUI/PercentInput.svelte";
 
   export let zoomLevel = 1;
   export let zoomLevelPercent = Math.round(zoomLevel * 100);

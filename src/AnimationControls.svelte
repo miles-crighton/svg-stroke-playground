@@ -1,6 +1,6 @@
 <script lang="ts">
   import Keyframe from "./Keyframe.svelte";
-  import NumericInput from "./NumericInput.svelte";
+  import NumericInput from "./CoreUI/NumericInput.svelte";
   import EaseInSvg from "./svgs/buttons/easeIn.svg";
   import EaseOutSvg from "./svgs/buttons/easeOut.svg";
   import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
