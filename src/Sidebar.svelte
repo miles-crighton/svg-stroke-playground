@@ -31,7 +31,7 @@
   export let svgCode = `<circle id="Oval" cx="100" cy="100" r="50" stroke="#787878" stroke-width="3" fill="none"></circle>`;
   export let strokeDashOffset = 0;
   export let strokeDashArray = "1";
-  export let strokeColor = "#ff0000";
+  export let strokeColor = "#A04DC7";
   export let svgElement: Element;
   export let width = 500;
   export let height = 400;
