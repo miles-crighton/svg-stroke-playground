@@ -212,6 +212,33 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
+  }
+
+  .svg-wrapper::before {
+    content: "";
+    width: 0;
+    height: 0;
+    /* border-left: 5px solid transparent; */
+    border-right: 50px solid transparent;
+
+    border-bottom: 50px solid var(--primary);
+    position: absolute;
+    left: 0rem;
+    bottom: 0rem;
+  }
+
+  .svg-wrapper::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    /* border-right: 50px solid transparent; */
+
+    border-top: 60px solid var(--primary);
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
   }
 
   .primary-svg {
