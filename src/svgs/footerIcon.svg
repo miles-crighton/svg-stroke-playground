@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="20px" viewBox="0 0 24 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="17" y="698" width="243" height="57" rx="9"></rect>
+        <filter x="-1.0%" y="-4.4%" width="102.1%" height="108.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="2" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.173636056 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Chrome-(Second-Monitor)-Copy-6" transform="translate(-31.000000, -717.000000)">
+            <g id="Sidebar" transform="translate(-84.000000, -82.000000)"></g>
+            <g id="Menu" transform="translate(0.000000, 687.000000)" fill="#F3F3F3" stroke="#D1D1D1">
+                <rect id="Rectangle" x="0.5" y="0.5" width="1073" height="77"></rect>
+            </g>
+            <g id="Rectangle">
+                <use fill="#6CB8FB" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            </g>
+            <path d="M43.1383696,736 C36.1831219,729.989253 32.5057403,725.772981 32.1062247,723.351184 C31.5069513,719.718489 33.4976806,717.565584 36.7054989,718.090313 C38.8440444,718.440132 40.9883347,719.647386 43.1383696,721.712076 C45.1965348,719.678309 47.255958,718.471054 49.316639,718.090313 C52.4076605,717.5192 54.5198728,719.702219 53.8880284,723.351184 C53.4667988,725.783827 49.8835792,730.000099 43.1383696,736 Z" id="Path" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="1.5,3"></path>
+        </g>
+    </g>
+</svg>

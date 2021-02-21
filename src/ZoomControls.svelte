@@ -6,6 +6,7 @@
   import PauseSvg from "./svgs/buttons/pause.svg";
   import RestartSvg from "./svgs/buttons/restart.svg";
   import PercentInput from "./CoreUI/PercentInput.svelte";
+  import Footer from "./Footer.svelte";
 
   export let zoomLevel = 1;
   export let zoomLevelPercent = Math.round(zoomLevel * 100);
@@ -37,6 +38,7 @@
 </script>
 
 <div class="zoom-controls">
+  <Footer />
   <div>
     <div class="buttons-label">Animation</div>
     <div class="button-row">

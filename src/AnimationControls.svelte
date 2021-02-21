@@ -125,6 +125,7 @@
                   type="checkbox"
                   id="horns"
                   name="horns"
+                  checked={activeProperties.strokeDashArray}
                   on:change={(e) =>
                     (activeProperties.strokeDashArray =
                       e.currentTarget.checked)}
@@ -134,6 +135,7 @@
                   type="checkbox"
                   id="horns"
                   name="horns"
+                  checked={activeProperties.strokeDashOffset}
                   on:change={(e) =>
                     (activeProperties.strokeDashOffset =
                       e.currentTarget.checked)}
@@ -143,6 +145,7 @@
                   type="checkbox"
                   id="horns"
                   name="horns"
+                  checked={activeProperties.strokeColor}
                   on:change={(e) =>
                     (activeProperties.strokeColor = e.currentTarget.checked)}
                 />
