@@ -18,7 +18,7 @@
   export let tooltip: boolean | string = false;
 </script>
 
-<button on:click data-tooltip={tooltip}
+<button on:click data-tooltip={tooltip} aria-label={tooltip}
   ><div class="button--contents">
     <svelte:component this={shapeMap[shape] ? shapeMap[shape] : null} />
   </div></button
@@ -40,6 +40,10 @@
   button:active {
     box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.13);
     background-color: #f2f2f2;
+  }
+
+  button:focus-visible {
+    box-shadow: 0 0 0 2px blue;
   }
 
   button:active > .button--contents {

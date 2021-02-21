@@ -82,7 +82,7 @@
     margin-bottom: 0px;
   }
 
-  button:focus {
+  button:focus-visible {
     box-shadow: 0 0 0 2px blue;
   }
 

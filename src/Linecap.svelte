@@ -9,14 +9,20 @@
 <div class="linecap">
   <span>Linecap</span>
   <div class="buttons">
-    <button class="left-button" on:click={() => (linecap = "round")}
-      ><RoundedSvg /></button
+    <button
+      class="left-button"
+      on:click={() => (linecap = "round")}
+      aria-label={`Rounded Linecap`}><RoundedSvg /></button
     >
-    <button class="center-button" on:click={() => (linecap = "square")}
-      ><SquareSvg /></button
+    <button
+      class="center-button"
+      on:click={() => (linecap = "square")}
+      aria-label={`Square Linecap`}><SquareSvg /></button
     >
-    <button class="right-button" on:click={() => (linecap = "butt")}
-      ><ButtSvg /></button
+    <button
+      class="right-button"
+      on:click={() => (linecap = "butt")}
+      aria-label={`Butt Linecap`}><ButtSvg /></button
     >
   </div>
 </div>

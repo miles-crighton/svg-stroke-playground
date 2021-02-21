@@ -7,7 +7,7 @@
 </script>
 
 <div class="toggle-wrapper">
-  <span>Toggle</span>
+  <span>{label}</span>
   <div class="toggle">
     <button
       on:click={() => (toggled = !toggled)}
