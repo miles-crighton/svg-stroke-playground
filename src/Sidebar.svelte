@@ -7,6 +7,7 @@
   import ShapeButton from "./ShapeButton.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
   import Linecap from "./Linecap.svelte";
+  import { svgHeight, svgWidth } from "./state/svgStore";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -73,11 +74,17 @@
   <div class="contents">
     <div class="control-row">
       <div>
-        <label>Width</label><NumericInput bind:value={width} stepValue={25} />
+        <label>Width</label><NumericInput
+          bind:value={$svgWidth}
+          stepValue={25}
+        />
       </div>
       <div class="horizontal-spacer-1" />
       <div>
-        <label>Height</label><NumericInput bind:value={height} stepValue={25} />
+        <label>Height</label><NumericInput
+          bind:value={$svgHeight}
+          stepValue={25}
+        />
       </div>
     </div>
     <div class="vertical-spacer-1" />
