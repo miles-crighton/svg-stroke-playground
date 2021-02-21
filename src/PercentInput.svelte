@@ -58,6 +58,7 @@
     margin: 0;
     width: 100%;
     font-size: 1rem;
+    color: var(--input-text);
   }
 
   input[type="number"] {

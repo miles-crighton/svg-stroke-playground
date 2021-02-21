@@ -37,33 +37,53 @@
 </script>
 
 <div class="zoom-controls">
-  <button class="zoom-controls__button" on:click={playAnimation}
-    ><div class="zoom-controls__button--content"><PlaySvg /></div>
-  </button>
-  <button class="zoom-controls__button" on:click={pauseAnimation}
-    ><div class="zoom-controls__button--content"><PauseSvg /></div></button
-  >
+  <div>
+    <div class="buttons-label">Animation</div>
+    <div class="button-row">
+      <button class="zoom-controls__button" on:click={playAnimation}
+        ><div class="zoom-controls__button--content"><PlaySvg /></div>
+      </button>
+      <button class="zoom-controls__button" on:click={pauseAnimation}
+        ><div class="zoom-controls__button--content"><PauseSvg /></div></button
+      >
+    </div>
+  </div>
   <div class="border-div" />
-  <button class="zoom-controls__button" on:click={increaseZoom}
-    ><div class="zoom-controls__button--content"><ZoomInSvg /></div>
-  </button>
-  <button class="zoom-controls__button" on:click={decreaseZoom}
-    ><div class="zoom-controls__button--content"><ZoomOutSvg /></div></button
-  >
-  <button class="zoom-controls__button" on:click={resetZoom}
-    ><div class="zoom-controls__button--content">
-      <ZoomResetSvg />
-    </div></button
-  >
-  <PercentInput
-    initialValue={Math.round(zoomLevel * 100)}
-    max={1000}
-    min={10}
-    bind:value={zoomLevelPercent}
-  />
+  <div>
+    <div class="buttons-label">Zoom</div>
+    <div class="button-row">
+      <button class="zoom-controls__button" on:click={increaseZoom}
+        ><div class="zoom-controls__button--content"><ZoomInSvg /></div>
+      </button>
+      <button class="zoom-controls__button" on:click={decreaseZoom}
+        ><div class="zoom-controls__button--content">
+          <ZoomOutSvg />
+        </div></button
+      >
+      <button class="zoom-controls__button" on:click={resetZoom}
+        ><div class="zoom-controls__button--content">
+          <ZoomResetSvg />
+        </div></button
+      >
+      <PercentInput
+        initialValue={Math.round(zoomLevel * 100)}
+        max={1000}
+        min={10}
+        bind:value={zoomLevelPercent}
+      />
+    </div>
+  </div>
 </div>
 
 <style>
+  .buttons-label {
+    color: #979797;
+    font-size: 14px;
+    margin-bottom: 0.3rem;
+  }
+  .button-row {
+    display: flex;
+  }
   .zoom-controls {
     position: relative;
 
@@ -82,8 +102,9 @@
   .border-div {
     border-left: 1px dashed var(--controls-border);
     width: 1px;
-    height: 100%;
-    margin-right: 0.5rem;
+    height: 50px;
+    margin-right: 1rem;
+    margin-left: 0.5rem;
   }
 
   .zoom-controls__button {
