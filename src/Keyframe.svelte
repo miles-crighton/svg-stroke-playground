@@ -10,6 +10,7 @@
   export let activeProperties = null;
   export let strokeDashArray = null;
   export let strokeDashOffset = null;
+  export let strokeColor = null;
   export let initialKeyframe = [`${0}%`, ["strokeDashArray", strokeDashArray]];
   export let percent = parseFloat(initialKeyframe[0]);
 
@@ -22,6 +23,7 @@
     [
       ["stroke-dasharray", strokeDashArray],
       ["stroke-dashoffset", strokeDashOffset],
+      ["stroke", strokeColor],
     ],
   ];
 </script>
@@ -39,8 +41,8 @@
     <label>stroke-dashoffset</label>
     <RangeNumericInput bind:value={strokeDashOffset} />
   {/if}
-  {#if activeProperties.color}
-    <ColorPicker />
+  {#if activeProperties.strokeColor}
+    <ColorPicker bind:color={strokeColor} />
   {/if}
 </div>
 

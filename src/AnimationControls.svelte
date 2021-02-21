@@ -5,6 +5,7 @@
   import EaseOutSvg from "./svgs/buttons/easeOut.svg";
   import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
   import LinearSvg from "./svgs/buttons/linear.svg";
+  import DownArrowSvg from "./svgs/numericArrowDown.svg";
   import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
   import Toggle from "./CoreUI/Toggle.svelte";
 
@@ -15,13 +16,14 @@
   let activeProperties = {
     strokeDashOffset: true,
     strokeDashArray: false,
-    color: false,
+    strokeColor: false,
   };
   export let delay = 0;
   export let duration = 1;
   export let infinite = true;
   export let animationName = "Animation 1";
   export let easing = "linear";
+  let propertiesOpen = false;
 
   let styleEl = document.createElement("style");
 
@@ -103,7 +105,48 @@
       >
     </div>
     <div>
-      <h3>@Keyframes</h3>
+      <div class="keyframes-row">
+        <h3>@Keyframes</h3>
+        <div class="properties-wrapper">
+          <button
+            class="properties-button"
+            on:click={() => (propertiesOpen = !propertiesOpen)}
+            ><span>Properties</span><DownArrowSvg /></button
+          >
+          {#if propertiesOpen}
+            <div class="properties-menu">
+              <div>
+                <input
+                  type="checkbox"
+                  id="horns"
+                  name="horns"
+                  on:change={(e) =>
+                    (activeProperties.strokeDashArray =
+                      e.currentTarget.checked)}
+                />
+                <label for="horns">stroke-dasharray</label>
+                <input
+                  type="checkbox"
+                  id="horns"
+                  name="horns"
+                  on:change={(e) =>
+                    (activeProperties.strokeDashOffset =
+                      e.currentTarget.checked)}
+                />
+                <label for="horns">Stroke-dashoffset</label>
+                <input
+                  type="checkbox"
+                  id="horns"
+                  name="horns"
+                  on:change={(e) =>
+                    (activeProperties.strokeColor = e.currentTarget.checked)}
+                />
+                <label for="horns">stroke-color</label>
+              </div>
+            </div>
+          {/if}
+        </div>
+      </div>
       {#each animation as keyframe, i (keyframe[0])}
         <Keyframe
           bind:keyframeArray={animation[i]}
@@ -117,6 +160,41 @@
 </div>
 
 <style>
+  .keyframes-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .keyframes-row > h3 {
+    flex: 1;
+  }
+
+  .properties-wrapper {
+    position: relative;
+  }
+
+  .properties-menu {
+    position: absolute;
+    right: 0;
+    margin-top: 0.5rem;
+    width: 100px;
+    background: white;
+    z-index: 2;
+  }
+
+  .properties-button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .properties-button > span {
+    margin-right: 0.3rem;
+  }
+
   .ease-button {
     background-color: #ffffff;
     width: 30px;

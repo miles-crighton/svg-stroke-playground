@@ -34,7 +34,7 @@ export function replaceStylesheetAnimation(
   rules: Array<[string, Array<string>]>,
   styleEl: HTMLStyleElement
 ) {
-  console.log("ADDING ANIMATION");
+  console.log("ADDING ANIMATION", rules);
   // Grab style element's sheet
   var styleSheet = styleEl.sheet;
   const ruleIdx = 0;
