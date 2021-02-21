@@ -22,9 +22,9 @@
 
   document.head.appendChild(styleEl);
 
-  $: ({ keyframes, delay, duration, infinite, easing } = animation);
+  $: ({ keyframes, delay, duration, infinite, easing, name } = animation);
 
-  $: replaceStylesheetAnimation(keyframes, styleEl);
+  $: replaceStylesheetAnimation(name, keyframes, styleEl);
 
   $: {
     document.documentElement.style.setProperty(

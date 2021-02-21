@@ -3,7 +3,7 @@
   import ArrowDownSvg from "../svgs/numericArrowDown.svg";
   export let initialValue = 0;
   export let value = initialValue;
-  export let stepValue = 0;
+  export let stepValue = 1;
   export let min = 0;
   export let max = 10000;
   let input;

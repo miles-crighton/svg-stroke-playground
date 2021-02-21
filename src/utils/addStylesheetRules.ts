@@ -30,8 +30,11 @@ export function addStylesheetRules(
   }
 }
 
-export function generateKeyframeString(rules: Array<[string, Array<string>]>) {
-  let selector = `@keyframes my-animation`;
+export function generateKeyframeString(
+  animationName: string,
+  rules: Array<[string, Array<string>]>
+) {
+  let selector = `@keyframes ${animationName}`;
   let indent = 2;
   let propStr = "";
 
@@ -62,6 +65,7 @@ export function generateKeyframeString(rules: Array<[string, Array<string>]>) {
 }
 
 export function replaceStylesheetAnimation(
+  animationName: string,
   rules: Array<[string, Array<string>]>,
   styleEl: HTMLStyleElement
 ) {
@@ -70,7 +74,7 @@ export function replaceStylesheetAnimation(
   var styleSheet = styleEl.sheet;
   const ruleIdx = 0;
 
-  const keyframeString = generateKeyframeString(rules);
+  const keyframeString = generateKeyframeString(animationName, rules);
 
   // Replace Css rule
   if (styleSheet.cssRules.length) {

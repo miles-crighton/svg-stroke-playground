@@ -26,7 +26,10 @@
   <div>{showCopied}</div>
 {/if}
 {#each $animations as animation}
-  <PrismJs language="css" code={generateKeyframeString(animation.keyframes)} />
+  <PrismJs
+    language="css"
+    code={generateKeyframeString(animation.name, animation.keyframes)}
+  />
 {/each}
 <button on:click={() => updateClipboard("djasiodsajdiojas")}
   >djasiodsajdiojas</button
