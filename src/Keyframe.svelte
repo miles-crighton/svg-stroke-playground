@@ -1,5 +1,6 @@
 <script>
   import ColorPicker from "./ColorPicker.svelte";
+  import PercentInput from "./PercentInput.svelte";
   import RangeNumericInput from "./RangeNumericInput.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
 
@@ -27,7 +28,7 @@
 
 <div class="keyframe">
   <div class="duration-row">
-    <input bind:value={percent} />
+    <PercentInput bind:value={percent} />
     <div class="duration-seconds">{animationDurationScaled}s</div>
   </div>
 
@@ -45,7 +46,7 @@
 
 <style>
   .keyframe {
-    border-top: 1px solid #dadada;
+    border-top: 1px dashed var(--controls-border);
     padding: 0.5rem 0.3rem;
   }
 

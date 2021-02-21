@@ -147,7 +147,7 @@
     height: 0.5rem;
   }
   .animation-controls__content {
-    border: 1px solid #d6d6d6;
+    border: 1px dashed #d6d6d6;
     border-top: 0;
     padding: 0.8rem;
     border-radius: 0 0 12px 12px;

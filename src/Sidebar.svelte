@@ -8,6 +8,7 @@
   import ShapeButton from "./ShapeButton.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
   import Linecap from "./Linecap.svelte";
+  import PercentInput from "./PercentInput.svelte";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -108,7 +109,7 @@
     <div class="vertical-spacer-1" />
     <StrokeDashArray bind:stringValue={strokeDashArray} />
     <div class="vertical-spacer-1" />
-    <h2 class="gradient">Animation</h2>
+    <PercentInput />
     <AnimationControls />
   </div>
 </aside>
