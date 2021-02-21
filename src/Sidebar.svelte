@@ -3,10 +3,13 @@
   import ColorPicker from "./CoreUI/ColorPicker.svelte";
   import NumericInput from "./CoreUI/NumericInput.svelte";
   import SvgTitle from "./svgs/svgTitle.svg";
+  import AnimationTitle from "./svgs/animationsTitle.svg";
   import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
   import ShapeButton from "./ShapeButton.svelte";
   import StrokeDashArray from "./StrokeDashArray.svelte";
   import Linecap from "./Linecap.svelte";
+  import ChevronLeftSvg from "./svgs/buttons/chevronLeft.svg";
+  import ChevronRightSvg from "./svgs/buttons/chevronRight.svg";
   import {
     svgHeight,
     svgLinecap,
@@ -30,6 +33,8 @@
 
   export let svgCode = shapePresets.circle;
   export let svgElement: Element;
+  type Tabs = "Animation" | "Svg";
+  let tab: Tabs = "Svg";
 
   let svg;
   $: {
@@ -65,52 +70,70 @@
 </script>
 
 <aside>
-  <div class="header"><SvgTitle /></div>
-  <div class="contents">
-    <div class="control-row">
-      <div>
-        <label>Width</label><NumericInput
-          bind:value={$svgWidth}
-          stepValue={25}
-        />
-      </div>
-      <div class="horizontal-spacer-1" />
-      <div>
-        <label>Height</label><NumericInput
-          bind:value={$svgHeight}
-          stepValue={25}
-        />
-      </div>
-    </div>
-    <div class="vertical-spacer-1" />
-    <label>Shape Presets</label>
-    <div class="shape-buttons">
-      {#each shapes as shape}
-        <ShapeButton
-          on:click={() => changeDefaultShape(shape)}
-          {shape}
-          tooltip={`<${shape} />`}
-        />
-        <span style="width: 8px;" />
-      {/each}
-    </div>
-    <div class="vertical-spacer-1" />
-    <label for="svg-code">Svg Code</label>
-    <textarea bind:value={svgCode} />
-    <div class="vertical-spacer-1" />
-    <ColorPicker bind:color={$svgStrokeColor} />
-    <div class="vertical-spacer-1" />
-    <Linecap bind:linecap={$svgLinecap} />
-    <div class="vertical-spacer-1" />
-    <RangeNumericInput
-      bind:value={$svgStrokeOffset}
-      label="stroke-dashoffset"
-    />
-    <div class="vertical-spacer-1" />
-    <StrokeDashArray bind:stringValue={$svgStrokeDashArray} />
-    <div class="vertical-spacer-1" />
-    <AnimationHandler />
+  <div class="header">
+    {#if tab === "Svg"}
+      <SvgTitle /><button
+        class="header-button"
+        on:click={() => (tab = "Animation")}
+        ><ChevronRightSvg /><span>ANIMATION</span></button
+      >
+    {:else}
+      <AnimationTitle /><button
+        class="header-button header-button-left"
+        on:click={() => (tab = "Svg")}
+        ><ChevronLeftSvg /><span>SVG</span></button
+      >
+    {/if}
   </div>
+  {#if tab === "Svg"}
+    <div class="contents">
+      <div class="control-row">
+        <div>
+          <label>Width</label><NumericInput
+            bind:value={$svgWidth}
+            stepValue={25}
+          />
+        </div>
+        <div class="horizontal-spacer-1" />
+        <div>
+          <label>Height</label><NumericInput
+            bind:value={$svgHeight}
+            stepValue={25}
+          />
+        </div>
+      </div>
+      <div class="vertical-spacer-1" />
+      <label>Shape Presets</label>
+      <div class="shape-buttons">
+        {#each shapes as shape}
+          <ShapeButton
+            on:click={() => changeDefaultShape(shape)}
+            {shape}
+            tooltip={`<${shape} />`}
+          />
+          <span style="width: 8px;" />
+        {/each}
+      </div>
+      <div class="vertical-spacer-1" />
+      <label for="svg-code">Svg Code</label>
+      <textarea bind:value={svgCode} />
+      <div class="vertical-spacer-1" />
+      <ColorPicker bind:color={$svgStrokeColor} />
+      <div class="vertical-spacer-1" />
+      <Linecap bind:linecap={$svgLinecap} />
+      <div class="vertical-spacer-1" />
+      <RangeNumericInput
+        bind:value={$svgStrokeOffset}
+        label="stroke-dashoffset"
+      />
+      <div class="vertical-spacer-1" />
+      <StrokeDashArray bind:stringValue={$svgStrokeDashArray} />
+    </div>
+  {:else}
+    <div class="contents">
+      <AnimationHandler />
+    </div>
+  {/if}
 </aside>
 
 <style>
@@ -163,6 +186,8 @@
   }
   aside {
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .contents {
@@ -173,16 +198,39 @@
     padding: 1rem 1.5rem;
     box-sizing: border-box;
     position: relative;
+    flex: 1;
   }
 
   .header {
-    padding: 1rem;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Funkydori";
     background: linear-gradient(#ff749d, #f25c88);
     box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+
+  .header-button {
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    position: absolute;
+    right: 1rem;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+
+  .header-button-left {
+    left: 1rem;
+  }
+
+  .header-button span {
+    margin-top: 0.2rem;
   }
 
   h1 {
