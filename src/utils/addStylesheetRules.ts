@@ -30,6 +30,37 @@ export function addStylesheetRules(
   }
 }
 
+export function generateKeyframeString(rules: Array<[string, Array<string>]>) {
+  let selector = `@keyframes my-animation`;
+  let indent = 2;
+  let propStr = "";
+
+  for (let j = 0; j < rules.length; j++) {
+    let keyframe = rules[j];
+    let percent = keyframe[0];
+    let properties = keyframe[1];
+
+    propStr += " ".repeat(indent) + percent + " {\n";
+
+    // Check if properties[0] is an array so multiple properties can be added
+    if (Array.isArray(properties[0])) {
+      properties.forEach(
+        (property) =>
+          (propStr +=
+            " ".repeat(indent * 2) + property[0] + ": " + property[1] + ";\n")
+      );
+    } else {
+      propStr +=
+        " ".repeat(indent * 2) + properties[0] + ": " + properties[1] + ";\n";
+    }
+
+    propStr += " ".repeat(indent) + "}\n";
+  }
+
+  const fullRule = selector + " {\n" + propStr + "}";
+  return fullRule;
+}
+
 export function replaceStylesheetAnimation(
   rules: Array<[string, Array<string>]>,
   styleEl: HTMLStyleElement
@@ -39,38 +70,12 @@ export function replaceStylesheetAnimation(
   var styleSheet = styleEl.sheet;
   const ruleIdx = 0;
 
-  let selector = `@keyframes my-animation`;
-  let propStr = "";
-
-  for (let j = 0; j < rules.length; j++) {
-    let keyframe = rules[j];
-    let percent = keyframe[0];
-    let properties = keyframe[1];
-
-    propStr += percent + "{";
-
-    // Check if properties[0] is an array so multiple properties can be added
-    if (Array.isArray(properties[0])) {
-      properties.forEach(
-        (property) => (propStr += property[0] + ": " + property[1] + ";\n")
-      );
-    } else {
-      propStr += properties[0] + ": " + properties[1] + ";\n";
-    }
-
-    propStr += "}";
-  }
+  const keyframeString = generateKeyframeString(rules);
 
   // Replace Css rule
   if (styleSheet.cssRules.length) {
     styleSheet.removeRule(ruleIdx);
   }
 
-  const fullRule = selector + "{" + propStr + "}";
-
-  console.log(fullRule);
-
-  styleSheet.insertRule(fullRule, ruleIdx);
-
-  console.log(styleSheet.cssRules);
+  styleSheet.insertRule(keyframeString, ruleIdx);
 }

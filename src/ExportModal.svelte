@@ -1,5 +1,7 @@
 <script lang="ts">
   import PrismJs from "./PrismJS.svelte";
+  import { animations } from "./state/animationStore";
+  import { generateKeyframeString } from "./utils/addStylesheetRules";
 
   export let showCopied = null;
   function updateClipboard(newClip) {
@@ -23,23 +25,9 @@
 {#if showCopied}
   <div>{showCopied}</div>
 {/if}
-<PrismJs
-  language="css"
-  code={`
-  .center-button {
-    border-radius: 0;
-  }
-
-  .left-button {
-    border-right: 0;
-    border-radius: 6px 0 0 6px;
-  }
-
-  .right-button {
-    border-left: 0;
-    border-radius: 0 6px 6px 0;
-  `}
-/>
+{#each $animations as animation}
+  <PrismJs language="css" code={generateKeyframeString(animation.keyframes)} />
+{/each}
 <button on:click={() => updateClipboard("djasiodsajdiojas")}
   >djasiodsajdiojas</button
 >
