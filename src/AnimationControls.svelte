@@ -6,7 +6,10 @@
   import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
   import LinearSvg from "./svgs/buttons/linear.svg";
   import DownArrowSvg from "./svgs/numericArrowDown.svg";
-  import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
+  import {
+    replaceStylesheetAnimation,
+    replaceStylesheetKeyframes,
+  } from "./utils/addStylesheetRules";
   import Toggle from "./CoreUI/Toggle.svelte";
   import type { Animation } from "./state/animationStore";
 
@@ -18,38 +21,38 @@
   };
   let propertiesOpen = false;
 
-  let styleEl = document.createElement("style");
+  export let styleEl = document.createElement("style");
 
   document.head.appendChild(styleEl);
 
   $: ({ keyframes, delay, duration, infinite, easing, name } = animation);
 
-  $: replaceStylesheetAnimation(name, keyframes, styleEl);
+  $: replaceStylesheetKeyframes(name, keyframes, styleEl);
 
-  $: {
-    document.documentElement.style.setProperty(
-      "--animation-delay",
-      `${delay}s`
-    );
-  }
-  $: {
-    document.documentElement.style.setProperty(
-      "--animation-duration",
-      `${duration}s`
-    );
-  }
-  $: {
-    document.documentElement.style.setProperty(
-      "--animation-infinite",
-      `${infinite ? "infinite" : 1}`
-    );
-  }
-  $: {
-    document.documentElement.style.setProperty(
-      "--animation-easing",
-      `${easing}`
-    );
-  }
+  // $: {
+  //   document.documentElement.style.setProperty(
+  //     "--animation-delay",
+  //     `${delay}s`
+  //   );
+  // }
+  // $: {
+  //   document.documentElement.style.setProperty(
+  //     "--animation-duration",
+  //     `${duration}s`
+  //   );
+  // }
+  // $: {
+  //   document.documentElement.style.setProperty(
+  //     "--animation-infinite",
+  //     `${infinite ? "infinite" : 1}`
+  //   );
+  // }
+  // $: {
+  //   document.documentElement.style.setProperty(
+  //     "--animation-easing",
+  //     `${easing}`
+  //   );
+  // }
 
   // Add a reactive reorder
   // $: {

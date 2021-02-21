@@ -1,3 +1,5 @@
+import type { Animation } from "../state/animationStore";
+
 export function addStylesheetRules(
   rules: Array<[string, Array<string>]>,
   styleEl: HTMLStyleElement
@@ -64,12 +66,11 @@ export function generateKeyframeString(
   return fullRule;
 }
 
-export function replaceStylesheetAnimation(
+export function replaceStylesheetKeyframes(
   animationName: string,
   rules: Array<[string, Array<string>]>,
   styleEl: HTMLStyleElement
 ) {
-  console.log("ADDING ANIMATION", rules);
   // Grab style element's sheet
   var styleSheet = styleEl.sheet;
   const ruleIdx = 0;
@@ -86,9 +87,47 @@ export function replaceStylesheetAnimation(
 
 export function generateSvgString() {
   const documentElement = document.getElementById("primary-svg");
-  console.log(documentElement);
   var s = new XMLSerializer();
   var str = s.serializeToString(documentElement);
-  console.log(str);
   return str;
+}
+
+export function generateAnimationString(animations: Array<Animation>) {
+  let str = "animation: ";
+
+  animations.forEach((animation, idx) => {
+    str += `${animation.name} ${animation.duration}s ${animation.delay}s ${
+      animation.easing
+    } ${animation.infinite ? `infinite` : ""}`;
+    if (idx < animations.length - 1) {
+      str += ", ";
+    }
+  });
+
+  str += ";";
+
+  return str;
+}
+
+export function replaceStylesheetAnimation(
+  animations: Array<Animation>,
+  styleEl: HTMLStyleElement
+) {
+  // Grab style element's sheet
+  var styleSheet = styleEl.sheet;
+  const ruleIdx = 0;
+  let selector = `.svgElement`;
+
+  const animationString = generateAnimationString(animations);
+
+  const fullString = selector + ` {\n` + animationString + `\n}`;
+
+  // Replace Css rule
+  if (styleSheet.cssRules.length) {
+    styleSheet.removeRule(ruleIdx);
+  }
+
+  styleSheet.insertRule(fullString, ruleIdx);
+
+  console.log(styleSheet);
 }

@@ -100,10 +100,10 @@
       background-color: var(--button-bg-active);
     }
 
-    .svgElement {
-      animation: my-animation var(--animation-duration) var(--animation-delay)
+    /* .svgElement {
+      animation: animation-1 var(--animation-duration) var(--animation-delay)
         var(--animation-state) var(--animation-easing) infinite;
-    }
+    } */
 
     .github-corner {
       position: absolute;

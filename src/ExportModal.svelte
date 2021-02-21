@@ -2,6 +2,7 @@
   import PrismJs from "./PrismJS.svelte";
   import { animations } from "./state/animationStore";
   import {
+    generateAnimationString,
     generateKeyframeString,
     generateSvgString,
   } from "./utils/addStylesheetRules";
@@ -35,6 +36,7 @@
   />
 {/each}
 <PrismJs language="html" code={generateSvgString()} />
+<PrismJs language="html" code={generateAnimationString($animations)} />
 <button on:click={() => updateClipboard("djasiodsajdiojas")}
   >djasiodsajdiojas</button
 >
