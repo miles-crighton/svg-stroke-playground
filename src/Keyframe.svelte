@@ -128,7 +128,11 @@
   <div class="controls-row">
     <PercentInput bind:value={percent} />
     <div class="buttons-row">
-      <button on:click={initializeValues}><ResetKeyframeSvg /></button>
+      <button
+        on:click={initializeValues}
+        data-tooltip="Reset to SVG values"
+        aria-label="Reset to SVG values"><ResetKeyframeSvg /></button
+      >
       <PropertiesMenu bind:activeProperties />
     </div>
     <!-- <button on:click={lockValues}>Lock</button> -->

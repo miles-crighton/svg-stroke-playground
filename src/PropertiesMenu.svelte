@@ -7,7 +7,11 @@
 </script>
 
 <div class="properties-wrapper">
-  <button class="properties-button" on:click={() => (open = !open)}
+  <button
+    class="properties-button"
+    data-tooltip="Animation Properties"
+    aria-label="Animation Properties"
+    on:click={() => (open = !open)}
     ><PropertiesMenuSvg />
   </button>
   {#if open}
@@ -33,7 +37,7 @@
 
 <style>
   h3 {
-    color: #9f3c79;
+    color: #cb559e;
     font-size: 12px;
     margin: 0;
   }

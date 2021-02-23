@@ -39,7 +39,7 @@
       bottom: 100%;
       left: 50%;
       margin-bottom: 5px;
-      padding: 7px 20px 7px 12px;
+      padding: 7px 20px 7px 20px;
       width: 100%;
       min-width: 70px;
       max-width: 250px;
@@ -55,7 +55,7 @@
       font-weight: bold;
       line-height: 1.2;
       transition: 0.2s ease-out;
-      white-space: pre;
+      /* white-space: pre; */
     }
 
     [data-tooltip]:after {
