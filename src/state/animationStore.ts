@@ -10,8 +10,10 @@ const initialAnimation = {
   keyframes: [
     ["0%", ["stroke-dashoffset", "200"]],
     ["100%", ["stroke-dashoffset", "0"]],
-  ],
+  ] as Keyframes,
 };
+
+export type Keyframes = Array<[string, Array<string>]>;
 
 export type Animation = typeof initialAnimation;
 

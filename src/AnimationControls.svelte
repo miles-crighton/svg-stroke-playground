@@ -6,6 +6,7 @@
   import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
   import LinearSvg from "./svgs/buttons/linear.svg";
   import DownArrowSvg from "./svgs/numericArrowDown.svg";
+  import PlusSvg from "./svgs/buttons/plus.svg";
   import {
     replaceStylesheetAnimation,
     replaceStylesheetKeyframes,
@@ -24,6 +25,17 @@
   export let styleEl = document.createElement("style");
 
   document.head.appendChild(styleEl);
+
+  function addKeyframe(idx: number) {
+    const lowerPercent = parseFloat(keyframes[idx][0]);
+    const upperPercent = parseFloat(keyframes[idx + 1][0]);
+
+    const percent = Math.round(
+      (upperPercent - lowerPercent) / 2 + lowerPercent
+    );
+    keyframes = keyframes.splice(idx + 1, 0, [`${percent}%`, []]);
+    keyframes = keyframes;
+  }
 
   $: ({ keyframes, delay, duration, infinite, easing, name } = animation);
 
@@ -140,6 +152,11 @@
           initialKeyframe={animation.keyframes[i]}
           animationDuration={duration}
         />
+        {#if i < animation.keyframes.length - 1}
+          <button class="add-keyframe" on:click={() => addKeyframe(i)}
+            ><PlusSvg /></button
+          >
+        {/if}
       {/each}
     </div>
   </div>
@@ -150,6 +167,16 @@
   .keyframes-row {
     display: flex;
     align-items: center;
+  }
+
+  .add-keyframe {
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(50%);
+    margin: 0 auto;
+    cursor: pointer;
   }
 
   .keyframes-row > h3 {
