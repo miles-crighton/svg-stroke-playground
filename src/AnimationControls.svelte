@@ -78,19 +78,28 @@
     </div>
     <label>Easing</label>
     <div class="easing-buttons">
-      <button class="ease-button" on:click={() => (animation.easing = "linear")}
-        ><LinearSvg /></button
+      <button
+        class="ease-button"
+        data-tooltip="Linear"
+        aria-label="Linear"
+        on:click={() => (animation.easing = "linear")}><LinearSvg /></button
       >
       <button
         class="ease-button"
+        data-tooltip="Ease In"
+        aria-label="Ease In"
         on:click={() => (animation.easing = "ease-in")}><EaseInSvg /></button
       >
       <button
         class="ease-button"
+        data-tooltip="Ease Out"
+        aria-label="Ease Out"
         on:click={() => (animation.easing = "ease-out")}><EaseOutSvg /></button
       >
       <button
         class="ease-button"
+        data-tooltip="Ease In Out"
+        aria-label="Ease In Out"
         on:click={() => (animation.easing = "ease-in-out")}
         ><EaseInOutSvg /></button
       >
@@ -210,7 +219,7 @@
     width: 30px;
     height: 30px;
     border: 1px solid #c8c8c8;
-    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
+    box-shadow: var(--button-inset-shadow);
     border-radius: 4px;
     display: flex;
     align-items: center;

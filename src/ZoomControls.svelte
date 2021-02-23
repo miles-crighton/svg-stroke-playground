@@ -53,13 +53,25 @@
   <div>
     <div class="buttons-label">Animation</div>
     <div class="button-row">
-      <button class="zoom-controls__button" on:click={playAnimation}
+      <button
+        class="zoom-controls__button"
+        on:click={playAnimation}
+        data-tooltip="Play Animation"
+        aria-label="Play Animation"
         ><div class="zoom-controls__button--content"><PlaySvg /></div>
       </button>
-      <button class="zoom-controls__button" on:click={pauseAnimation}
+      <button
+        class="zoom-controls__button"
+        on:click={pauseAnimation}
+        data-tooltip="Pause Animation"
+        aria-label="Pause Animation"
         ><div class="zoom-controls__button--content"><PauseSvg /></div></button
       >
-      <button class="zoom-controls__button" on:click={resetAnimation}
+      <button
+        class="zoom-controls__button"
+        on:click={resetAnimation}
+        data-tooltip="Restart Animation"
+        aria-label="Restart Animation"
         ><div class="zoom-controls__button--content">
           <RestartSvg />
         </div></button
@@ -70,15 +82,27 @@
   <div>
     <div class="buttons-label">Zoom</div>
     <div class="button-row">
-      <button class="zoom-controls__button" on:click={increaseZoom}
+      <button
+        class="zoom-controls__button"
+        on:click={increaseZoom}
+        data-tooltip="Zoom In"
+        aria-label="Zoom In"
         ><div class="zoom-controls__button--content"><ZoomInSvg /></div>
       </button>
-      <button class="zoom-controls__button" on:click={decreaseZoom}
+      <button
+        class="zoom-controls__button"
+        on:click={decreaseZoom}
+        data-tooltip="Zoom out"
+        aria-label="Zoom out"
         ><div class="zoom-controls__button--content">
           <ZoomOutSvg />
         </div></button
       >
-      <button class="zoom-controls__button" on:click={resetZoom}
+      <button
+        class="zoom-controls__button"
+        on:click={resetZoom}
+        data-tooltip="Reset Zoom"
+        aria-label="Reset Zoom"
         ><div class="zoom-controls__button--content">
           <ZoomResetSvg />
         </div></button

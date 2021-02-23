@@ -30,7 +30,7 @@
     width: 35px;
     height: 35px;
     border: 1px solid #c8c8c8;
-    box-shadow: var(----button-inset-shadow);
+    box-shadow: var(--button-inset-shadow);
     border-radius: 4px;
     display: flex;
     align-items: center;

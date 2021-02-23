@@ -12,16 +12,19 @@
     <button
       class="left-button"
       on:click={() => (linecap = "round")}
+      data-tooltip="Rounded"
       aria-label={`Rounded Linecap`}><RoundedSvg /></button
     >
     <button
       class="center-button"
       on:click={() => (linecap = "square")}
+      data-tooltip="Square"
       aria-label={`Square Linecap`}><SquareSvg /></button
     >
     <button
       class="right-button"
       on:click={() => (linecap = "butt")}
+      data-tooltip="Butt"
       aria-label={`Butt Linecap`}><ButtSvg /></button
     >
   </div>
@@ -46,6 +49,8 @@
   button {
     background-color: var(--button-bg);
     border: 1px solid var(--button-border);
+    display: flex;
+    align-items: center;
   }
 
   .center-button {
