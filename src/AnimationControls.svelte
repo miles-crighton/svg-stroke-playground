@@ -5,7 +5,7 @@
   import EaseOutSvg from "./svgs/buttons/easeOut.svg";
   import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
   import LinearSvg from "./svgs/buttons/linear.svg";
-  import DownArrowSvg from "./svgs/numericArrowDown.svg";
+
   import PlusSvg from "./svgs/buttons/plus.svg";
   import {
     replaceStylesheetAnimation,
@@ -15,11 +15,6 @@
   import type { Animation } from "./state/animationStore";
 
   export let animation: Animation;
-  let activeProperties = {
-    strokeDashOffset: true,
-    strokeDashArray: false,
-    strokeColor: false,
-  };
   let propertiesOpen = false;
 
   function addKeyframe(idx: number) {
@@ -34,6 +29,8 @@
   }
 
   $: ({ keyframes, delay, duration, infinite, easing, name } = animation);
+
+  console.log(keyframes);
 
   $: replaceStylesheetKeyframes(name, keyframes);
 
@@ -107,59 +104,16 @@
     <div>
       <div class="keyframes-row">
         <h3>@Keyframes</h3>
-        <div class="properties-wrapper">
-          <button
-            class="properties-button"
-            on:click={() => (propertiesOpen = !propertiesOpen)}
-            ><span>Properties</span><DownArrowSvg /></button
-          >
-          {#if propertiesOpen}
-            <div class="properties-menu">
-              <div>
-                <input
-                  type="checkbox"
-                  id="horns"
-                  name="horns"
-                  checked={activeProperties.strokeDashArray}
-                  on:change={(e) =>
-                    (activeProperties.strokeDashArray =
-                      e.currentTarget.checked)}
-                />
-                <label for="horns">stroke-dasharray</label>
-                <input
-                  type="checkbox"
-                  id="horns"
-                  name="horns"
-                  checked={activeProperties.strokeDashOffset}
-                  on:change={(e) =>
-                    (activeProperties.strokeDashOffset =
-                      e.currentTarget.checked)}
-                />
-                <label for="horns">Stroke-dashoffset</label>
-                <input
-                  type="checkbox"
-                  id="horns"
-                  name="horns"
-                  checked={activeProperties.strokeColor}
-                  on:change={(e) =>
-                    (activeProperties.strokeColor = e.currentTarget.checked)}
-                />
-                <label for="horns">stroke-color</label>
-              </div>
-            </div>
-          {/if}
-        </div>
       </div>
       {#each animation.keyframes as keyframe, i (keyframe[0])}
         <Keyframe
           bind:keyframeArray={animation.keyframes[i]}
-          {activeProperties}
           initialKeyframe={animation.keyframes[i]}
           animationDuration={duration}
         />
         {#if i < animation.keyframes.length - 1}
           <button class="add-keyframe" on:click={() => addKeyframe(i)}
-            ><PlusSvg /></button
+            ><PlusSvg /><span>ADD KEYFRAME</span></button
           >
         {/if}
       {/each}
@@ -175,43 +129,31 @@
   }
 
   .add-keyframe {
-    border-radius: 999px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(50%);
-    margin: 0 auto;
+    margin: 0.3rem 0;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    border: 1px dashed var(--controls-border);
     cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    color: #b0b0b0;
+  }
+
+  .add-keyframe:hover {
+    border: 1px solid var(--controls-border);
+  }
+
+  .add-keyframe > span {
+    margin-left: 0.3rem;
   }
 
   .keyframes-row > h3 {
     flex: 1;
-  }
-
-  .properties-wrapper {
-    position: relative;
-  }
-
-  .properties-menu {
-    position: absolute;
-    right: 0;
-    margin-top: 0.5rem;
-    width: 100px;
-    background: white;
-    z-index: 2;
-  }
-
-  .properties-button {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: 0;
-    box-shadow: none;
-    cursor: pointer;
-  }
-
-  .properties-button > span {
-    margin-right: 0.3rem;
   }
 
   .ease-button {

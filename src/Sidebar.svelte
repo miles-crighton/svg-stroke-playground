@@ -22,6 +22,7 @@
   import shapePresets from "./data/shapePresets";
   import { animations } from "./state/animationStore";
   import AnimationHandler from "./AnimationHandler.svelte";
+  import { fade } from "svelte/transition";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -74,13 +75,21 @@
 <aside>
   <div class="header">
     {#if tab === "Svg"}
-      <SvgTitle /><button
+      <div transition:fade>
+        <SvgTitle />
+      </div>
+      <button
+        transition:fade
         class="header-button"
         on:click={() => (tab = "Animation")}
         ><ChevronRightSvg /><span>ANIMATION</span></button
       >
     {:else}
-      <AnimationTitle /><button
+      <div transition:fade>
+        <AnimationTitle />
+      </div>
+      <button
+        transition:fade
         class="header-button header-button-left"
         on:click={() => (tab = "Svg")}
         ><ChevronLeftSvg /><span>SVG</span></button
@@ -210,6 +219,7 @@
     background: linear-gradient(#ff749d, #f25c88);
     box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.15);
     position: relative;
+    flex-shrink: 0;
   }
 
   .header-button {

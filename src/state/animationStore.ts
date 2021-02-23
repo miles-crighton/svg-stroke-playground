@@ -8,12 +8,12 @@ const initialAnimation = {
   delay: 0,
   easing: "linear",
   keyframes: [
-    ["0%", ["stroke-dashoffset", "200"]],
-    ["100%", ["stroke-dashoffset", "0"]],
+    ["0%", [["stroke-dashoffset", 50]]],
+    ["100%", [["stroke-dashoffset", 0]]],
   ] as Keyframes,
 };
 
-export type Keyframes = Array<[string, Array<string>]>;
+export type Keyframes = Array<[string, Array<[string, number | string]>]>;
 
 export type Animation = typeof initialAnimation;
 
@@ -23,7 +23,6 @@ function animationStore() {
   return {
     subscribe,
     set: (value) => {
-      // console.log(value);
       return set(value);
     },
     update,
