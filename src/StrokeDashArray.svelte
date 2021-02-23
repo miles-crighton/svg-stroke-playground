@@ -3,9 +3,9 @@
   import SmallCrossSvg from "./svgs/buttons/smallCross.svg";
   import SmallPlusSvg from "./svgs/buttons/smallPlus.svg";
 
-  export let arrayValue = [22];
-  let value = 0;
-  export let stringValue: string = arrayValue.join(" ");
+  export let stringValue = "22";
+  export let arrayValue =
+    typeof stringValue === "string" ? stringValue.split(" ") : [1];
 
   function addArrayValue() {
     arrayValue.push(1);

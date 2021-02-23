@@ -1,4 +1,19 @@
 <script>
+  function getInitialProperty(keyframeArray, propertyName) {
+    if (Array.isArray(keyframeArray) && keyframeArray.length >= 2) {
+      const idx = keyframeArray[1].findIndex((properties) => {
+        if (Array.isArray(properties)) {
+          return properties[0] === propertyName;
+        }
+        return null;
+      });
+      if (idx > -1) {
+        return keyframeArray[1][idx][1];
+      }
+    }
+    return null;
+  }
+
   import ColorPicker from "./CoreUI/ColorPicker.svelte";
   import PercentInput from "./CoreUI/PercentInput.svelte";
   import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
@@ -7,11 +22,19 @@
   // Very messy at the moment with initialization etc.
   export let animationDuration = 1;
   let animationDurationScaled;
+
+  export let initialKeyframe;
   export let activeProperties = null;
-  export let strokeDashArray = null;
-  export let strokeDashOffset = null;
-  export let strokeColor = null;
-  export let initialKeyframe = [`${0}%`, ["strokeDashArray", strokeDashArray]];
+  export let strokeDashArray = getInitialProperty(
+    initialKeyframe,
+    "stroke-dasharray"
+  );
+  export let strokeDashOffset = getInitialProperty(
+    initialKeyframe,
+    "stroke-dashoffset"
+  );
+  export let strokeColor = getInitialProperty(initialKeyframe, "stroke");
+
   export let percent = parseFloat(initialKeyframe[0]);
 
   export let keyframeArray = initialKeyframe;
