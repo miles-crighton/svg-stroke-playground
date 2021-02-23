@@ -5,21 +5,43 @@
         if (Array.isArray(properties)) {
           return properties[0] === propertyName;
         }
-        return null;
+        return getSvgProperty(propertyName);
       });
       if (idx > -1) {
         return keyframeArray[1][idx][1];
       }
     }
+    return getSvgProperty(propertyName);
+  }
+
+  function getSvgProperty(propertyName) {
+    switch (propertyName) {
+      case "stroke-dasharray":
+        return $svgStrokeDashArray;
+      case "stroke-dashoffset":
+        return $svgStrokeOffset;
+      case "stroke":
+        return $svgStrokeColor;
+    }
     return null;
+  }
+
+  function initializeValues() {
+    strokeDashArray = $svgStrokeDashArray;
+    strokeDashOffset = $svgStrokeOffset;
+    strokeColor = $svgStrokeColor;
   }
 
   import ColorPicker from "./CoreUI/ColorPicker.svelte";
   import PercentInput from "./CoreUI/PercentInput.svelte";
   import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
+  import {
+    svgStrokeColor,
+    svgStrokeDashArray,
+    svgStrokeOffset,
+  } from "./state/svgStore";
   import StrokeDashArray from "./StrokeDashArray.svelte";
 
-  // Very messy at the moment with initialization etc.
   export let animationDuration = 1;
   let animationDurationScaled;
 
@@ -41,19 +63,24 @@
 
   $: animationDurationScaled = animationDuration * (percent / 100);
 
-  $: keyframeArray = [
-    `${percent}%`,
-    [
-      ["stroke-dasharray", strokeDashArray],
-      ["stroke-dashoffset", strokeDashOffset],
-      ["stroke", strokeColor],
-    ],
-  ];
+  // @BUG: Currently still saves values even if they're not being shown/active
+  $: {
+    let tempKeyframeArray = [`${percent}%`, []];
+    if (strokeDashArray && activeProperties.strokeDashArray)
+      tempKeyframeArray[1].push(["stroke-dasharray", strokeDashArray]);
+    if (strokeDashOffset && activeProperties.strokeDashOffset)
+      tempKeyframeArray[1].push(["stroke-dashoffset", strokeDashOffset]);
+    if (strokeColor && activeProperties.strokeColor)
+      tempKeyframeArray[1].push(["stroke", strokeColor]);
+    keyframeArray = tempKeyframeArray;
+  }
 </script>
 
 <div class="keyframe">
   <div class="duration-row">
     <PercentInput bind:value={percent} />
+    <button on:click={initializeValues}>R</button>
+    <!-- <button on:click={lockValues}>Lock</button> -->
     <div class="duration-seconds">{animationDurationScaled}s</div>
   </div>
 
