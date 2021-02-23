@@ -3,11 +3,7 @@
   import AnimationControls from "./AnimationControls.svelte";
   import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
 
-  let styleEl = document.createElement("style");
-
-  document.head.appendChild(styleEl);
-
-  $: replaceStylesheetAnimation($animations, styleEl);
+  $: replaceStylesheetAnimation($animations);
 </script>
 
 {#each $animations as animation, i}

@@ -22,10 +22,6 @@
   };
   let propertiesOpen = false;
 
-  export let styleEl = document.createElement("style");
-
-  document.head.appendChild(styleEl);
-
   function addKeyframe(idx: number) {
     const lowerPercent = parseFloat(keyframes[idx][0]);
     const upperPercent = parseFloat(keyframes[idx + 1][0]);
@@ -39,7 +35,7 @@
 
   $: ({ keyframes, delay, duration, infinite, easing, name } = animation);
 
-  $: replaceStylesheetKeyframes(name, keyframes, styleEl);
+  $: replaceStylesheetKeyframes(name, keyframes);
 
   // Add a reactive reorder
   // $: {

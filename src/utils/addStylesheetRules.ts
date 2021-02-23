@@ -1,5 +1,11 @@
 import type { Animation } from "../state/animationStore";
 
+export let styleElKeyframes = document.createElement("style");
+export let styleElAnimation = document.createElement("style");
+
+document.head.appendChild(styleElKeyframes);
+document.head.appendChild(styleElAnimation);
+
 export function addStylesheetRules(
   rules: Array<[string, Array<string>]>,
   styleEl: HTMLStyleElement
@@ -68,11 +74,10 @@ export function generateKeyframeString(
 
 export function replaceStylesheetKeyframes(
   animationName: string,
-  rules: Array<[string, Array<string>]>,
-  styleEl: HTMLStyleElement
+  rules: Array<[string, Array<string>]>
 ) {
   // Grab style element's sheet
-  var styleSheet = styleEl.sheet;
+  var styleSheet = styleElKeyframes.sheet;
   const ruleIdx = 0;
 
   const keyframeString = generateKeyframeString(animationName, rules);
@@ -109,12 +114,9 @@ export function generateAnimationString(animations: Array<Animation>) {
   return str;
 }
 
-export function replaceStylesheetAnimation(
-  animations: Array<Animation>,
-  styleEl: HTMLStyleElement
-) {
+export function replaceStylesheetAnimation(animations: Array<Animation>) {
   // Grab style element's sheet
-  var styleSheet = styleEl.sheet;
+  var styleSheet = styleElAnimation.sheet;
   const ruleIdx = 0;
   let selector = `.svgElement`;
 
@@ -128,6 +130,33 @@ export function replaceStylesheetAnimation(
   }
 
   styleSheet.insertRule(fullString, ruleIdx);
+}
 
-  console.log(styleSheet);
+export function resetStylesheetAnimation() {
+  var styleSheet = styleElAnimation.sheet;
+  const ruleIdx = 0;
+
+  const animationRule = styleSheet.cssRules.item(ruleIdx);
+
+  console.log(animationRule);
+
+  // Replace Css rule
+  if (styleSheet.cssRules.length) {
+    styleSheet.removeRule(ruleIdx);
+  }
+
+  // Set the animation to none
+  styleSheet.insertRule(
+    `${animationRule.selectorText} { animation: none; }`,
+    ruleIdx
+  );
+
+  // Re-add the previous animation text after timeout
+  setTimeout(() => {
+    // Replace Css rule
+    if (styleSheet.cssRules.length) {
+      styleSheet.removeRule(ruleIdx);
+    }
+    styleSheet.insertRule(animationRule.cssText, ruleIdx);
+  });
 }

@@ -10,6 +10,7 @@
   import ExportModal from "./ExportModal.svelte";
   import Footer from "./Footer.svelte";
   import { getContext } from "svelte";
+  import { resetStylesheetAnimation } from "./utils/addStylesheetRules";
   const { open } = getContext("simple-modal");
 
   export let zoomLevel = 1;
@@ -43,6 +44,8 @@
   const showExportModal = () => {
     open(ExportModal, { message: "It's a popup!" });
   };
+
+  const resetAnimation = () => resetStylesheetAnimation();
 </script>
 
 <div class="zoom-controls">
@@ -55,6 +58,11 @@
       </button>
       <button class="zoom-controls__button" on:click={pauseAnimation}
         ><div class="zoom-controls__button--content"><PauseSvg /></div></button
+      >
+      <button class="zoom-controls__button" on:click={resetAnimation}
+        ><div class="zoom-controls__button--content">
+          <RestartSvg />
+        </div></button
       >
     </div>
   </div>
