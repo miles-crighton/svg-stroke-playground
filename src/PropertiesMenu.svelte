@@ -1,6 +1,7 @@
 <script lang="ts">
   import DownArrowSvg from "./svgs/numericArrowDown.svg";
   import PropertiesMenuSvg from "./svgs/buttons/propertiesMenu.svg";
+  import CheckBox from "./CoreUI/CheckBox.svelte";
   export let activeProperties;
   let open = false;
 </script>
@@ -14,32 +15,17 @@
       <h3>KEYFRAME PROPERTIES</h3>
       <div>
         <label>
-          <input
-            type="checkbox"
-            checked={activeProperties.strokeDashArray}
-            on:change={(e) =>
-              (activeProperties.strokeDashArray = e.currentTarget.checked)}
-          />
-          Dash Array</label
-        >
+          <CheckBox bind:checked={activeProperties.strokeDashArray} />
+          <span>Dash Array</span>
+        </label>
         <label>
-          <input
-            type="checkbox"
-            checked={activeProperties.strokeDashOffset}
-            on:change={(e) =>
-              (activeProperties.strokeDashOffset = e.currentTarget.checked)}
-          />
-          Dash Offset</label
-        >
+          <CheckBox bind:checked={activeProperties.strokeDashOffset} />
+          <span>Dash Offset</span>
+        </label>
         <label>
-          <input
-            type="checkbox"
-            checked={activeProperties.strokeColor}
-            on:change={(e) =>
-              (activeProperties.strokeColor = e.currentTarget.checked)}
-          />
-          Color</label
-        >
+          <CheckBox bind:checked={activeProperties.strokeColor} />
+          <span>Color</span>
+        </label>
       </div>
     </div>
   {/if}
@@ -85,8 +71,15 @@
   }
 
   label {
+    display: flex;
+    align-items: center;
     color: white;
     margin-top: 0.5rem;
+    cursor: pointer;
+  }
+
+  label > span {
+    margin-left: 0.5rem;
   }
 
   label > input {
