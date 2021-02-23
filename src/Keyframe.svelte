@@ -79,6 +79,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  label {
+    font-weight: bold;
+    color: #6e1e49;
+    margin-bottom: 0.2rem;
   }
 
   .duration-seconds {
