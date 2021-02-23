@@ -68,7 +68,7 @@
 </script>
 
 <div class="animation-controls">
-  <div class="animation-name">{animation.name}</div>
+  <div class="animation-name"><input bind:value={animation.name} /></div>
   <div class="animation-controls__content">
     <div class="control-row">
       <Toggle
@@ -256,6 +256,15 @@
     box-sizing: border-box;
     font-weight: 500;
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .animation-name > input {
+    border: 0;
+    background-color: transparent;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    flex: 1;
   }
 
   label {
