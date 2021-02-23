@@ -73,6 +73,7 @@
         bind:value={animation.delay}
       />
     </div>
+    <div class="vertical-spacer-1" />
     <label>Easing</label>
     <div class="easing-buttons">
       <button
@@ -101,6 +102,7 @@
         ><EaseInOutSvg /></button
       >
     </div>
+    <div class="vertical-spacer-1" />
     <div>
       <div class="keyframes-row">
         <h3>@Keyframes</h3>
@@ -156,6 +158,11 @@
     flex: 1;
   }
 
+  .vertical-spacer-1 {
+    margin: 0.4rem 0;
+    border-top: 1px dashed #dedede;
+  }
+
   .ease-button {
     background-color: #ffffff;
     width: 30px;
@@ -174,16 +181,13 @@
     margin-top: 0.4rem;
   }
   h3 {
-    font-size: 14px;
     color: #b37094;
     margin: 0;
     margin-bottom: 0.3rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    font-size: 16px;
   }
   .animation-controls {
-  }
-  .vertical-spacer-1 {
-    height: 0.5rem;
   }
   .animation-controls__content {
     border: 1px dashed #d6d6d6;

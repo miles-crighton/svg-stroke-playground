@@ -54,7 +54,7 @@
     width: 200px;
     background-color: #000;
     background: linear-gradient(45deg, #7d1d43, #5c1646);
-    z-index: 2;
+    z-index: 5;
     transform: translateX(50%);
     border-radius: 8px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
