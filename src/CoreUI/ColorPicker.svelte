@@ -29,10 +29,11 @@
     padding: 0.3rem;
     border: 1px solid var(--controls-border);
     border-radius: 8px;
+    background-color: white;
   }
 
   .label-wrapper:focus-within {
-    border: 1px solid blue;
+    box-shadow: 0 0 0 2px blue;
   }
 
   input {
