@@ -5,7 +5,9 @@
 
   export let stringValue = "22";
   export let arrayValue =
-    typeof stringValue === "string" ? stringValue.split(" ") : [1];
+    typeof stringValue === "string"
+      ? stringValue.split(" ").map((val) => parseInt(val))
+      : [1];
 
   function addArrayValue() {
     arrayValue.push(1);

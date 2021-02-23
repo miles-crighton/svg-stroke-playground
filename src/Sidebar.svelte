@@ -17,6 +17,7 @@
     svgStrokeDashArray,
     svgStrokeOffset,
     svgWidth,
+    svgStrokeWidth,
   } from "./state/svgStore";
   import shapePresets from "./data/shapePresets";
   import { animations } from "./state/animationStore";
@@ -53,6 +54,7 @@
     svgNode.setAttribute("stroke-dasharray", $svgStrokeDashArray.toString());
     svgNode.setAttribute("stroke", $svgStrokeColor);
     svgNode.setAttribute("stroke-linecap", $svgLinecap);
+    svgNode.setAttribute("stroke-width", $svgStrokeWidth.toString());
 
     svgElement = svgNode;
 
@@ -89,21 +91,17 @@
     <div class="contents">
       <div class="control-row">
         <div>
-          <label>Width</label><NumericInput
-            bind:value={$svgWidth}
-            stepValue={25}
-          />
+          <label class="top-label">Width</label>
+          <NumericInput bind:value={$svgWidth} stepValue={25} />
         </div>
         <div class="horizontal-spacer-1" />
         <div>
-          <label>Height</label><NumericInput
-            bind:value={$svgHeight}
-            stepValue={25}
-          />
+          <label class="top-label">Height</label>
+          <NumericInput bind:value={$svgHeight} stepValue={25} />
         </div>
       </div>
       <div class="vertical-spacer-1" />
-      <label>Shape Presets</label>
+      <label class="top-label">Shape Presets</label>
       <div class="shape-buttons">
         {#each shapes as shape}
           <ShapeButton
@@ -119,6 +117,11 @@
       <textarea bind:value={svgCode} />
       <div class="vertical-spacer-1" />
       <ColorPicker bind:color={$svgStrokeColor} />
+      <div class="vertical-spacer-1" />
+      <div class="control-row">
+        <label>Stroke Width</label>
+        <NumericInput min={1} bind:value={$svgStrokeWidth} />
+      </div>
       <div class="vertical-spacer-1" />
       <Linecap bind:linecap={$svgLinecap} />
       <div class="vertical-spacer-1" />
@@ -151,6 +154,11 @@
 
   .control-row {
     display: flex;
+    align-items: center;
+  }
+
+  .control-row label {
+    flex: 1;
   }
 
   .vertical-spacer-1 {
@@ -163,20 +171,13 @@
     height: 100%;
   }
 
-  .gradient {
-    background-color: #c937b9;
-    background-image: linear-gradient(45deg, #f15858, #c937b9);
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-  }
   label {
     font-weight: 600;
     color: var(--label-color);
-    margin-bottom: 0.5rem;
+  }
+
+  .top-label {
+    margin-bottom: 0.3rem;
   }
   textarea {
     min-height: 100px;
@@ -231,18 +232,5 @@
 
   .header-button span {
     margin-top: 0.2rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 </style>
