@@ -105,11 +105,6 @@
     true
   );
 
-  $: {
-    console.log(activeProperties);
-    console.log(noActiveProperties);
-  }
-
   $: animationDurationScaled = animationDuration * (percent / 100);
 
   $: {
@@ -126,7 +121,9 @@
 
 <div>
   <div class="controls-row">
-    <PercentInput bind:value={percent} />
+    <div class="percent-input-wrapper">
+      <PercentInput bind:value={percent} borders={false} rounded={false} />
+    </div>
     <div class="buttons-row">
       <button
         on:click={initializeValues}
@@ -180,11 +177,17 @@
     padding: 0 0.2rem;
   }
 
+  .percent-input-wrapper {
+    overflow: hidden;
+    border-radius: 6px 0 0 0;
+  }
+
   .buttons-row {
     padding-left: 0.5rem;
     display: flex;
     align-items: center;
     flex: 1;
+    border-left: 1px solid var(--button-border);
   }
 
   .vertical-spacer-1 {

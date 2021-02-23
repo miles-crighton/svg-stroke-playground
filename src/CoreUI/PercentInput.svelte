@@ -3,6 +3,8 @@
   export let value: number | string = initialValue;
   export let max = 100;
   export let min = 0;
+  export let borders = true;
+  export let rounded = true;
   function handleKeyPress(e: KeyboardEvent) {
     const numeric = /\d/;
     if (!numeric.test(e.key)) {
@@ -21,7 +23,7 @@
   }
 </script>
 
-<label aria-label={`Percent Input`}
+<label class:borders class:rounded aria-label={`Percent Input`}
   ><input
     on:keypress={handleKeyPress}
     bind:value
@@ -34,16 +36,23 @@
 
 <style>
   label {
-    border: 1px solid var(--button-border);
     background-color: var(--button-bg);
     box-shadow: var(--button-inset-shadow);
-    border-radius: 4px;
+
     color: grey;
     width: 70px;
     display: flex;
     align-items: center;
     padding-right: 0.5rem;
     font-size: 12px;
+  }
+
+  .rounded {
+    border-radius: 4px;
+  }
+
+  .borders {
+    border: 1px solid var(--button-border);
   }
 
   label:focus-within {
