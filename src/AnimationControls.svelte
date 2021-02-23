@@ -29,31 +29,6 @@
 
   $: replaceStylesheetKeyframes(name, keyframes, styleEl);
 
-  // $: {
-  //   document.documentElement.style.setProperty(
-  //     "--animation-delay",
-  //     `${delay}s`
-  //   );
-  // }
-  // $: {
-  //   document.documentElement.style.setProperty(
-  //     "--animation-duration",
-  //     `${duration}s`
-  //   );
-  // }
-  // $: {
-  //   document.documentElement.style.setProperty(
-  //     "--animation-infinite",
-  //     `${infinite ? "infinite" : 1}`
-  //   );
-  // }
-  // $: {
-  //   document.documentElement.style.setProperty(
-  //     "--animation-easing",
-  //     `${easing}`
-  //   );
-  // }
-
   // Add a reactive reorder
   // $: {
   //   animation = animation.sort((a, b) => {
