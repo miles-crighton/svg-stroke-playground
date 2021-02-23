@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="30px" height="29px" viewBox="0 0 30 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
-            <stop stop-color="#FF8995" offset="0%"></stop>
-            <stop stop-color="#FD80AF" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="47.5308642%" y1="0%" x2="52.4691358%" y2="100%" id="linearGradient-2">
-            <stop stop-color="#FF8995" offset="0%"></stop>
-            <stop stop-color="#FD80AF" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="49.2558214%" y1="0%" x2="50.7441786%" y2="100%" id="linearGradient-3">
-            <stop stop-color="#FF8995" offset="0%"></stop>
-            <stop stop-color="#FD80AF" offset="100%"></stop>
-        </linearGradient>
-    </defs>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Zoom-in" transform="translate(2.751631, 0.000000)">
-            <line x1="0" y1="26.1162422" x2="7.24836874" y2="19" id="Path-4" stroke="url(#linearGradient-1)" stroke-width="2" stroke-linecap="round"></line>
-            <line x1="14.2483687" y1="16" x2="14.2483687" y2="8" id="Path-4" stroke="#FF8995" stroke-width="1.5" stroke-linecap="round"></line>
-            <line x1="14.3467883" y1="16.0984196" x2="14.3467883" y2="7.90158041" id="Path-4" stroke="#FF8995" stroke-width="1.5" stroke-linecap="round" transform="translate(14.346788, 12.000000) rotate(90.000000) translate(-14.346788, -12.000000) "></line>
-            <circle id="Oval" stroke="url(#linearGradient-1)" stroke-width="3" cx="14.7483687" cy="11.5" r="10"></circle>
+        <g id="Zoom-in" transform="translate(3.000000, 0.000000)" stroke="#FA6A95">
+            <line x1="0" y1="19.3453646" x2="5.36916203" y2="14.0740741" id="Path-4" stroke-width="3" stroke-linecap="round"></line>
+            <path d="M10.962963,11.4665126 L10.962963,5.54058672 M8,8.50354968 L14.0717327,8.50354968" id="Combined-Shape" stroke-width="2" stroke-linecap="round"></path>
+            <circle id="Oval" stroke-width="2.5" cx="10.9247176" cy="8.51851852" r="7.26851852"></circle>
         </g>
     </g>
 </svg>

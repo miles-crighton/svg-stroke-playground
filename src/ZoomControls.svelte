@@ -144,7 +144,9 @@
     justify-content: center;
   }
   .zoom-controls__button--content {
-    height: 17px;
+    /* height: 17px; */
+    display: flex;
+    align-items: center;
   }
 
   .zoom-controls__button:active {
