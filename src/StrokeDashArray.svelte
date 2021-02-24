@@ -27,7 +27,9 @@
 <div class="label-wrapper">
   <label>stroke-dasharray</label><button
     on:click={addArrayValue}
-    class="add-button"><AddToArraySvg /></button
+    class="add-button"
+    data-tooltip="Add to stroke array"
+    aria-label="Add to stroke array"><AddToArraySvg /></button
   ><span>{`"${stringValue}"`}</span>
 </div>
 {#each arrayValue as val, i}
