@@ -21,14 +21,14 @@
   const pauseAnimation = () => (playing = false);
 
   const increaseZoom = () => {
-    zoomLevel = Math.floor(zoomLevel * 100 * 1.2) / 100;
+    zoomLevelPercent = Math.floor(zoomLevelPercent * 1.2);
   };
 
   const decreaseZoom = () => {
-    zoomLevel = Math.floor((zoomLevel * 100) / 1.2) / 100;
+    zoomLevelPercent = Math.floor(zoomLevelPercent / 1.2);
   };
 
-  const resetZoom = () => (zoomLevel = 1);
+  const resetZoom = () => (zoomLevelPercent = 100);
 
   $: {
     document.documentElement.style.setProperty(
