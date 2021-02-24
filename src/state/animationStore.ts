@@ -1,5 +1,9 @@
 import type { init } from "svelte/internal";
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
+import {
+  replaceStylesheetAnimation,
+  replaceStylesheetKeyframes,
+} from "../utils/addStylesheetRules";
 
 const initialAnimation = {
   name: "animation-1",
@@ -42,3 +46,13 @@ export function addAnimation() {
 }
 
 export const animations = animationStore([writable({ ...initialAnimation })]);
+
+// Initialize animation styles in head
+const animationsRaw = get(animations);
+replaceStylesheetAnimation(
+  animationsRaw.reduce((acc, store) => [...acc, get(store)], [])
+);
+animationsRaw.forEach((store, i) => {
+  const animation: Animation = get(store);
+  replaceStylesheetKeyframes(animation.name, animation.keyframes, i);
+});
