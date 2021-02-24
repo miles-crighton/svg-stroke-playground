@@ -1,5 +1,5 @@
 {
-  "name": "svelte-app",
+  "name": "svg-stroke-playground",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
@@ -27,5 +27,6 @@
   "dependencies": {
     "sirv-cli": "^1.0.0",
     "svelte-simple-modal": "^0.8.1"
-  }
+  },
+  "license": "MIT"
 }
