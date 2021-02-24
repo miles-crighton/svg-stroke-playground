@@ -8,7 +8,6 @@
   let zoomLevel = 1;
   let svg;
   export let svgElement: Element;
-  export let name: string;
 
   $: {
     if (svg) {
@@ -49,11 +48,6 @@
 </Modal>
 
 <style>
-  @font-face {
-    name: "Funkydori";
-    src: url("/Funkydori.otf");
-  }
-
   :global(body) {
     @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap");
 
@@ -84,9 +78,7 @@
     content: "";
     width: 0;
     height: 0;
-    /* border-left: 5px solid transparent; */
     border-right: 50px solid transparent;
-
     border-bottom: 50px solid var(--primary);
     position: absolute;
     left: 0rem;
@@ -98,8 +90,6 @@
     width: 0;
     height: 0;
     border-left: 60px solid transparent;
-    /* border-right: 50px solid transparent; */
-
     border-top: 60px solid var(--primary);
     position: absolute;
     right: 0rem;
@@ -117,14 +107,6 @@
     flex: 1;
     position: relative;
     height: 100vh;
-  }
-
-  h1 {
-    font-family: "Funkydori";
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
   }
 
   @media (min-width: 640px) {
