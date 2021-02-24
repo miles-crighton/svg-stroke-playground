@@ -15,39 +15,23 @@
     const animation: Animation = get(store);
     return generateKeyframeString(animation.name, animation.keyframes);
   }
-
-  export let showCopied = null;
-  function updateClipboard(newClip) {
-    navigator.clipboard.writeText(newClip).then(
-      function () {
-        showCopied = "Successfully Copied";
-        setTimeout(() => (showCopied = null), 1000);
-        /* clipboard successfully set */
-      },
-      function () {
-        showCopied = "Failed to Copy";
-        setTimeout(() => (showCopied = null), 1000);
-        /* clipboard write failed */
-      }
-    );
-  }
 </script>
 
-<h1>HELLO MODAL</h1>
+<!-- <h2>Export your svg animations</h2> -->
 
-{#if showCopied}
-  <div>{showCopied}</div>
-{/if}
 {#each $animations as animation, i}
-  <PrismJs language="css" code={getKeyframeString(i)} />
+  <PrismJs
+    language="css"
+    code={getKeyframeString(i)}
+    header={`CSS Keyframes ${i + 1}`}
+  />
 {/each}
-<PrismJs language="html" code={generateSvgString()} />
 <PrismJs
-  language="html"
+  language="css"
+  header={`CSS Animation Property`}
   code={generateAnimationString(
     $animations.reduce((acc, store) => [...acc, get(store)], [])
   )}
 />
-<button on:click={() => updateClipboard("djasiodsajdiojas")}
-  >djasiodsajdiojas</button
->
+
+<PrismJs language="markup" header={`Svg Markup`} code={generateSvgString()} />

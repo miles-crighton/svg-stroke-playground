@@ -1,5 +1,8 @@
 <script>
   import { onMount } from "svelte";
+  import Prism from "prismjs";
+  import ClipboardSvg from "./svgs/buttons/clipboard.svg";
+  import { fly, fade } from "svelte/transition";
 
   export let language;
   export let code;
@@ -60,6 +63,22 @@
       }
     };
   });
+
+  let showCopied = null;
+  function updateClipboard(newClip) {
+    navigator.clipboard.writeText(newClip).then(
+      function () {
+        showCopied = "Successfully Copied";
+        setTimeout(() => (showCopied = null), 1000);
+        /* clipboard successfully set */
+      },
+      function () {
+        showCopied = "Failed to Copy";
+        setTimeout(() => (showCopied = null), 1000);
+        /* clipboard write failed */
+      }
+    );
+  }
 </script>
 
 <svelte:head>
@@ -74,7 +93,58 @@
   />
 </svelte:head>
 
-<div class="w3-container">
-  <h2>{header}</h2>
+<h3>{header}</h3>
+<div class="w3-container container">
+  <!-- <h2>{header}</h2> -->
   <pre><code class="language-{language}">{code}</code></pre>
+  <div>
+    {#if showCopied}
+      <div class="copied-notif" in:fly={{ y: 5 }} out:fade>
+        Copied to clipboard!
+      </div>
+    {/if}
+    <button on:click={() => updateClipboard(code)}
+      ><span> Copy </span><ClipboardSvg /></button
+    >
+  </div>
 </div>
+
+<style>
+  .container {
+    position: relative;
+  }
+
+  h3 {
+    color: var(--label-color);
+    margin-bottom: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .copied-notif {
+    position: absolute;
+    margin: 0 auto;
+    top: -1.5rem;
+    right: 0.6rem;
+    color: white;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    background-color: #000;
+    font-weight: bold;
+    background: linear-gradient(45deg, #7d1d43, #5c1646);
+  }
+
+  button {
+    position: absolute;
+    right: 0.6rem;
+    top: 0.6rem;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+
+  button > span {
+    margin-right: 0.5rem;
+  }
+</style>
