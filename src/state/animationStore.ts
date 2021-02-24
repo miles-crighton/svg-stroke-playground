@@ -45,6 +45,14 @@ export function addAnimation() {
   });
 }
 
+export function removeAnimation(idx: number) {
+  animations.update((state) => {
+    let newState = [...state];
+    newState.splice(idx, 1);
+    return newState;
+  });
+}
+
 export const animations = animationStore([writable({ ...initialAnimation })]);
 
 // Initialize animation styles in head

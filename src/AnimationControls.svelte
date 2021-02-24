@@ -5,6 +5,7 @@
   import EaseOutSvg from "./svgs/buttons/easeOut.svg";
   import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
   import LinearSvg from "./svgs/buttons/linear.svg";
+  import CloseCrossSvg from "./svgs/buttons/close.svg";
 
   import PlusSvg from "./svgs/buttons/plus.svg";
   import {
@@ -12,7 +13,7 @@
     replaceStylesheetKeyframes,
   } from "./utils/addStylesheetRules";
   import Toggle from "./CoreUI/Toggle.svelte";
-  import { animations } from "./state/animationStore";
+  import { animations, removeAnimation } from "./state/animationStore";
   import type { Animation } from "./state/animationStore";
 
   export let idx;
@@ -58,7 +59,14 @@
 </script>
 
 <div class="animation-controls">
-  <div class="animation-name"><input bind:value={animation.name} /></div>
+  <div class="animation-name">
+    <input bind:value={animation.name} /><button
+      class="close-button"
+      data-tooltip="Delete Animation"
+      aria-label="Delete animation"
+      on:click={() => removeAnimation(idx)}><CloseCrossSvg /></button
+    >
+  </div>
   <div class="animation-controls__content">
     <div class="control-row">
       <Toggle
@@ -84,7 +92,7 @@
       />
     </div>
     <div class="vertical-spacer-1" />
-    <label>Easing</label>
+    <label class="top-label">Easing</label>
     <div class="easing-buttons">
       <button
         class="ease-button"
@@ -140,6 +148,13 @@
     align-items: center;
   }
 
+  .close-button {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
   .add-keyframe {
     border-radius: 4px;
     display: flex;
@@ -149,11 +164,14 @@
     width: 100%;
     background: transparent;
     box-shadow: none;
-    border: 1px dashed var(--controls-border);
+    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
     font-size: 10px;
     font-weight: bold;
     color: #b0b0b0;
+
+    transition: border 200ms;
   }
 
   .add-keyframe:hover {
@@ -166,6 +184,10 @@
 
   .keyframes-row > h3 {
     flex: 1;
+  }
+
+  .top-label {
+    margin-top: 0.7rem;
   }
 
   .vertical-spacer-1 {
@@ -189,11 +211,12 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 0.4rem;
+    margin-bottom: 1rem;
   }
   h3 {
-    color: #b37094;
+    color: var(--label-color);
     margin: 0;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     margin-top: 0.5rem;
     font-size: 16px;
   }
@@ -201,14 +224,11 @@
     margin-bottom: 0.7rem;
   }
   .animation-controls__content {
-    border: 1px dashed #d6d6d6;
-    border-top: 0;
-    padding: 0.8rem;
-    border-radius: 0 0 12px 12px;
+    padding: 0.8rem 0.5rem;
   }
   .animation-name {
-    background-color: #e3527c;
-    border-radius: 12px 12px 0 0;
+    background-color: var(--primary);
+    border-radius: 4px;
     color: white;
     text-align: center;
     height: 40px;
@@ -234,6 +254,7 @@
   label {
     font-weight: 600;
     color: #6e1e49;
+    margin: 0.7rem 0;
   }
 
   .control-row {
