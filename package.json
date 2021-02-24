@@ -30,5 +30,6 @@
     "sirv-cli": "^1.0.0",
     "svelte-simple-modal": "^0.8.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://miles-crighton.github.io/svg-stroke-playground/"
 }
