@@ -1,16 +1,16 @@
 <script lang="ts">
-  import ZoomInSvg from "./svgs/zoom-in.svg";
-  import ZoomOutSvg from "./svgs/zoom-out.svg";
-  import ZoomResetSvg from "./svgs/zoom-reset.svg";
-  import PlaySvg from "./svgs/buttons/play.svg";
-  import PauseSvg from "./svgs/buttons/pause.svg";
-  import RestartSvg from "./svgs/buttons/restart.svg";
-  import ExportSvg from "./svgs/buttons/export.svg";
-  import PercentInput from "./CoreUI/PercentInput.svelte";
-  import ExportModal from "./ExportModal.svelte";
-  import Footer from "./Footer.svelte";
+  import ZoomInSvg from "../svgs/zoom-in.svg";
+  import ZoomOutSvg from "../svgs/zoom-out.svg";
+  import ZoomResetSvg from "../svgs/zoom-reset.svg";
+  import PlaySvg from "../svgs/buttons/play.svg";
+  import PauseSvg from "../svgs/buttons/pause.svg";
+  import RestartSvg from "../svgs/buttons/restart.svg";
+  import ExportSvg from "../svgs/buttons/export.svg";
+  import PercentInput from "../CoreUI/PercentInput.svelte";
+  import ExportModal from "../molecules/ExportModal.svelte";
+  import Footer from "../atoms/Footer.svelte";
   import { getContext } from "svelte";
-  import { resetStylesheetAnimation } from "./utils/addStylesheetRules";
+  import { resetStylesheetAnimation } from "../utils/addStylesheetRules";
   const { open } = getContext("simple-modal");
 
   export let zoomLevel = 1;

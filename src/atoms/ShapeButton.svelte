@@ -1,10 +1,10 @@
 <script lang="ts">
-  import CircleSvg from "./svgs/circle.svg";
-  import EllipseSvg from "./svgs/ellipse.svg";
-  import RectSvg from "./svgs/rect.svg";
-  import LineSvg from "./svgs/line.svg";
-  import PolylineSvg from "./svgs/polyline.svg";
-  import PolygonSvg from "./svgs/polygon.svg";
+  import CircleSvg from "../svgs/circle.svg";
+  import EllipseSvg from "../svgs/ellipse.svg";
+  import RectSvg from "../svgs/rect.svg";
+  import LineSvg from "../svgs/line.svg";
+  import PolylineSvg from "../svgs/polyline.svg";
+  import PolygonSvg from "../svgs/polygon.svg";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapeMap = {
     circle: CircleSvg,

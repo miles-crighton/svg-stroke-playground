@@ -1,20 +1,20 @@
 <script lang="ts">
-  import Keyframe from "./Keyframe.svelte";
-  import NumericInput from "./CoreUI/NumericInput.svelte";
-  import EaseInSvg from "./svgs/buttons/easeIn.svg";
-  import EaseOutSvg from "./svgs/buttons/easeOut.svg";
-  import EaseInOutSvg from "./svgs/buttons/easeInOut.svg";
-  import LinearSvg from "./svgs/buttons/linear.svg";
-  import CloseCrossSvg from "./svgs/buttons/close.svg";
+  import Keyframe from "../molecules/Keyframe.svelte";
+  import NumericInput from "../CoreUI/NumericInput.svelte";
+  import EaseInSvg from "../svgs/buttons/easeIn.svg";
+  import EaseOutSvg from "../svgs/buttons/easeOut.svg";
+  import EaseInOutSvg from "../svgs/buttons/easeInOut.svg";
+  import LinearSvg from "../svgs/buttons/linear.svg";
+  import CloseCrossSvg from "../svgs/buttons/close.svg";
 
-  import PlusSvg from "./svgs/buttons/plus.svg";
+  import PlusSvg from "../svgs/buttons/plus.svg";
   import {
     replaceStylesheetAnimation,
     replaceStylesheetKeyframes,
-  } from "./utils/addStylesheetRules";
-  import Toggle from "./CoreUI/Toggle.svelte";
-  import { animations, removeAnimation } from "./state/animationStore";
-  import type { Animation } from "./state/animationStore";
+  } from "../utils/addStylesheetRules";
+  import Toggle from "../CoreUI/Toggle.svelte";
+  import { animations, removeAnimation } from "../state/animationStore";
+  import type { Animation } from "../state/animationStore";
 
   export let idx;
   export let store = $animations[idx];

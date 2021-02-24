@@ -62,19 +62,19 @@
     strokeColor = $svgStrokeColor;
   }
 
-  import ColorPicker from "./CoreUI/ColorPicker.svelte";
-  import PercentInput from "./CoreUI/PercentInput.svelte";
-  import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
+  import ColorPicker from "../CoreUI/ColorPicker.svelte";
+  import PercentInput from "../CoreUI/PercentInput.svelte";
+  import RangeNumericInput from "../CoreUI/RangeNumericInput.svelte";
   import PropertiesMenu from "./PropertiesMenu.svelte";
-  import ResetKeyframeSvg from "./svgs/buttons/resetKeyframe.svg";
-  import PropertiesMenuSvg from "./svgs/buttons/propertiesMenu.svg";
-  import LockedSvg from "./svgs/buttons/locked.svg";
-  import UnlockedSvg from "./svgs/buttons/unlocked.svg";
+  import ResetKeyframeSvg from "../svgs/buttons/resetKeyframe.svg";
+  import PropertiesMenuSvg from "../svgs/buttons/propertiesMenu.svg";
+  import LockedSvg from "../svgs/buttons/locked.svg";
+  import UnlockedSvg from "../svgs/buttons/unlocked.svg";
   import {
     svgStrokeColor,
     svgStrokeDashArray,
     svgStrokeOffset,
-  } from "./state/svgStore";
+  } from "../state/svgStore";
   import StrokeDashArray from "./StrokeDashArray.svelte";
 
   export let animationDuration = 1;

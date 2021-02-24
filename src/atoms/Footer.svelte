@@ -1,6 +1,6 @@
 <script lang="ts">
-  import LogoSvg from "./svgs/footerIcon.svg";
-  import GithubSmallSvg from "./svgs/githubSmall.svg";
+  import LogoSvg from "../svgs/footerIcon.svg";
+  import GithubSmallSvg from "../svgs/githubSmall.svg";
 </script>
 
 <footer>

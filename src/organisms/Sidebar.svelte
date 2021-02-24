@@ -1,15 +1,14 @@
 <script lang="ts">
-  import AnimationControls from "./AnimationControls.svelte";
-  import ColorPicker from "./CoreUI/ColorPicker.svelte";
-  import NumericInput from "./CoreUI/NumericInput.svelte";
-  import SvgTitle from "./svgs/svgTitle.svg";
-  import AnimationTitle from "./svgs/animationsTitle.svg";
-  import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
-  import ShapeButton from "./ShapeButton.svelte";
-  import StrokeDashArray from "./StrokeDashArray.svelte";
-  import Linecap from "./Linecap.svelte";
-  import ChevronLeftSvg from "./svgs/buttons/chevronLeft.svg";
-  import ChevronRightSvg from "./svgs/buttons/chevronRight.svg";
+  import ColorPicker from "../CoreUI/ColorPicker.svelte";
+  import NumericInput from "../CoreUI/NumericInput.svelte";
+  import SvgTitle from "../svgs/svgTitle.svg";
+  import AnimationTitle from "../svgs/animationsTitle.svg";
+  import RangeNumericInput from "../CoreUI/RangeNumericInput.svelte";
+  import ShapeButton from "../atoms/ShapeButton.svelte";
+  import StrokeDashArray from "../molecules/StrokeDashArray.svelte";
+  import Linecap from "../atoms/Linecap.svelte";
+  import ChevronLeftSvg from "../svgs/buttons/chevronLeft.svg";
+  import ChevronRightSvg from "../svgs/buttons/chevronRight.svg";
   import {
     svgHeight,
     svgLinecap,
@@ -18,9 +17,9 @@
     svgStrokeOffset,
     svgWidth,
     svgStrokeWidth,
-  } from "./state/svgStore";
-  import shapePresets from "./data/shapePresets";
-  import { animations } from "./state/animationStore";
+  } from "../state/svgStore";
+  import shapePresets from "../data/shapePresets";
+  import { animations } from "../state/animationStore";
   import AnimationHandler from "./AnimationHandler.svelte";
   import { fade, fly } from "svelte/transition";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";

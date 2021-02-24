@@ -1,12 +1,10 @@
 <script lang="ts">
-  import Footer from "./Footer.svelte";
-  import Aside from "./Sidebar.svelte";
-  import ZoomControls from "./ZoomControls.svelte";
+  import Aside from "./organisms/Sidebar.svelte";
+  import ZoomControls from "./organisms/ZoomControls.svelte";
   import GithubCorner from "./svgs/githubCorner.svg";
   import GlobalStyles from "./GlobalStyles.svelte";
   import Modal from "svelte-simple-modal";
   import { svgHeight, svgWidth } from "./state/svgStore";
-  import { generateSvgString } from "./utils/addStylesheetRules";
   let zoomLevel = 1;
   let svg;
   export let svgElement: Element;

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import RoundedSvg from "./svgs/buttons/roundedLinecap.svg";
-  import SquareSvg from "./svgs/buttons/squareLinecap.svg";
-  import ButtSvg from "./svgs/buttons/buttLinecap.svg";
+  import RoundedSvg from "../svgs/buttons/roundedLinecap.svg";
+  import SquareSvg from "../svgs/buttons/squareLinecap.svg";
+  import ButtSvg from "../svgs/buttons/buttLinecap.svg";
   type Linecap = "butt" | "round" | "square";
   export let initialLinecap;
   export let linecap: Linecap = initialLinecap || "butt";

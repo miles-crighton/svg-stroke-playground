@@ -1,8 +1,7 @@
 <script lang="ts">
-  import RangeNumericInput from "./CoreUI/RangeNumericInput.svelte";
-  import SmallCrossSvg from "./svgs/buttons/smallCross.svg";
-  import SmallPlusSvg from "./svgs/buttons/smallPlus.svg";
-  import AddToArraySvg from "./svgs/buttons/addToArray.svg";
+  import RangeNumericInput from "../CoreUI/RangeNumericInput.svelte";
+  import SmallCrossSvg from "../svgs/buttons/smallCross.svg";
+  import AddToArraySvg from "../svgs/buttons/addToArray.svg";
 
   export let stringValue = "22";
   let hovered = null;

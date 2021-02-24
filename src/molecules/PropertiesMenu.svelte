@@ -1,8 +1,8 @@
 <script lang="ts">
-  import DownArrowSvg from "./svgs/numericArrowDown.svg";
+  import DownArrowSvg from "../svgs/numericArrowDown.svg";
   import { onDestroy, onMount } from "svelte";
-  import PropertiesMenuSvg from "./svgs/buttons/propertiesMenu.svg";
-  import CheckBox from "./CoreUI/CheckBox.svelte";
+  import PropertiesMenuSvg from "../svgs/buttons/propertiesMenu.svg";
+  import CheckBox from "../CoreUI/CheckBox.svelte";
   export let activeProperties;
   let open = false;
   let node;

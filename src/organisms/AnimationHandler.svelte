@@ -1,9 +1,9 @@
 <script lang="ts">
   import { derived, get } from "svelte/store";
-  import { animations, addAnimation } from "./state/animationStore";
+  import { animations, addAnimation } from "../state/animationStore";
   import AnimationControls from "./AnimationControls.svelte";
-  import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
-  import AddAnimationSvg from "./svgs/buttons/addAnimation.svg";
+  import { replaceStylesheetAnimation } from "../utils/addStylesheetRules";
+  import AddAnimationSvg from "../svgs/buttons/addAnimation.svg";
 
   let animationCount;
 

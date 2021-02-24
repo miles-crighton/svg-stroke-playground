@@ -1,14 +1,14 @@
 <script lang="ts">
   import { get } from "svelte/store";
 
-  import PrismJs from "./PrismJS.svelte";
-  import { animations } from "./state/animationStore";
-  import type { Animation } from "./state/animationStore";
+  import PrismJs from "../atoms/PrismJS.svelte";
+  import { animations } from "../state/animationStore";
+  import type { Animation } from "../state/animationStore";
   import {
     generateAnimationString,
     generateKeyframeString,
     generateSvgString,
-  } from "./utils/addStylesheetRules";
+  } from "../utils/addStylesheetRules";
 
   function getKeyframeString(i: number) {
     const store = $animations[i];
