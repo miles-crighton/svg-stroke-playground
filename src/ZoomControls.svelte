@@ -111,7 +111,7 @@
         initialValue={Math.round(zoomLevel * 100)}
         max={1000}
         min={10}
-        bind:value={zoomLevelPercent}
+        onSubmit={(value) => (zoomLevelPercent = value)}
       />
     </div>
   </div>

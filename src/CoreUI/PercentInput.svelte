@@ -5,6 +5,7 @@
   export let min = 0;
   export let borders = true;
   export let rounded = true;
+  export let onSubmit = null;
   function handleKeyPress(e: KeyboardEvent) {
     const numeric = /\d/;
     if (!numeric.test(e.key)) {
@@ -20,6 +21,8 @@
     // Limit value min -> max
     value = value > max ? max : value;
     value = value < min ? min : value;
+
+    if (onSubmit) onSubmit(value);
   }
 </script>
 

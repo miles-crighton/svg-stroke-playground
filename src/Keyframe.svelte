@@ -122,7 +122,12 @@
 <div>
   <div class="controls-row">
     <div class="percent-input-wrapper">
-      <PercentInput bind:value={percent} borders={false} rounded={false} />
+      <PercentInput
+        initialValue={percent}
+        onSubmit={(value) => (percent = value)}
+        borders={false}
+        rounded={false}
+      />
     </div>
     <div class="buttons-row">
       <button
