@@ -6,29 +6,15 @@
   import AddAnimationSvg from "./svgs/buttons/addAnimation.svg";
 
   let animationCount;
-  let derivedAnimations;
 
   $: animationCount = $animations;
 
-  // // Will never react anyway because won't update to subscribe to new added stores...
-  // $: animationCount.forEach((store, idx) => {
-  //   console.log(idx);
-  //   store.subscribe(() => {
-  //     derivedAnimations += 1;
-  //     console.log("SUBSCRIBED");
-  //   });
-  // });
-
   $: {
-    // BUG: Currently does not reactively update when single animation value changes
-    console.log(derivedAnimations);
-    const animationS = $animations.reduce(
+    const animationsRaw = $animations.reduce(
       (acc, store) => [...acc, get(store)],
       []
     );
-
-    console.log(animationS);
-    replaceStylesheetAnimation(animationS);
+    replaceStylesheetAnimation(animationsRaw);
   }
 </script>
 

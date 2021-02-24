@@ -166,6 +166,9 @@
     border: 0;
     box-shadow: none;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .no-properties {

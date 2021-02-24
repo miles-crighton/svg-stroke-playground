@@ -25,12 +25,14 @@
   .toggle-wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
   .toggle-wrapper > span {
     font-weight: 600;
     color: #6e1e49;
     flex: 2;
+    margin: 0.4rem 0;
   }
 
   .toggle {
