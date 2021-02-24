@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   function getInitialProperty(keyframeArray, propertyName) {
     if (Array.isArray(keyframeArray) && keyframeArray.length >= 2) {
       const idx = keyframeArray[1].findIndex((properties) => {
@@ -78,8 +78,8 @@
   export let animationDuration = 1;
   let animationDurationScaled;
 
+  export let keyframes;
   export let initialKeyframe;
-  console.log("INITIAL KEYFRAME", initialKeyframe);
   export let activeProperties = getInitialActiveProperties(initialKeyframe);
   export let strokeDashArray = getInitialProperty(
     initialKeyframe,
@@ -117,14 +117,32 @@
       tempKeyframeArray[1].push(["stroke", strokeColor]);
     keyframeArray = tempKeyframeArray;
   }
+
+  // Make sure any keyframe percents are not duplicated on change
+  export let percentTemp = percent;
+  function checkNewPercent(value: number) {
+    let percentDuplicated = false;
+    keyframes.forEach((keyframe) => {
+      console.log(parseFloat(keyframe[0]), value);
+      if (parseFloat(value) === parseFloat(keyframe[0])) {
+        percentDuplicated = true;
+      }
+    });
+    if (!percentDuplicated) {
+      percent = value;
+    } else {
+      percentTemp = percent;
+    }
+  }
 </script>
 
 <div>
   <div class="controls-row">
     <div class="percent-input-wrapper">
       <PercentInput
+        bind:value={percentTemp}
         initialValue={percent}
-        onSubmit={(value) => (percent = value)}
+        onSubmit={checkNewPercent}
         borders={false}
         rounded={false}
       />
@@ -141,7 +159,7 @@
     <div class="duration-seconds">{animationDurationScaled}s</div>
   </div>
   <div class="keyframe">
-    {#if activeProperties.strokeDashArray}
+    {#if activeProperties?.strokeDashArray}
       <StrokeDashArray bind:stringValue={strokeDashArray} />
     {/if}
     {#if activeProperties.strokeDashOffset}

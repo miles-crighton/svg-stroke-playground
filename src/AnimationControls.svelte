@@ -46,16 +46,14 @@
   }
 
   // Add a reactive reorder
-  // $: {
-  //   animation = animation.sort((a, b) => {
-  //     const aFloat = parseFloat(a[0]) / 100.0;
-  //     const bFloat = parseFloat(b[0]) / 100.0;
-  //     console.log(aFloat, bFloat);
-  //     return aFloat - bFloat;
-  //   });
-  //   animation = animation;
-  //   console.log(animation);
-  // }
+  $: {
+    animation.keyframes = animation.keyframes.sort((a, b) => {
+      const aFloat = parseFloat(a[0]) / 100.0;
+      const bFloat = parseFloat(b[0]) / 100.0;
+      return aFloat - bFloat;
+    });
+    animation = animation;
+  }
 </script>
 
 <div class="animation-controls">
@@ -130,6 +128,7 @@
       </div>
       {#each animation.keyframes as keyframe, i (keyframe[0])}
         <Keyframe
+          keyframes={animation.keyframes}
           bind:keyframeArray={animation.keyframes[i]}
           initialKeyframe={animation.keyframes[i]}
           animationDuration={duration}
