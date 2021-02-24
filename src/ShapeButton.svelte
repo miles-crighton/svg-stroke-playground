@@ -37,6 +37,12 @@
     justify-content: center;
   }
 
+  .button--contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   button:active {
     box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.13);
     background-color: #f2f2f2;

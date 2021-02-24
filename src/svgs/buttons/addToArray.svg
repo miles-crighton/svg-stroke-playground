@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="13px" viewBox="0 0 19 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" fill="#878787">
+            <g id="Group-10">
+                <rect id="Rectangle" x="0" y="1" width="2" height="11"></rect>
+                <rect id="Rectangle" x="0" y="11" width="4" height="2"></rect>
+                <rect id="Rectangle" x="0" y="0" width="4" height="2"></rect>
+            </g>
+            <g id="Group-10" transform="translate(17.000000, 6.500000) scale(-1, 1) translate(-17.000000, -6.500000) translate(15.000000, 0.000000)">
+                <rect id="Rectangle" x="0" y="1" width="2" height="11"></rect>
+                <rect id="Rectangle" x="0" y="11" width="4" height="2"></rect>
+                <rect id="Rectangle" x="0" y="0" width="4" height="2"></rect>
+            </g>
+            <path d="M10.4642857,2 L10.464,5.535 L14,5.53571429 L14,7.46428571 L10.464,7.464 L10.4642857,11 L8.53571429,11 L8.535,7.464 L5,7.46428571 L5,5.53571429 L8.535,5.535 L8.53571429,2 L10.4642857,2 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

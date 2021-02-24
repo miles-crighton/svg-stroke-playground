@@ -104,18 +104,18 @@
 
   .button-up {
     border: 1px solid #c9c9c9;
-    border-radius: 4px 4px 0 0;
+    border-radius: 3px 3px 0 0;
   }
 
   .button-down {
     border: 1px solid #c9c9c9;
     border-top: 0;
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 3px 3px;
   }
 
   .numeric-input__buttons {
-    top: 0.2rem;
+    top: 0.15rem;
     position: absolute;
-    right: 4px;
+    right: 3px;
   }
 </style>

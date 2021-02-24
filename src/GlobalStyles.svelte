@@ -13,6 +13,7 @@
       --button-border: #d1d1d1;
       --button-bg-active: #f2f2f2;
       --button-inset-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.13);
+      --button-active-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.13);
 
       --input-text: #464646;
 
