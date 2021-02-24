@@ -7,7 +7,7 @@
   <LogoSvg />
   <div class="vertical-spacing-1" />
   <div>
-    <h2 class="gradient title">SVG Stroke Tools</h2>
+    <h2 class="gradient title">SVG Stroke Playground</h2>
     <div class="name-row">
       <span class="subtext">A lil' something by Miles</span>
       <a href="https://github.com/miles-crighton" target="_blank">
