@@ -11,7 +11,7 @@
 {#if label}<label for="dash-offset">{label}</label>{/if}
 <div class="wrapper">
   <Slider bind:value />
-  <NumericInput bind:value stepValue={1} />
+  <NumericInput stepValue={1} bind:value initialValue={value} />
 </div>
 
 <style>

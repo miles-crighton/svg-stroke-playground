@@ -132,6 +132,7 @@
           bind:keyframeArray={animation.keyframes[i]}
           initialKeyframe={animation.keyframes[i]}
           animationDuration={duration}
+          idx={i}
         />
         {#if i < animation.keyframes.length - 1}
           <button class="add-keyframe" on:click={() => addKeyframe(i)}

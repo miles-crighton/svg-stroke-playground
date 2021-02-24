@@ -68,6 +68,8 @@
   import PropertiesMenu from "./PropertiesMenu.svelte";
   import ResetKeyframeSvg from "./svgs/buttons/resetKeyframe.svg";
   import PropertiesMenuSvg from "./svgs/buttons/propertiesMenu.svg";
+  import LockedSvg from "./svgs/buttons/locked.svg";
+  import UnlockedSvg from "./svgs/buttons/unlocked.svg";
   import {
     svgStrokeColor,
     svgStrokeDashArray,
@@ -90,6 +92,8 @@
     "stroke-dashoffset"
   );
   export let strokeColor = getInitialProperty(initialKeyframe, "stroke");
+  export let locked = false;
+  export let idx;
 
   export let percent = parseFloat(initialKeyframe[0]);
 
@@ -137,6 +141,22 @@
       }
     }
   }
+
+  // Locked
+  $: {
+    if (locked) {
+      // Find stroke dash offset in keyframes array
+      const refStrokeDashOffset = getInitialProperty(
+        keyframes[0],
+        "stroke-dashoffset"
+      );
+      if (refStrokeDashOffset > 0) {
+        strokeDashOffset =
+          Math.round(strokeDashOffset / refStrokeDashOffset) *
+          refStrokeDashOffset;
+      }
+    }
+  }
 </script>
 
 <div>
@@ -159,6 +179,14 @@
         aria-label="Reset to SVG values"><ResetKeyframeSvg /></button
       >
       <PropertiesMenu bind:activeProperties />
+      {#if idx === keyframes.length - 1 && keyframes.length > 1}
+        <button
+          data-tooltip="Lock to multiples of first keyframe"
+          aria-label="Lock to multiples of first keyframe"
+          on:click={() => (locked = !locked)}
+          >{#if locked}<LockedSvg />{:else}<UnlockedSvg />{/if}</button
+        >
+      {/if}
     </div>
     <!-- <button on:click={lockValues}>Lock</button> -->
     <div class="duration-seconds">{animationDurationScaled}s</div>

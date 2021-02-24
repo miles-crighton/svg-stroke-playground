@@ -6,6 +6,7 @@
   export let stepValue = 1;
   export let min = 0;
   export let max = 10000;
+  export let onSubmit = (value) => {};
   let input;
 
   const incrementValue = () => {
@@ -14,6 +15,7 @@
     } else {
       value += stepValue;
       value = parseFloat(value.toFixed(1));
+      onSubmit(value);
     }
   };
 
@@ -23,12 +25,23 @@
     } else {
       value -= stepValue;
       value = parseFloat(value.toFixed(1));
+      onSubmit(value);
     }
   };
+
+  function handleBlur() {
+    onSubmit(value);
+  }
 </script>
 
 <div class="numeric-input">
-  <input class="quantity" name="quantity" bind:this={input} bind:value />
+  <input
+    class="quantity"
+    name="quantity"
+    bind:this={input}
+    bind:value
+    on:blur={handleBlur}
+  />
   <div class="numeric-input__buttons">
     <button on:click={incrementValue} class="button-up"
       ><div class="button--contents"><ArrowUpSvg /></div></button
