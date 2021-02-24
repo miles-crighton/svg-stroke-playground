@@ -97,7 +97,7 @@
     {/if}
   </div>
   {#if tab === "Svg"}
-    <div class="contents">
+    <div class="contents" in:fly={{ x: 5 }} out:fly={{ x: -5 }}>
       <div class="control-row">
         <div>
           <label class="top-label">Width</label>
@@ -142,7 +142,7 @@
       <StrokeDashArray bind:stringValue={$svgStrokeDashArray} />
     </div>
   {:else}
-    <div class="contents">
+    <div class="contents" in:fly={{ x: -5 }} out:fly={{ x: 5 }}>
       <AnimationHandler />
     </div>
   {/if}
@@ -201,21 +201,24 @@
   }
   aside {
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
     width: 350px;
     max-width: 350px;
     overflow-x: hidden;
+    position: relative;
+    background-color: #f3f3f3;
   }
 
   .contents {
+    min-height: calc(100vh - 100px);
     background-color: #f3f3f3;
     width: 100%;
-    border: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
     border-top: 0;
     padding: 1rem 1.5rem;
+    width: 350px;
+    max-width: 350px;
     box-sizing: border-box;
-    position: relative;
+    position: absolute;
     flex: 1;
   }
 
