@@ -3,6 +3,7 @@
   import { animations, addAnimation } from "./state/animationStore";
   import AnimationControls from "./AnimationControls.svelte";
   import { replaceStylesheetAnimation } from "./utils/addStylesheetRules";
+  import AddAnimationSvg from "./svgs/buttons/addAnimation.svg";
 
   let animationCount;
   let derivedAnimations;
@@ -34,4 +35,16 @@
 {#each animationCount as animation, i}
   <AnimationControls idx={i} />
 {/each}
-<button on:click={addAnimation} />
+<button on:click={addAnimation}
+  ><AddAnimationSvg /><span>Add an Animation</span></button
+>
+
+<style>
+  button {
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+  }
+  button > span {
+    margin-left: 0.5rem;
+  }
+</style>
