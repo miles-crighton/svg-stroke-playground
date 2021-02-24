@@ -120,18 +120,21 @@
 
   // Make sure any keyframe percents are not duplicated on change
   export let percentTemp = percent;
+  let error = null;
   function checkNewPercent(value: number) {
     let percentDuplicated = false;
     keyframes.forEach((keyframe) => {
-      console.log(parseFloat(keyframe[0]), value);
       if (parseFloat(value) === parseFloat(keyframe[0])) {
         percentDuplicated = true;
       }
     });
-    if (!percentDuplicated) {
-      percent = value;
-    } else {
-      percentTemp = percent;
+    if (percent !== value) {
+      if (!percentDuplicated) {
+        percent = value;
+      } else {
+        error = "Duplicated percent";
+        percentTemp = percent;
+      }
     }
   }
 </script>
@@ -140,9 +143,11 @@
   <div class="controls-row">
     <div class="percent-input-wrapper">
       <PercentInput
+        bind:error
         bind:value={percentTemp}
         initialValue={percent}
         onSubmit={checkNewPercent}
+        leftCorner={true}
         borders={false}
         rounded={false}
       />
@@ -204,8 +209,7 @@
   }
 
   .percent-input-wrapper {
-    overflow: hidden;
-    border-radius: 6px 0 0 0;
+    border-right: 1px solid var(--button-border);
   }
 
   .buttons-row {
@@ -213,7 +217,6 @@
     display: flex;
     align-items: center;
     flex: 1;
-    border-left: 1px solid var(--button-border);
   }
 
   .vertical-spacer-1 {
