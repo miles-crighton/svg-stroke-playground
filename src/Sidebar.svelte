@@ -198,11 +198,14 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    width: 350px;
+    max-width: 350px;
+    overflow-x: hidden;
   }
 
   .contents {
     background-color: #f3f3f3;
-    width: 350px;
+    width: 100%;
     border: 1px solid #d5d5d5;
     border-top: 0;
     padding: 1rem 1.5rem;

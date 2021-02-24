@@ -198,6 +198,7 @@
     font-size: 16px;
   }
   .animation-controls {
+    margin-bottom: 0.7rem;
   }
   .animation-controls__content {
     border: 1px dashed #d6d6d6;
