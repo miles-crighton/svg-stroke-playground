@@ -98,26 +98,29 @@
         class="ease-button"
         data-tooltip="Linear"
         aria-label="Linear"
-        on:click={() => (animation.easing = "linear")}><LinearSvg /></button
+        on:click={() => (animation.easing = "linear")}
+        ><div class="button--contents"><LinearSvg /></div></button
       >
       <button
         class="ease-button"
         data-tooltip="Ease In"
         aria-label="Ease In"
-        on:click={() => (animation.easing = "ease-in")}><EaseInSvg /></button
+        on:click={() => (animation.easing = "ease-in")}
+        ><div class="button--contents"><EaseInSvg /></div></button
       >
       <button
         class="ease-button"
         data-tooltip="Ease Out"
         aria-label="Ease Out"
-        on:click={() => (animation.easing = "ease-out")}><EaseOutSvg /></button
+        on:click={() => (animation.easing = "ease-out")}
+        ><div class="button--contents"><EaseOutSvg /></div></button
       >
       <button
         class="ease-button"
         data-tooltip="Ease In Out"
         aria-label="Ease In Out"
         on:click={() => (animation.easing = "ease-in-out")}
-        ><EaseInOutSvg /></button
+        ><div class="button--contents"><EaseInOutSvg /></div></button
       >
     </div>
     <div class="vertical-spacer-1" />
@@ -265,5 +268,24 @@
   .control-row > label {
     flex: 1;
     font-size: 16px;
+  }
+
+  .button--contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button:active {
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.13);
+    background-color: #f2f2f2;
+  }
+
+  button:focus-visible {
+    box-shadow: 0 0 0 2px blue;
+  }
+
+  button:active > .button--contents {
+    transform: translateY(2px);
   }
 </style>

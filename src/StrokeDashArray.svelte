@@ -71,6 +71,8 @@
     justify-content: center;
     cursor: pointer;
     background: transparent;
+
+    transition: background-color 200ms;
   }
 
   .vertical-spacer-1 {
