@@ -132,7 +132,7 @@
         <NumericInput min={1} bind:value={$svgStrokeWidth} />
       </div>
       <div class="vertical-spacer-1" />
-      <Linecap bind:linecap={$svgLinecap} />
+      <Linecap bind:linecap={$svgLinecap} initialLinecap={$svgLinecap} />
       <div class="vertical-spacer-1" />
       <RangeNumericInput
         bind:value={$svgStrokeOffset}

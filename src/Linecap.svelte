@@ -3,7 +3,8 @@
   import SquareSvg from "./svgs/buttons/squareLinecap.svg";
   import ButtSvg from "./svgs/buttons/buttLinecap.svg";
   type Linecap = "butt" | "round" | "square";
-  export let linecap: Linecap = "butt";
+  export let initialLinecap;
+  export let linecap: Linecap = initialLinecap || "butt";
 </script>
 
 <div class="linecap">
