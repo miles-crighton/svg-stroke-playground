@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import Prism from "prismjs";
   import ClipboardSvg from "../svgs/buttons/clipboard.svg";
   import { fly, fade } from "svelte/transition";
 
