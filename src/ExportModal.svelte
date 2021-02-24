@@ -1,11 +1,20 @@
 <script lang="ts">
+  import { get } from "svelte/store";
+
   import PrismJs from "./PrismJS.svelte";
   import { animations } from "./state/animationStore";
+  import type { Animation } from "./state/animationStore";
   import {
     generateAnimationString,
     generateKeyframeString,
     generateSvgString,
   } from "./utils/addStylesheetRules";
+
+  function getKeyframeString(i: number) {
+    const store = $animations[i];
+    const animation: Animation = get(store);
+    return generateKeyframeString(animation.name, animation.keyframes);
+  }
 
   export let showCopied = null;
   function updateClipboard(newClip) {
@@ -29,14 +38,16 @@
 {#if showCopied}
   <div>{showCopied}</div>
 {/if}
-{#each $animations as animation}
-  <PrismJs
-    language="css"
-    code={generateKeyframeString(animation.name, animation.keyframes)}
-  />
+{#each $animations as animation, i}
+  <PrismJs language="css" code={getKeyframeString(i)} />
 {/each}
 <PrismJs language="html" code={generateSvgString()} />
-<PrismJs language="html" code={generateAnimationString($animations)} />
+<PrismJs
+  language="html"
+  code={generateAnimationString(
+    $animations.reduce((acc, store) => [...acc, get(store)], [])
+  )}
+/>
 <button on:click={() => updateClipboard("djasiodsajdiojas")}
   >djasiodsajdiojas</button
 >
