@@ -40,7 +40,7 @@
       </div>
       <ZoomControls bind:zoomLevel />
       <!-- <Footer /> -->
-      <a href="https://www.github.com">
+      <a href="https://github.com/miles-crighton/svg-stroke-playground">
         <GithubCorner />
       </a>
     </div>
