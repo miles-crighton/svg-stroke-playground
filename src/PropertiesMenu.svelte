@@ -1,12 +1,23 @@
 <script lang="ts">
   import DownArrowSvg from "./svgs/numericArrowDown.svg";
+  import { onDestroy, onMount } from "svelte";
   import PropertiesMenuSvg from "./svgs/buttons/propertiesMenu.svg";
   import CheckBox from "./CoreUI/CheckBox.svelte";
   export let activeProperties;
   let open = false;
+  let node;
+
+  function checkClickInside(e: Event) {
+    if (node && !node.contains(e.target)) {
+      open = false;
+    }
+  }
+
+  onMount(() => document.addEventListener("mousedown", checkClickInside));
+  onDestroy(() => document.removeEventListener("mousedown", checkClickInside));
 </script>
 
-<div class="properties-wrapper">
+<div class="properties-wrapper" bind:this={node}>
   <button
     class="properties-button"
     data-tooltip="Animation Properties"
