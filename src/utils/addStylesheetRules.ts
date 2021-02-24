@@ -74,16 +74,18 @@ export function generateKeyframeString(
 
 export function replaceStylesheetKeyframes(
   animationName: string,
-  rules: Array<[string, Array<string>]>
+  rules: Array<[string, Array<string>]>,
+  idx: number
 ) {
+  console.log(animationName, "REPLACING");
   // Grab style element's sheet
   var styleSheet = styleElKeyframes.sheet;
-  const ruleIdx = 0;
+  const ruleIdx = idx;
 
   const keyframeString = generateKeyframeString(animationName, rules);
 
   // Replace Css rule
-  if (styleSheet.cssRules.length) {
+  if (styleSheet.cssRules.length - 1 >= idx) {
     styleSheet.removeRule(ruleIdx);
   }
 
@@ -119,6 +121,8 @@ export function replaceStylesheetAnimation(animations: Array<Animation>) {
   var styleSheet = styleElAnimation.sheet;
   const ruleIdx = 0;
   let selector = `.svgElement`;
+
+  console.log("REPLACING ANIMATIONS");
 
   const animationString = generateAnimationString(animations);
 

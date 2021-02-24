@@ -12,10 +12,16 @@
     replaceStylesheetKeyframes,
   } from "./utils/addStylesheetRules";
   import Toggle from "./CoreUI/Toggle.svelte";
+  import { animations } from "./state/animationStore";
   import type { Animation } from "./state/animationStore";
 
+  export let idx;
+  export let store = $animations[idx];
   export let animation: Animation;
-  let propertiesOpen = false;
+
+  console.log(store, idx);
+
+  $: animation = $store;
 
   function addKeyframe(idx: number) {
     const lowerPercent = parseFloat(keyframes[idx][0]);
@@ -30,9 +36,13 @@
 
   $: ({ keyframes, delay, duration, infinite, easing, name } = animation);
 
-  console.log(keyframes);
+  $: replaceStylesheetKeyframes(name, keyframes, idx);
 
-  $: replaceStylesheetKeyframes(name, keyframes);
+  $: {
+    // IMPORTANT: Allows reactivity of parent to replace animation properties
+    console.log(keyframes, delay, duration, infinite, easing, name);
+    animations.update((n) => n);
+  }
 
   // Add a reactive reorder
   // $: {
