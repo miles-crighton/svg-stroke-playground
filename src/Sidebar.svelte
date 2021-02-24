@@ -22,7 +22,7 @@
   import shapePresets from "./data/shapePresets";
   import { animations } from "./state/animationStore";
   import AnimationHandler from "./AnimationHandler.svelte";
-  import { fade } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   type Shape = "circle" | "line" | "polyline" | "rect" | "ellipse" | "polygon";
   const shapes: Array<Shape> = [
     "circle",
@@ -75,7 +75,7 @@
 <aside>
   <div class="header">
     {#if tab === "Svg"}
-      <div transition:fade>
+      <div in:fly={{ x: -20 }} out:fly={{ x: 20 }} class="title-wrapper">
         <SvgTitle />
       </div>
       <button
@@ -85,7 +85,7 @@
         ><ChevronRightSvg /><span>ANIMATION</span></button
       >
     {:else}
-      <div transition:fade>
+      <div in:fly={{ x: 20 }} out:fly={{ x: -20 }} class="title-wrapper">
         <AnimationTitle />
       </div>
       <button
@@ -153,6 +153,11 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  .title-wrapper {
+    position: absolute;
+  }
+
   h2 {
     font-family: "Funkydori";
     font-size: 34px;
